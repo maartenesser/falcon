@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_140843) do
+ActiveRecord::Schema.define(version: 2019_05_27_144617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
+    t.string "vin"
+    t.string "make"
+    t.string "model"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "claims", force: :cascade do |t|
+    t.string "number"
+    t.datetime "at_date"
+    t.text "description"
+    t.bigint "insurance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["insurance_id"], name: "index_claims_on_insurance_id"
+  end
+
+  create_table "insurances", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status", default: "pending"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.string "part_model_code"
+    t.string "title"
+    t.string "description"
+    t.string "category"
+    t.bigint "car_id"
+    t.bigint "user_id"
+    t.bigint "claim_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_parts_on_car_id"
+    t.index ["claim_id"], name: "index_parts_on_claim_id"
+    t.index ["order_id"], name: "index_parts_on_order_id"
+    t.index ["user_id"], name: "index_parts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +77,10 @@ ActiveRecord::Schema.define(version: 2019_05_27_140843) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "claims", "insurances"
+  add_foreign_key "orders", "users"
+  add_foreign_key "parts", "cars"
+  add_foreign_key "parts", "claims"
+  add_foreign_key "parts", "orders"
+  add_foreign_key "parts", "users"
 end

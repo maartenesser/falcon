@@ -1,17 +1,31 @@
-<div class="container-parts-form">
-  <h2>Add/edit part:</h2>
-  <br>
-  <%= simple_form_for @part do |f| -%>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="col-xl-3 col-md-6 mb-4">
+  <div class="card border-left-info shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Add/edit part:</div>
+          <div class=" align-items-center">
+          <%= simple_form_for @part do |f| -%>
+              <div>
+                <%= f.input :title %>
+                <%= f.input :category %>
+                <%= f.input :description %>
+                <%= f.input :part_model_code %>
+                <%= f.input :price_cents %>
+                <%= f.input :claim_id %>
+                <%= f.input :car_id %>
+                <%= f.input :user_id %>
+                <%= f.input :order_id %>
+                <%= f.button :submit, class: "btn btn-success btn-icon-split"  %>
+              </div>
+            <% end -%>
+          </div>
 
-    <div>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :part_model_code %>
-      <%= f.input :price_cents %>
-      <%= f.button :submit, class: "form-btn" %>
+
+        </div>
+      </div>
+
     </div>
-
-  <% end -%>
+  </div>
 </div>
+

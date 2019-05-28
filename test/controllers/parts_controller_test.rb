@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InsuranceTest < ActiveSupport::TestCase
+class PartsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

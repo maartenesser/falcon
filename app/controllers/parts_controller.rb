@@ -35,5 +35,5 @@ class PartsController < ApplicationController
   def set_part
     @part = Part.find(params[:id])
     authorize @part
-  end
+  end 
 end

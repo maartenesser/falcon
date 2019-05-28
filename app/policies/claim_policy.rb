@@ -1,20 +1,19 @@
 class ClaimPolicy < ApplicationPolicy
-
   class Scope < Scope
     def resolve
-      Claim.where(user: user)
+      scope.where(user: user)
     end
   end
 
   def create?
-    user.insurance? == true
+    user.insurance
   end
 
   def new?
-    user.insurance? == true
+    user.insurance
   end
 
   def show?
-    user.insurance? == true
+    user.insurance
   end
 end

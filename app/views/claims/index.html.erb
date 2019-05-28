@@ -1,0 +1,7 @@
+
+
+<ul>
+  <% current_user.claims.each do |claim| %>
+    <li><%= claim.number %></li>
+  <% end %>
+</ul>

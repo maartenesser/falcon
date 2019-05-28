@@ -20,6 +20,10 @@ class ClaimsController < ApplicationController
     authorize @claim
   end
 
+  def index
+    @claims = policy_scope(Claim).order(created_at: :desc)
+  end
+
   private
 
   def claim_params

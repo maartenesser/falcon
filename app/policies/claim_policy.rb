@@ -7,10 +7,14 @@ class ClaimPolicy < ApplicationPolicy
   end
 
   def create?
-    current_user.insurance? == true
+    user.insurance? == true
   end
 
   def new?
-    current_user.insurance? == true
+    user.insurance? == true
+  end
+
+  def show?
+    user.insurance? == true
   end
 end

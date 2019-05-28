@@ -9,14 +9,15 @@ class ClaimsController < ApplicationController
     @claim = Claim.new(claim_params)
     authorize @claim
     if @claim.save
-      redirect_to home_path
+      redirect_to claim_path(@claim.id)
     else
       render :new
     end
   end
 
   def show
-
+    @claim = Claim.find(params[:id])
+    authorize @claim
   end
 
   private

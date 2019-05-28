@@ -1,13 +1,12 @@
 class ClaimsController < ApplicationController
   def new
     @claim = Claim.new
-    @user = User.find(params[:user_id])
+    @user = current_user.id
     authorize @claim
   end
 
   def create
     @claim = Claim.new(claim_params)
-    @user = current_user
     authorize @claim
     if @claim.save
       redirect_to home_path

@@ -15,6 +15,10 @@ class ClaimsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
 
   def claim_params

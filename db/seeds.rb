@@ -13,6 +13,7 @@ puts "Deleting cars from cars table..."
 Car.destroy_all
 
 
+
 # generating all the differend seeds for the database
 puts "Generating new users....."
 nathanael = User.create!(email: "nathanael@example.com",password: "123456")

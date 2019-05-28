@@ -10,7 +10,6 @@ class Part < ApplicationRecord
   validates :title, presence: true
   validates :user_id, presence: true
   validates :order_id, presence: true
-  validates :price_cent, presence: true
 
   include PgSearch
   pg_search_scope :global_search,

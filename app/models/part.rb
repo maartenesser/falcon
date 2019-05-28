@@ -12,6 +12,7 @@ class Part < ApplicationRecord
   validates :order_id, presence: true
   validates :price_cents, presence: true
 
+
   include PgSearch
   pg_search_scope :global_search,
     against: [ :title, :description, :category, :part_model_code ],

@@ -1,0 +1,17 @@
+<div class="container-parts-form">
+  <h2>Add/edit part:</h2>
+  <br>
+  <%= simple_form_for @part do |f| -%>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :part_model_code %>
+      <%= f.input :price_cents %>
+      <%= f.button :submit, class: "form-btn" %>
+    </div>
+
+  <% end -%>
+</div>

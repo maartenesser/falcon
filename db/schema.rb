@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_05_28_140135) do
 
   # These are extensions that must be enabled in order to support this database
@@ -27,9 +28,10 @@ ActiveRecord::Schema.define(version: 2019_05_28_140135) do
     t.string "number"
     t.datetime "at_date"
     t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.index ["user_id"], name: "index_claims_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -51,7 +53,6 @@ ActiveRecord::Schema.define(version: 2019_05_28_140135) do
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_cents"
     t.index ["car_id"], name: "index_parts_on_car_id"
     t.index ["claim_id"], name: "index_parts_on_claim_id"
     t.index ["order_id"], name: "index_parts_on_order_id"
@@ -64,9 +65,9 @@ ActiveRecord::Schema.define(version: 2019_05_28_140135) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "insurance", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "insurance"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

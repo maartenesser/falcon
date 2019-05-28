@@ -4,7 +4,8 @@ class CreateClaims < ActiveRecord::Migration[5.2]
       t.string :number
       t.datetime :at_date
       t.text :description
-      t.references :insurance, foreign_key: true
+      t.references :user, foreign_key: true
+
 
       t.timestamps
     end

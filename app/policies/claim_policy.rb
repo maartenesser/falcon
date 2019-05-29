@@ -16,4 +16,12 @@ class ClaimPolicy < ApplicationPolicy
   def show?
     user.insurance
   end
+
+  def update?
+    user.insurance
+  end
+
+  def edit?
+    user.insurance
+  end
 end

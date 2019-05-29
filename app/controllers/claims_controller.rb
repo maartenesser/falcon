@@ -24,6 +24,21 @@ class ClaimsController < ApplicationController
     @claims = policy_scope(Claim).order(created_at: :desc)
   end
 
+  def update
+    @claim = Claim.find(params[:id])
+    authorize @claim
+    if @claim.update(claim_params)
+      redirect_to claim_path(@claim)
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    @claim = Claim.find(params[:id])
+    authorize @claim
+  end
+
   private
 
   def claim_params

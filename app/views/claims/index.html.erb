@@ -1,7 +1,28 @@
+<div class="index-header">
+  <h1>My claims:</h1>
+</div>
 
+<% current_user.claims.each do |claim| %>
+  <div id="claims-index">
+    <div class="card shadow">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= link_to claim.number, claim_path(claim) %></h6>
+      </div>
+      <div class="card-body">
 
-<ul>
-  <% current_user.claims.each do |claim| %>
-    <li><%= claim.number %></li>
-  <% end %>
-</ul>
+        <div>
+          Claim Description:  <%= claim.description %>
+        </div>
+
+        <div>
+          Date of claim:  <%= claim.at_date.to_date %>
+        </div>
+
+        <div>
+          User ID: <%= claim.user_id %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

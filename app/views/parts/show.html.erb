@@ -12,6 +12,10 @@
     <br>
     <li>part.id <%= @part.id %></li>
     <li>part.user_id <%= @part.user_id %></li>
+    <li><% if @part.user_id == current_user.id  %>
+      my part
+      <% end %>
+    </li>
     <li>part.claim_id <%= @part.claim_id %></li>
     <li>part.order_id <%= @part.order_id %></li>
     <% if !@order.blank? %>

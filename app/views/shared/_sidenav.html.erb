@@ -65,33 +65,25 @@
         Body shop Menu
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Buy -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Parts</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">
-              Parts:
-            </h6>
-            <%= link_to "Buy a part", parts_path, class: "collapse-item" %>
-            <%= link_to "Sell a part", new_part_path, class: "collapse-item" %>
-            <%= link_to "My part", parts_path, class: "collapse-item" %>
-          </div>
-        </div>
+        <%= link_to (raw('<i class="fas fa-fw fa-cart-plus"></i>
+          <span>Buy a part</span>')), parts_path, class: "nav-link collapsed" %>
       </li>
-
-      <!-- Nav Item - Charts -->
+      <!-- Nav Item - sell -->
       <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span>')), root_path, class: "nav-link collapsed" %>
+        <%= link_to (raw('<i class="fas fa-fw fa-dollar-sign"></i>
+          <span>Sell a part</span>')), new_part_path, class: "nav-link collapsed" %>
       </li>
-        <!-- Nav Item - Tables -->
+      <!-- Nav Item - My Part -->
+      <li class="nav-item">
+        <%= link_to (raw('<i class="fas fa-fw fa-database"></i>
+          <span>My parts</span>')), root_path, class: "nav-link collapsed" %>
+      </li>
+      <!-- Nav Item - Overview -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-table"></i>
-          <span>Table</span>')), root_path, class: "nav-link collapsed" %>
+          <span>Overview</span>')), root_path, class: "nav-link collapsed" %>
       </li>
 
     <!-- Divider -->

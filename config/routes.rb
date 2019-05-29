@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :parts, only: [:create, :update, :show ]
-  # We should link the parts_part to user devise
 
   resources :orders, only: [ :show ]
 

@@ -15,6 +15,5 @@ class PartPolicy < ApplicationPolicy
 
   def update?
     true
-
   end
 end

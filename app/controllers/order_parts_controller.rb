@@ -5,6 +5,7 @@ class OrderPartsController < ApplicationController
     @order = current_user.orders.available.last || Order.create(user: current_user)
     @part.order = @order
     authorize @part
+
     if @part.save
       redirect_to order_path(@order)
     else

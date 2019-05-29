@@ -7,7 +7,7 @@ class OrderPartsController < ApplicationController
     authorize @part
 
     if @part.save
-      redirect_to order_path(@order)
+      redirect_to order_path(@order), notice: 'Part added to your basket'
     else
       render 'parts/show'
     end

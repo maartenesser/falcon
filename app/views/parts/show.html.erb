@@ -1,7 +1,5 @@
 <div class="container">
-  <h1>Welcome to show part</h1>
-  <h2> Show implemented to test my logic can be deleted or modified
-  </h2>
+  <h1><%= @part.title %></h1>
   <ul>
     <li>Current_user.id <%= current_user.id %></li>
     <li>Current_user.email <%= current_user.email %></li>
@@ -25,7 +23,7 @@
   </ul>
 
 
-  <%= button_to "Purchase", order_part_path(@part), method: :patch %>
+  <%= button_to "Add to basket", order_part_path(@part), method: :patch %>
 </div>
 
 

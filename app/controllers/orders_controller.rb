@@ -7,5 +7,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @part = Part.find(params[:part_id])
+    authorize @part
   end
 end

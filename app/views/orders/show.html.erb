@@ -1,3 +1,12 @@
 <h1>Welcome in the Order/show.html.erb</h1>
 
 <p>Modify view to see desired info :)</p>
+
+<ul>
+  <% current_user.orders.each do |order| %>
+    <% order.parts.each do |part| %>
+      <li><%= part.title %></li>
+    <% end %>
+  <% end %>
+</ul>
+

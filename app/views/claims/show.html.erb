@@ -1,0 +1,29 @@
+<div id="claims-show-part">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>
+    </div>
+    <div class="card-body">
+
+      <div>
+        Claim Description:  <%= @claim.description %>
+      </div>
+
+      <div>
+        Date of claim:  <%= @claim.at_date.to_date %>
+      </div>
+
+      <div>
+        User ID: <%= @claim.user_id %>
+      </div>
+
+    </div>
+    <div class="flex-container-show">
+      <div class="edit-delete-bts">
+        <%= link_to "Edit", edit_claim_path, class: "btn btn-primary", id: "show-edit-btn" %>
+        <%= link_to "Delete", root_path, class: "btn btn-info", id: "show-delete-btn" %>
+      </div>
+    </div>
+  </div>
+</div>
+

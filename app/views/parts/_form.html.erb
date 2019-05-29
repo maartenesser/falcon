@@ -12,7 +12,7 @@
                 <%= f.input :claim_id %>
                 <%= f.input :car_id %>
                 <%= f.input :user_id, input_html: { value: current_user.id}, as: :hidden %>
-                <%= f.input :order_id %>
+                <%= f.input :order_id, as: :hidden %>
                 <%= f.input :title %>
                 <%= f.input :category %>
                 <%= f.input :description %>

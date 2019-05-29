@@ -3,7 +3,7 @@
     <div class="card-body">
       <div class="no-gutters align-items-center">
         <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Related to:</div>
+          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Upload a Part:</div>
           <div class=" align-items-center">
           <%= simple_form_for @part do |f| -%>
             <%= f.error_notification %>
@@ -15,7 +15,7 @@
                 <%= f.input :category %>
                 <%= f.input :description %>
                 <%= f.input :part_model_code %>
-                <%#= f.input :price_cent %>
+                <%= f.input :price_cents %>
 
                 <%= f.button :submit, class: "btn btn-success btn-icon-split"  %>
               </div>

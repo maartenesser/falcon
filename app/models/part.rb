@@ -4,10 +4,10 @@ class Part < ApplicationRecord
   belongs_to :claim
   belongs_to :order, optional: true
 
+  monetize :price_cents
+
   validates :part_model_code, presence: true
   validates :title, presence: true
-
-
 
   include PgSearch
   pg_search_scope :global_search,

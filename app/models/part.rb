@@ -6,7 +6,7 @@ class Part < ApplicationRecord
 
   validates :part_model_code, presence: true
   validates :title, presence: true
-  validates :price_cents, presence: true
+
 
 
   include PgSearch

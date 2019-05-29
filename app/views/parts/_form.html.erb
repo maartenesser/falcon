@@ -9,17 +9,13 @@
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
               <div>
-                <%= f.input :claim_id %>
-                <%= f.input :car_id %>
-                <%= f.input :user_id, input_html: { value: current_user.id}, as: :hidden %>
-                <%= f.input :order_id, as: :hidden %>
+                <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
+                <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
                 <%= f.input :title %>
                 <%= f.input :category %>
                 <%= f.input :description %>
                 <%= f.input :part_model_code %>
-                <%= f.input :price_cents %>
-
-                <%#= f.input :car_id, collection:{"test"} %>
+                <%#= f.input :price_cent %>
 
                 <%= f.button :submit, class: "btn btn-success btn-icon-split"  %>
               </div>

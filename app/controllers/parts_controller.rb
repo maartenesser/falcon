@@ -18,13 +18,10 @@ class PartsController < ApplicationController
 
   def create
     @part = Part.new(part_params)
-    @claim = Claim.find(params[:claim_id])
-    @car = Car.find(params[:car_id])
-    @user = User.find(params[:user_id])
-    @order = Order.find(params[:order_id])
-     authorize @part
+    @part.user = current_user
+    authorize @part
     if @part.save!
-      redirect_to part_path(@part), notice: 'Part succesfully created'
+      redirect_to root_path, notice: 'Part succesfully created'
 
     else
       render :new
@@ -35,7 +32,7 @@ class PartsController < ApplicationController
   private
 
   def part_params
-    params.require(:part).permit(:claim_id, :part_model_code, :car_id, :title, :description, :category, :user_id, :order_id, :price_cents)
+    params.require(:part).permit(:part_model_code, :title, :description, :category, :car_id, :order_id, :claim_id)
   end
 
   def set_part

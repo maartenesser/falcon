@@ -1,5 +1,7 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: [:edit, :update]
+  before_action :set_part, only: [:show, :edit, :update]
+
+  def show; end
 
   def new
     @part = Part.new
@@ -35,5 +37,5 @@ class PartsController < ApplicationController
   def set_part
     @part = Part.find(params[:id])
     authorize @part
-  end 
+  end
 end

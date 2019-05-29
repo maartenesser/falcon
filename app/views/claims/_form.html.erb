@@ -1,0 +1,17 @@
+<div class="container-claim-form">
+  <h2>Add/edit a claim</h2>
+  <br>
+  <%= simple_form_for @claim do |f| -%>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div>
+      <%= f.input :number, autofocus: true %>
+      <%= f.input :at_date, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true %>
+      <%= f.input :description %>
+      <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
+
+      <%= f.button :submit, class: "btn btn-primary" %>
+    </div>
+  <% end -%>
+</div>

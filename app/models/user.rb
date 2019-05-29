@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :parts
   has_many :orders
   has_many :claims
+  mount_uploader :photo, PhotoUploader
 end

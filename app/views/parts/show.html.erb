@@ -3,16 +3,25 @@
   <h2> Show implemented to test my logic can be deleted or modified
   </h2>
   <ul>
+    <li>Current_user.id <%= current_user.id %></li>
+    <li>Current_user.email <%= current_user.email %></li>
+    <br>
     <li><%= @part.title %></li>
     <li><%= @part.description %></li>
     <li><%= @part.part_model_code %></li>
+    <br>
+    <li>part.id <%= @part.id %></li>
+    <li>part.user_id <%= @part.user_id %></li>
+    <li>part.claim_id <%= @part.claim_id %></li>
+    <li>part.order_id <%= @part.order_id %></li>
+    <% if !@order.blank? %>
+      <li>order.id <%= @order.id %></li>
+    <% end %>
     <!-- <li><%#= @part.price_cents %></li> -->
   </ul>
 
 
-  <!-- Form to create an order -->
-  <%= form_tag new_part_order_path(@part) do %>
-    <%= hidden_field_tag :part_id, @part.id %>
-    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-  <% end %>
+  <%= button_to "Purchase", order_part_path(@part), method: :patch %>
 </div>
+
+

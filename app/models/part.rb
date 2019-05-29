@@ -4,6 +4,8 @@ class Part < ApplicationRecord
   belongs_to :claim
   belongs_to :order, optional: true
 
+
+  mount_uploader :photo, PhotoUploader
   monetize :price_cents
 
   validates :part_model_code, presence: true

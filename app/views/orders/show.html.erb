@@ -1,0 +1,24 @@
+<h1>Temporary basket</h1>
+
+<p>Modify view to see desired info :)</p>
+<h2>Pending parts</h2>
+<ul>
+  <% current_user.orders.each do |order| %>
+    <% if order.status == 'pending' %>
+      <% order.parts.each do |part| %>
+        <li><%= part.title %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Paid parts</h2>
+<ul>
+   <% current_user.orders.each do |order| %>
+    <% if order.status == 'paid' %>
+      <% order.parts.each do |part| %>
+        <li><%= part.title %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

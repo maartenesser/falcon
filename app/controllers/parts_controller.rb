@@ -1,5 +1,7 @@
 class PartsController < ApplicationController
-  # before_action :set_part, only: [:new, :edit, :update]
+  before_action :set_part, only: [ :new, :show, :edit, :update]
+
+  def show; end
 
   def new
     @part = Part.new

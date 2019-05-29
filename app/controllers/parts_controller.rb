@@ -32,7 +32,7 @@ class PartsController < ApplicationController
   private
 
   def part_params
-    params.require(:part).permit(:part_model_code, :title, :description, :category, :car_id, :order_id, :claim_id, :price_cents, :photo)
+    params.require(:part).permit(:part_model_code, :title, :description, :category, :car_id, :order_id, :claim_id, :price, :photo)
   end
 
   def set_part

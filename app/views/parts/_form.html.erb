@@ -17,7 +17,7 @@
                 <%= f.input :photo %>
                 <%= f.input :photo_cache, as: :hidden %>
                 <%= f.input :part_model_code %>
-                <%= f.input :price_cents %>
+                <%= f.input :price, as: :integer %>
 
                 <%= f.button :submit, class: "btn btn-success btn-icon-split p-2"  %>
                 <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-secondary btn-icon-split p-2" %>

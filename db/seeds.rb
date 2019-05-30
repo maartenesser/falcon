@@ -48,14 +48,37 @@ saab = Car.create!(vin: "YS3AL76L1R7002116", make: "Saab", model: "900")
 mercedes_benz = Car.create!(vin: "WDBNG75J32A225892", make: "Mercedes Benz", model: "S Class")
 
 puts "Generating new parts....."
-part1 = Part.create!(part_model_code: "A2208100416", title: "Mirror Right", description: "Right mirror of a mercedes benz", category: "used", car: mercedes_benz, user: nathanael, claim: claim1, order: order3, price_cents: "40185")
-part1 = Part.create!(part_model_code: "2208100116", title: "Left Mirror", description: "Left mirror without mirror Mercedes Benz", category: "used", car: mercedes_benz, user: nathanael, claim: claim1, order: order4, price_cents: "14000")
-part1 = Part.create!(part_model_code: "6803-00-9540280P", title: "Bonnet for VW Passat", description: "Bonnet for VW passat 2012", category: "new", car: volkswagen, user: romeo, claim: claim2, order: order1, price_cents: "18051")
-part1 = Part.create!(part_model_code: "3C5827025H", title: "Tailgate VW Passat", description: "Tailgate VW Passat without any extra parts and two bump's", category: "new", car: volkswagen, user: romeo, claim: claim2, order: order2, price_cents: "12890")
-part1 = Part.create!(part_model_code: "B204I", title: "Right back door Saab", description: "Right back door Saab", category: "used", car: saab, user: gael, claim: claim3, order: order7, price_cents: "11099")
-part1 = Part.create!(part_model_code: "B204L", title: "Front gril of Saab", description: "Almost new Frontgrill Saad", category: "used", car: saab, user: gael, claim: claim3, order: order8, price_cents: "6980")
-part1 = Part.create!(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", category: "used", car: maserati, user: maarten, claim: claim4, order: order5, price_cents: "14890")
-part1 = Part.create!(part_model_code: "M139A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", category: "used", car: maserati, user: maarten, claim: claim4, order: order6, price_cents: "16980")
+part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right", description: "Right mirror of a mercedes benz", category: "used", car: mercedes_benz, user: nathanael, claim: claim1, order: order3, price_cents: "40185")
+part1[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Mercedes/RightMirror/rightmirror2.jpg"
+part1.save!
+
+part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror", description: "Left mirror without mirror Mercedes Benz", category: "used", car: mercedes_benz, user: nathanael, claim: claim1, order: order4, price_cents: "14000")
+part2[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Mercedes/LeftMirror/LeftMirrorMercedes4.jpg"
+part2.save!
+
+part3 = Part.new(part_model_code: "6803-00-9540280P", title: "Bonnet for VW Passat", description: "Bonnet for VW passat 2012", category: "new", car: volkswagen, user: romeo, claim: claim2, order: order1, price_cents: "18051")
+part3[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Volkswagen/bonnet/bonnet1.jpg"
+part3.save!
+
+part4 = Part.new(part_model_code: "3C5827025H", title: "Tailgate VW Passat", description: "Tailgate VW Passat without any extra parts and two bump's", category: "new", car: volkswagen, user: romeo, claim: claim2, order: order2, price_cents: "12890")
+part4[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Volkswagen/tailgate/tailgate3.jpg"
+part4.save!
+
+part5 = Part.new(part_model_code: "B204I", title: "Right back door Saab", description: "Right back door Saab", category: "used", car: saab, user: gael, claim: claim3, order: order7, price_cents: "11099")
+part5[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Saab/right%20door/rightdoor.jpg"
+part5.save!
+
+part6 = Part.new(part_model_code: "B204L", title: "Front gril of Saab", description: "Almost new Frontgrill Saad", category: "used", car: saab, user: gael, claim: claim3, order: order8, price_cents: "6980")
+part6[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Saab/front%20gril/gril1.jpg"
+part6.save!
+
+part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", category: "used", car: maserati, user: maarten, claim: claim4, order: order5, price_cents: "14890")
+part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
+part7.save!
+
+part8 = Part.new(part_model_code: "M139A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", category: "used", car: maserati, user: maarten, claim: claim4, order: order6, price_cents: "16980")
+part8[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Maserati/right%20mirror/rightmirror1.jpg"
+part8.save!
 
 puts "Done with seeding the whole database"
 

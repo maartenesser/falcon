@@ -2,11 +2,13 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
     <div class="sidebar-brand-icon">
       <%= cl_image_tag "https://res.cloudinary.com/dbimnldt2/image/upload/v1559209891/Logo/login_desktop_psq6fp.png", width: 60, height: 60 %>
     </div>
+    <div class="sidebar-brand-text">
       <%= cl_image_tag "https://res.cloudinary.com/dbimnldt2/image/upload/v1559210188/Logo/login_desktop_gc9ewi.png", width: 134, height: 52 %>
+    </div>
   </a>
 
   <!-- Divider -->
@@ -62,7 +64,7 @@
     <!-- Heading for garages-->
     <% if current_user.insurance == false %>
       <div class="sidebar-heading">
-        Body shop Menu
+        Bodyshop Menu
       </div>
 
       <!-- Nav Item - Buy -->
@@ -72,7 +74,7 @@
       </li>
       <!-- Nav Item - sell -->
       <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-fw fa-dollar-sign"></i>
+        <%= link_to (raw('<i class="fas fa-fw fa-euro-sign"></i>
           <span>Sell a part</span>')), new_part_path, class: "nav-link collapsed" %>
       </li>
       <!-- Nav Item - My Part -->

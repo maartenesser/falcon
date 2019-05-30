@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :order_parts, only: [ :update ]
 
-  resources :claims, only: [:new, :create, :show, :index, :edit, :destroy, :update]
+  resources :claims
+
+  get '/statistic', to: 'claims#statistic', as: :statistic
 
   resources :parts, only: [:create, :update, :new, :show, :index]
 end

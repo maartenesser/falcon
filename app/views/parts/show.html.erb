@@ -37,32 +37,33 @@
 
       <!-- Details -->
       <div class="row border-bottom py-4">
-        <div class="col title-first-col">
+        <div class="col-sm-3 col-xs-6 title-first-col">
           <div class="font-weight-bold">Part Num: </div>
           <div class="font-weight-bold">Claim Num: </div>
           <div class="font-weight-bold">Car Make: </div>
           <div class="font-weight-bold">Car Model: </div>
           <div class="font-weight-bold">VIN: </div>
         </div>
-        <div class="col details-first-col">
+        <div class="col-sm-3 col-xs-6 details-first-col">
           <div><%= @part.part_model_code %></div>
           <div><%= @claim.number %></div>
           <div><%= @car.make %></div>
           <div><%= @car.model %></div>
           <div><%= @car.vin %></div>
         </div>
-        <div class="col title-second-col">
-
+        <div class="col-sm-3 col-xs-6 title-second-col">
           <div class="font-weight-bold">Providing from: </div>
           <div class="font-weight-bold">Category: </div>
-          <div class="font-weight-bold">State: </div>
+          <div class="font-weight-bold">Condition: </div>
+          <br>
           <div class="font-weight-bold">Price: </div>
         </div>
-        <div class="col detail-second-col">
+        <div class="col-sm-3 col-xs-6 detail-second-col">
 
           <div><%= @user.email%></div>
           <div><%= @part.category%></div>
           <div><%= @part.category%></div>
+          <br>
           <div><%= @part.price %> €</div>
         </div>
         <% if !@order.blank? %>
@@ -82,8 +83,19 @@
       </div>
 
       <!-- Submition/Add to basket -->
-      <div class="mt-4">
-        <%= button_to "Add to basket", order_part_path(@part), method: :patch %>
+      <div class="row mt-4">
+        <div class="col-sm-3 col-xs-6 mx-auto ">
+          <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> Add to basket</span>')), order_part_path(@part), method: :patch, class: "btn btn-success btn-block" %>
+        </div>
+        <div class="col-sm-3 col-xs-6 mx-auto ">
+          <% if current_user.id == @part.user_id %>
+            <%= link_to "Edit part", edit_part_path, class: "btn btn-warning btn-block"  %>
+            <%= link_to "Delete part", part_path(@part), data: { confirm: "are you sure?" }, method: :delete, class: "btn btn-danger btn-block"%>
+          <% end %>
+        </div>
+        <div class="col-sm-3 col-xs-6 mx-auto ">
+          <%= link_to "Back to parts", parts_path, class: "btn btn-primary btn-block"  %>
+        </div>
       </div>
     </div>
   </div>

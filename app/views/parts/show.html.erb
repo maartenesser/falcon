@@ -23,7 +23,10 @@
   </ul>
 
 
-  <%= button_to "Add to basket", order_part_path(@part), method: :patch %>
+<%= form_tag orders_path do %>
+  <%= hidden_field_tag 'part_id', @part.id %>
+  <%= submit_tag 'Add to basket', class: 'btn btn-primary' %>
+<% end %>
 </div>
 
 

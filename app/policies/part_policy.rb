@@ -1,7 +1,8 @@
 class PartPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(user: user)
+      # scope define to see all the parts except mine
     end
   end
 

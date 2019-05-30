@@ -1,0 +1,20 @@
+<h1>Temporary basket</h1>
+
+<p>Modify view to see desired info :)</p>
+<!-- <h2>Pending parts</h2> -->
+<div class="div">
+  <% current_user.orders.each do |order| %>
+    <% if order.status == 'pending' %>
+      <div class="d-flex">
+        <p>
+          <%= Part.find(order.part_id).title %>
+          <span>
+            <%#= button_to "Pay", orders_order_path(@order), method: :patch %>
+
+          </span>
+        </p>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>

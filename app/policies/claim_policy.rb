@@ -24,4 +24,8 @@ class ClaimPolicy < ApplicationPolicy
   def edit?
     user.insurance
   end
+
+  def statistic?
+    user.insurance
+  end
 end

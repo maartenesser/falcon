@@ -37,8 +37,19 @@ class ClaimsController < ApplicationController
 
   def statistic
     @claims = Claim.all
-    authorize @claims
+    @statistics = current_user.claims.map do |claim|
+      claim.parts.map do |part|
+        {
+          title: part.title,
+          price_cents: part.price_cents,
+          claim_number: claim.number
+          seller_id: User.find(part.id).company_name
+        }
+      end
+    end.flatten
+    skip_authorization
   end
+
 
   private
 

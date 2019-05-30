@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   resources :order_parts, only: [ :update ]
 
-  resources :claims, only: [:new, :create, :show, :index, :edit, :destroy, :update]
+  resources :claims
 
-  resources :parts, only: [:create, :update, :new, :show, :index] do
-    resources :orders, only: [:index, :show, :create, :update]
-  end
+  resources :parts, only: [ :index, :show, :new, :create, :update ]
 end

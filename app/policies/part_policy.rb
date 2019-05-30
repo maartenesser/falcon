@@ -3,6 +3,7 @@ class PartPolicy < ApplicationPolicy
     def resolve
       scope.where.not(user: user)
       # scope define to see all the parts except mine
+      # can we scope with status as well..
     end
   end
 

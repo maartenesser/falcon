@@ -7,10 +7,12 @@
     <% if order.status == 'pending' %>
       <div class="d-flex">
         <p>
-          <%= Part.find(order.part_id).title %>
+          <%= order.part.title %>
           <span>
-            <%#= button_to "Pay", orders_order_path(@order), method: :patch %>
+            <%#= button_to "Pay", order_path(@order), method: :patch %>
 
+              <%= link_to 'Pay',order_path(order), method: 'patch', class: 'btn btn-primary' %>
+            <%# end %>
           </span>
         </p>
       </div>

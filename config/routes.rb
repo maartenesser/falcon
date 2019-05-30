@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   resources :claims, only: [:new, :create, :show, :index, :edit, :destroy, :update]
 
-  resources :parts, only: [:create, :update, :new, :show]
+  resources :parts, only: [:create, :update, :new, :show, :index]
 end

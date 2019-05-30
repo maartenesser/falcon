@@ -6,7 +6,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def index?
-    user_is_owner?
+    true
   end
 
   def show?

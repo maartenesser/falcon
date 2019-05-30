@@ -1,7 +1,14 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update]
 
-  def show; end
+  def show
+    user_id = @part.user_id
+    @user = User.find(user_id)
+    claim_id = @part.claim_id
+    @claim = Claim.find(claim_id)
+    car_id = @part.car_id
+    @car = Car.find(car_id)
+  end
 
   def index
     @parts = policy_scope(Part).order(created_at: :desc)

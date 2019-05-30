@@ -1,7 +1,11 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: [ :new, :show, :edit, :update]
+  before_action :set_part, only: [:show, :edit, :update]
 
   def show; end
+
+  def index
+    @parts = policy_scope(Part).order(created_at: :desc)
+  end
 
   def new
     @part = Part.new

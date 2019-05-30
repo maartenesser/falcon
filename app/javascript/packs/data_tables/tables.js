@@ -7,11 +7,20 @@ function tables() {
         data: $('#table_id').data('statistics'),
         columns:
         [
-          { data: 'title' },
-          { data: 'price_cents' },
-          { data: 'claim_number' }
+          { data: 'claim_number',
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol)
+            {$(nTd).html(`<a href='claims/${oData.claim_id}'>${oData.claim_number}</a>`);
+          }},
+          { data: 'company' },
+          { data: "title",
+            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol)
+            {$(nTd).html(`<a href='parts/${oData.part_id}'>${oData.title}</a>`);
+          }},
+          { data: 'price' }
+
         ]
       });
+      console.log($('#table_id').data('statistics')[2].title);
   });
 }
 

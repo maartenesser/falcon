@@ -40,16 +40,18 @@ class ClaimsController < ApplicationController
     @statistics = current_user.claims.map do |claim|
       claim.parts.map do |part|
         {
+          claim_number: claim.number,
+          company: User.find(part.user_id).company_name,
           title: part.title,
-          price_cents: part.price_cents,
-          claim_number: claim.number
-          seller_id: User.find(part.id).company_name
+          price: Money.new(part.price_cents, "EUR").format,
+          part_id: part.id,
+          claim_id: claim.id
+          # status: Order.find(part.oder_id)
         }
       end
     end.flatten
     skip_authorization
   end
-
 
   private
 

@@ -2,6 +2,7 @@ class Part < ApplicationRecord
   belongs_to :car
   belongs_to :user
   belongs_to :claim
+  has_one :order
 
   mount_uploader :photo, PhotoUploader
   monetize :price_cents

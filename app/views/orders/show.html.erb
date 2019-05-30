@@ -1,24 +1,17 @@
 <h1>Temporary basket</h1>
 
 <p>Modify view to see desired info :)</p>
-<h2>Pending parts</h2>
+<!-- <h2>Pending parts</h2> -->
 <ul>
   <% current_user.orders.each do |order| %>
     <% if order.status == 'pending' %>
-      <% order.parts.each do |part| %>
-        <li><%= part.title %></li>
-      <% end %>
+      <li>order.part_id - <%= order.part_id %></li>
+      <li>Part.find(order.part_id).title - <%= Part.find(order.part_id).title %></li>
     <% end %>
   <% end %>
 </ul>
-
-<h2>Paid parts</h2>
-<ul>
-   <% current_user.orders.each do |order| %>
-    <% if order.status == 'paid' %>
-      <% order.parts.each do |part| %>
-        <li><%= part.title %></li>
-      <% end %>
-    <% end %>
-  <% end %>
-</ul>
+<h2><%= current_user.email %></h2>
+<p>The parts below have been generated with the seed</p>
+<% current_user.parts.each do |part| %>
+    <p>part.title - <%= part.title %> | part.id - <%= part.id %> </p>
+<% end %>

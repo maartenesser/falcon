@@ -20,7 +20,6 @@ function tables() {
 
         ]
       });
-      console.log($('#table_id').data('statistics')[2].title);
   });
 }
 

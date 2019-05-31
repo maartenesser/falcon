@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-lg-4 d-flex align-items-center justify-content-center" style="margin: 0 auto;">
             <% if current_user.photo? %>
-            <%= cl_image_tag current_user.photo , class: "img-fluid rounded-circle" %>
+            <%= cl_image_tag current_user.photo, crop: :thumb, radius: :max, height: 400, width: 400, gravity: :face, class: "img-fluid rounded-circle shadow-lg" %>
             <% else %>
             <%= cl_image_tag "user_nixstg", class: "img-fluid rounded-circle"%>
             <% end %>

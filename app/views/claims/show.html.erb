@@ -30,10 +30,9 @@
 
     </div>
     <div class="flex-container-show">
-      <div>
-        <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
-      </div>
-
+        <div>
+          <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
+        </div>
       <div>
         <%= link_to "Delete", claim_path(@claim), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", id: "show-delete-btn" %>
       </div>

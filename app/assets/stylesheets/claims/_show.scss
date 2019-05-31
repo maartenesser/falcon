@@ -1,17 +1,30 @@
 #claims-show-part {
-  width: 60vw;
   margin: 0 auto;
-  padding-top: 3vh;
 }
 
-.edit-delete-bts {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
+
+#show-edit-btn {
+  padding: 10px 30px;
+}
+
+#show-delete-btn {
+  padding: 10px 30px;
+}
+
+#show-return-btn {
+  padding: 10px 30px;
 }
 
 .flex-container-show {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  margin: 15px;
+}
+
+#claim-show-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -1,7 +1,5 @@
-<h1>Temporary basket</h1>
+<h1>Basket</h1>
 
-<p>Modify view to see desired info :)</p>
-<!-- <h2>Pending parts</h2> -->
 <div class="div">
   <% current_user.orders.each do |order| %>
     <% if order.status == 'pending' %>
@@ -9,14 +7,12 @@
         <p>
           <%= order.part.title %>
           <span>
-            <%#= button_to "Pay", order_path(@order), method: :patch %>
-
-              <%= link_to 'Pay',order_path(order), method: 'patch', class: 'btn btn-primary' %>
-            <%# end %>
+            <%= link_to 'Buy',order_path(order), method: 'patch', class: 'btn btn-primary' %>
           </span>
         </p>
       </div>
 
     <% end %>
   <% end %>
+  <%= link_to 'Buy more parts?', parts_path, class: "btn btn-primary" %>
 </div>

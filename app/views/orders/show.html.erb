@@ -1,7 +1,11 @@
-<h1>Paid Order</h1>
+<h1></h1>
+<h1>Thank you!</h1>
 
-<h2>In theory if you land here it means you order has been paid</h2>
+<p>You purchased <%= @order.part.title  %></p>
 
-<p>What would you like to see?</p>
-<p>The paid item would be nice!</p>
 
+<p style="color: red;">Debug Line can be removed Status = <%= @order.status %></p>
+<p>An invoice has been sent to <%= current_user.email  %></p>
+
+<%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
+<%= link_to 'Back to Parts', parts_path, class: "btn btn-primary"  %>

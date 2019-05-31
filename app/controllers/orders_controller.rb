@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
     else
       render 'parts/show'
     end
+  end
 
     def update
       @order = Order.find(params[:id])
@@ -30,5 +31,4 @@ class OrdersController < ApplicationController
         render 'parts/show'
       end
     end
-  end
 end

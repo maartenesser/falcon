@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%if !current_user.blank?  %>
+  <% if current_user.insurance == true %>
+    <%= render 'dashboard_insurance' %>
+    <% else %>
+    <%= render 'dashboard_garage' %>
+  <% end %>
+<% end %>

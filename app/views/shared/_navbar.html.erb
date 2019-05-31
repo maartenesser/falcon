@@ -109,7 +109,7 @@
             <% end %>
             </span>
           <% if current_user.photo? %>
-            <%= cl_image_tag current_user.photo, class: " img-fluid img-profile rounded-circle"%>
+            <%= cl_image_tag current_user.photo, crop: :thumb, radius: :max, height: 100, width: 100, gravity: :face, class: " img-fluid img-profile rounded-circle"%>
             <% else %>
             <%= cl_image_tag "user_nixstg", class: " img-fluid img-profile rounded-circle"%>
           <% end %>
@@ -117,10 +117,6 @@
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
           <%= link_to (raw('<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile')), edit_user_registration_path, class: "dropdown-item" %>
-          <a class="dropdown-item" href="#">
-            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-            Settings
-          </a>
           <div class="dropdown-divider"></div>
           <%= link_to (raw('<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Log out')), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>

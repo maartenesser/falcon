@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :claims
 
+  get '/statistic', to: 'claims#statistic', as: :statistic
+
   resources :parts, only: [ :index, :show, :new, :create, :update ]
 end

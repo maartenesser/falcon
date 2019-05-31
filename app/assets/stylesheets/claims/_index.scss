@@ -1,9 +1,15 @@
 #claims-index {
-  width: 70vw;
+  // width: 70vw;
   margin: 20px auto;
 }
 
-.index-header {
-  text-align: center;
-  padding-top: 10px;
+#index-claim-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#index-claim-card-btn {
+  padding: 10px 30px;
 }

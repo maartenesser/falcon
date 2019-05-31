@@ -1,14 +1,40 @@
 <div class="container">
-  <div class="card shadow">
-    <h1>Thank you!</h1>
+    <div class="card-header">
+      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Thank you for purchasing <%= @order.part.title%></h6>
+    </div>
+  <div class="card shadow mb-4 pl-4 pt-4">
+    <div>
+      <%= cl_image_tag @order.part.photo, crop: :fill, :width => 575, class: "parts-index-card-image" %>
+    </div>
 
-    <p>You purchased <%= @order.part.title  %></p>
+   <div class="row border-bottom py-4">
+    <div class="col-sm-3 col-xs-6 title-first-col">
+      <div class="font-weight-bold">Part Num: </div>
+      <div class="font-weight-bold">Car Make: </div>
+      <div class="font-weight-bold">Car Model: </div>
+      <div class="font-weight-bold">VIN: </div>
+    </div>
+    <div class="col-sm-3 col-xs-6 details-first-col">
+      <div><%= @order.part.part_model_code %></div>
+      <div><%= @order.part.car.make %></div>
+      <div><%= @order.part.car.model %></div>
+      <div><%= @order.part.car.vin %></div>
+    </div>
+    <div class="col-sm-3 col-xs-6 title-second-col">
+      <div class="font-weight-bold">Price: </div>
+    </div>
+    <div class="col-sm-3 col-xs-6 title-second-col">
+      <div><%= @order.part.price %> € </div>
+    </div>
+  </div>
 
 
-    <p style="color: red;">Debug Line can be removed Status = <%= @order.status %></p>
-    <p>An invoice has been sent to <%= current_user.email  %></p>
+    <p>An invoice has been sent to <%= link_to current_user.email %></p>
 
   </div>
+
+  <div class="d-flex justify-content-between">
     <%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
     <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary"  %>
+  </div>
 </div>

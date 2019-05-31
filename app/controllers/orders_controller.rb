@@ -21,14 +21,21 @@ class OrdersController < ApplicationController
     end
   end
 
-    def update
-      @order = Order.find(params[:id])
-      authorize @order
-      @order.status = 'paid'
-      if @order.save
-        redirect_to order_path(@order)
-      else
-        render 'parts/show'
-      end
+  def update
+    @order = Order.find(params[:id])
+    authorize @order
+    @order.status = 'paid'
+    if @order.save
+      redirect_to order_path(@order)
+    else
+      render 'parts/show'
     end
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    authorize @order
+    @order.destroy
+    redirect_to orders_path
+  end
 end

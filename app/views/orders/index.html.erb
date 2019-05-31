@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card shadow">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header"> Basket</h6>
+      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Basket</h6>
     </div>
 
 
@@ -14,10 +14,10 @@
             </p>
             <div>
               <span>
-                <%= link_to 'Buy',order_path(order), method: 'patch', class: 'btn btn-primary' %>
+                <%= link_to 'Buy', order_path(order),data: { confirm: 'Are you sure?' } , method: 'patch', class: 'btn btn-primary' %>
               </span>
                <span>
-                <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'destroy', class: 'btn btn-danger' %>
+                <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'delete', class: 'btn btn-danger' %>
               </span>
             </div>
           </div>
@@ -30,4 +30,3 @@
   </div>
 </div>
 
-(raw('<i class="fas fa-trash"></i><span>Remove</span>'))

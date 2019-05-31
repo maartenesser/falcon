@@ -1,45 +1,47 @@
-<% @parts.each do |part| %>
-  <div id="parts-index">
-    <div class="card shadow border-left-primary">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header"><%= part.title%></h6>
-      </div>
-      <div class="card-body" id="parts-index-card-body">
-
-        <div>
-          <%= cl_image_tag part.photo, crop: :fill, :width => 250, class: "parts-index-card-image" %>
+<div class="container">
+  <% @parts.each do |part| %>
+    <div id="parts-index">
+      <div class="card shadow border-left-primary">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header"><%= part.title%></h6>
         </div>
-
-        <div class="parts-index-card-text">
-          <div>
-            <strong>Description: </strong><%= part.description %>
-          </div>
+        <div class="card-body" id="parts-index-card-body">
 
           <div>
-            <strong>Category: </strong><%= part.category %>
+            <%= cl_image_tag part.photo, crop: :fill, :width => 250, class: "parts-index-card-image" %>
           </div>
 
-          <div>
-            <strong>Make: </strong><%= part.car.make %>
+          <div class="parts-index-card-text">
+            <div>
+              <strong>Description: </strong><%= part.description %>
+            </div>
+
+            <div>
+              <strong>Category: </strong><%= part.category %>
+            </div>
+
+            <div>
+              <strong>Make: </strong><%= part.car.make %>
+            </div>
+
+            <div>
+              <strong>Model: </strong><%= part.car.model %>
+            </div>
           </div>
 
-          <div>
-            <strong>Model: </strong><%= part.car.model %>
+          <!-- index parts card buttons for price and and more info -->
+          <div class="parts-card-index-buttons">
+            <div class="parts-index-card-price">
+              € <%= part.price %>
+            </div>
+            <%= link_to "More info", part_path(part), class: "parts-index-card-info-btn", id: "parts-index-card-info-btn-text" %>
           </div>
+
         </div>
-
-        <!-- index parts card buttons for price and and more info -->
-        <div class="parts-card-index-buttons">
-          <div class="parts-index-card-price">
-            € <%= part.price %>
-          </div>
-          <%= link_to "More info", part_path(part), class: "parts-index-card-info-btn", id: "parts-index-card-info-btn-text" %>
-        </div>
-
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 
 

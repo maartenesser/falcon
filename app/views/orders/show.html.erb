@@ -1,11 +1,14 @@
-<h1></h1>
-<h1>Thank you!</h1>
+<div class="container">
+  <div class="card shadow">
+    <h1>Thank you!</h1>
 
-<p>You purchased <%= @order.part.title  %></p>
+    <p>You purchased <%= @order.part.title  %></p>
 
 
-<p style="color: red;">Debug Line can be removed Status = <%= @order.status %></p>
-<p>An invoice has been sent to <%= current_user.email  %></p>
+    <p style="color: red;">Debug Line can be removed Status = <%= @order.status %></p>
+    <p>An invoice has been sent to <%= current_user.email  %></p>
 
-<%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
-<%= link_to 'Back to Parts', parts_path, class: "btn btn-primary"  %>
+  </div>
+    <%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
+    <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary"  %>
+</div>

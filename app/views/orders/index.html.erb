@@ -1,18 +1,33 @@
-<h1>Basket</h1>
+<div class="container">
+  <div class="card shadow">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header"> Basket</h6>
+    </div>
 
-<div class="div">
-  <% current_user.orders.each do |order| %>
-    <% if order.status == 'pending' %>
-      <div class="d-flex">
-        <p>
-          <%= order.part.title %>
-          <span>
-            <%= link_to 'Buy',order_path(order), method: 'patch', class: 'btn btn-primary' %>
-          </span>
-        </p>
-      </div>
 
-    <% end %>
-  <% end %>
-  <%= link_to 'Buy more parts?', parts_path, class: "btn btn-primary" %>
+    <div class="card-body ">
+      <% current_user.orders.each do |order| %>
+        <% if order.status == 'pending' %>
+          <div class="d-flex justify-content-between mt-1">
+            <p>
+              <%= order.part.title %>
+            </p>
+            <div>
+              <span>
+                <%= link_to 'Buy',order_path(order), method: 'patch', class: 'btn btn-primary' %>
+              </span>
+               <span>
+                <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'destroy', class: 'btn btn-danger' %>
+              </span>
+            </div>
+          </div>
+
+        <% end %>
+      <% end %>
+      <%= link_to 'Buy more parts?', parts_path, class: "btn btn-primary" %>
+    </div>
+
+  </div>
 </div>
+
+(raw('<i class="fas fa-trash"></i><span>Remove</span>'))

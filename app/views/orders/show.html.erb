@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card-header">
-      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Thank you for purchasing <%= @order.part.title%></h6>
+      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Thank you for purchasing <%= @order.part.title%>!</h6>
     </div>
   <div class="card shadow mb-4 pl-4 pt-4">
     <div>
@@ -29,12 +29,12 @@
   </div>
 
 
-    <p>An invoice has been sent to <%= link_to current_user.email %></p>
+    <p class="pt-1">An invoice has been sent to <%= link_to current_user.email %></p>
 
   </div>
 
   <div class="d-flex justify-content-between">
     <%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
-    <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary"  %>
+    <%= link_to 'Browse Parts', parts_path, class: "btn btn-primary"  %>
   </div>
 </div>

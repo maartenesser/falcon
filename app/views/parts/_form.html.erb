@@ -14,17 +14,15 @@
                 <div>
                   <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
                   <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
-                  <%= f.input :title %>
-                  <%= f.input :category %>
-                  <%= f.input :description %>
-                  <%= f.input :photo %>
+                  <%= f.input :title, input_html: { autocomplete: "title"} %>
+                  <%= f.input :category, input_html: { autocomplete: "category"} %>
+                  <%= f.input :description, input_html: { autocomplete: "description"} %>
+                  <%= f.input :photo, input_html: { autocomplete: "photo"} %>
                   <%= f.input :photo_cache, as: :hidden %>
-                  <%= f.input :part_model_code %>
-                  <%= f.input :price, as: :integer %>
-
+                  <%= f.input :part_model_code, input_html: { autocomplete: "part_model_code"} %>
+                  <%= f.input :price, as: :integer, input_html: { autocomplete: "price"} %>
                   <%= f.button :submit, class: "btn btn-success btn-icon-split p-2"  %>
-                  <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-secondary btn-icon-split p-2" %>
-
+                  <%= link_to "Cancel", parts_path, class: "btn btn-outline-secondary btn-icon-split p-2" %>
                 </div>
               <% end -%>
             </div>

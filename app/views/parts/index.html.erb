@@ -1,47 +1,29 @@
-<div class="container">
-  <% @parts.each do |part| %>
-    <div id="parts-index">
-      <div class="card shadow border-left-primary">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header"><%= part.title%></h6>
+
+<div class="container-index-parts">
+  <div class="row">
+      <% @parts.each do |part| %>
+        <div class="card shadow border ml-3 mb-3" style="width: 18rem;">
+          <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
+          <div class="card-body">
+            <h5 class="card-title" style="height: 50px"><strong><%= part.title%></strong></h5>
+            <p class="card-text" style="height: 40px;"><%= part.description %></p>
+
+  <!--           <a href="#" class="btn btn-primary">Go somewhere</a>
+   -->        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Category: <%= part.category %></li>
+            <li class="list-group-item">Make: <%= part.car.make %></li>
+            <li class="list-group-item">Model: <%= part.car.model %></li>
+            <li class="list-group-item">Price: <%= Money.new(part.price_cents, "EUR").format %></li>
+          </ul>
+           <div class="card-body text-center">
+            <%= link_to (raw('<span class="icon text-white-50"><i class="fas fa-info-circle"></i></span><span class="text">More Info</span>')), part_path(part), class: "btn btn-info btn-icon-split" %>
+           </div>
         </div>
-        <div class="card-body" id="parts-index-card-body">
-
-          <div>
-            <%= cl_image_tag part.photo, crop: :fill, :width => 250, class: "parts-index-card-image" %>
-          </div>
-
-          <div class="parts-index-card-text">
-            <div>
-              <strong>Description: </strong><%= part.description %>
-            </div>
-
-            <div>
-              <strong>Category: </strong><%= part.category %>
-            </div>
-
-            <div>
-              <strong>Make: </strong><%= part.car.make %>
-            </div>
-
-            <div>
-              <strong>Model: </strong><%= part.car.model %>
-            </div>
-          </div>
-
-          <!-- index parts card buttons for price and and more info -->
-          <div class="parts-card-index-buttons">
-            <div class="parts-index-card-price">
-              € <%= part.price %>
-            </div>
-            <%= link_to "More info", part_path(part), class: "parts-index-card-info-btn", id: "parts-index-card-info-btn-text" %>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+  </div>
 </div>
+
 
 
 

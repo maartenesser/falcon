@@ -22,6 +22,9 @@ class ClaimsController < ApplicationController
 
   def index
     @claims = policy_scope(Claim).order(created_at: :desc)
+    if params[:query].present?
+      @claims = @claims.global_search(params[:query])
+    end
   end
 
   def update

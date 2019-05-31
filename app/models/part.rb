@@ -2,7 +2,9 @@ class Part < ApplicationRecord
   belongs_to :car
   belongs_to :user
   belongs_to :claim
-  belongs_to :order, optional: true
+
+  has_one :order
+
 
   mount_uploader :photo, PhotoUploader
   monetize :price_cents
@@ -13,7 +15,7 @@ class Part < ApplicationRecord
   include PgSearch
   pg_search_scope :global_search,
     against: %i[title description category part_model_code],
-    associated_against: {
+      associated_against: {
       user: %i[company_name first_name last_name],
       claim: [:number]
     },

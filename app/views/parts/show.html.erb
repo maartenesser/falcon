@@ -85,16 +85,23 @@
       <!-- Submition/Add to basket -->
       <div class="row mt-4">
         <div class="col-sm-3 col-xs-6 mx-auto ">
-          <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> Add to basket</span>')), order_part_path(@part), method: :patch, class: "btn btn-success btn-block" %>
+          <%= link_to "Back to parts", parts_path, class: "btn btn-primary btn-block"  %>
         </div>
+
         <div class="col-sm-3 col-xs-6 mx-auto ">
           <% if current_user.id == @part.user_id %>
             <%= link_to "Edit part", edit_part_path, class: "btn btn-warning btn-block"  %>
             <%= link_to "Delete part", part_path(@part), data: { confirm: "are you sure?" }, method: :delete, class: "btn btn-danger btn-block"%>
           <% end %>
         </div>
-        <div class="col-sm-3 col-xs-6 mx-auto ">
-          <%= link_to "Back to parts", parts_path, class: "btn btn-primary btn-block"  %>
+        <div class="col-sm-3 col-xs-6 mx-auto">
+          <%= form_tag orders_path do %>
+            <%= hidden_field_tag 'part_id', @part.id %>
+            <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
+              <i class="fas fa-shopping-cart"></i>
+              <span> Add to basket</span>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

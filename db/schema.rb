@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_140259) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "part_id"
+    t.index ["part_id"], name: "index_orders_on_part_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -50,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_140259) do
     t.bigint "car_id"
     t.bigint "user_id"
     t.bigint "claim_id"
-    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
@@ -58,7 +59,6 @@ ActiveRecord::Schema.define(version: 2019_05_30_140259) do
     t.string "condition"
     t.index ["car_id"], name: "index_parts_on_car_id"
     t.index ["claim_id"], name: "index_parts_on_claim_id"
-    t.index ["order_id"], name: "index_parts_on_order_id"
     t.index ["user_id"], name: "index_parts_on_user_id"
   end
 
@@ -92,6 +92,5 @@ ActiveRecord::Schema.define(version: 2019_05_30_140259) do
   add_foreign_key "orders", "users"
   add_foreign_key "parts", "cars"
   add_foreign_key "parts", "claims"
-  add_foreign_key "parts", "orders"
   add_foreign_key "parts", "users"
 end

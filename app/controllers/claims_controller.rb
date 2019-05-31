@@ -23,7 +23,7 @@ class ClaimsController < ApplicationController
   def index
     @claims = policy_scope(Claim).order(created_at: :desc)
     if params[:query].present?
-      @claims = Claim.global_search(params[:query])
+      @claims = @claims.global_search(params[:query])
     end
   end
 

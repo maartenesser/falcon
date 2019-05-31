@@ -1,33 +1,38 @@
-<div class="col-xl-8 col-md-12 mt-4">
-  <div class="card border-left-info shadow h-100 py-2">
-    <div class="card-body">
-      <div class="no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Upload a Part:</div>
-          <div class=" align-items-center">
-          <%= simple_form_for @part do |f| -%>
-            <%= f.error_notification %>
-            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-              <div>
-                <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
-                <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
-                <%= f.input :title %>
-                <%= f.input :category %>
-                <%= f.input :description %>
-                <%= f.input :photo %>
-                <%= f.input :photo_cache, as: :hidden %>
-                <%= f.input :part_model_code %>
-                <%= f.input :price, as: :integer %>
 
-                <%= f.button :submit, class: "btn btn-success btn-icon-split p-2"  %>
-                <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-secondary btn-icon-split p-2" %>
+<div class="d-flex justify-content-center">
+  <div class="col-xl-7 col-lg-12 mt-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="no-gutters align-items-center">
+          <div class="col mr-2">
+            <h1 class="text-center pb-3">Upload a part</h1>
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Upload a Part:</div>
+            <div class=" align-items-center">
+            <%= simple_form_for @part do |f| -%>
+              <%= f.error_notification %>
+              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                <div>
+                  <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
+                  <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
+                  <%= f.input :title %>
+                  <%= f.input :category %>
+                  <%= f.input :description %>
+                  <%= f.input :photo %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                  <%= f.input :part_model_code %>
+                  <%= f.input :price, as: :integer %>
 
-              </div>
-            <% end -%>
+                  <%= f.button :submit, class: "btn btn-success btn-icon-split p-2"  %>
+                  <%= f.button :button, "Cancel", type: "reset", class: "btn btn-outline-secondary btn-icon-split p-2" %>
+
+                </div>
+              <% end -%>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 

@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  
+  authenticated :user do
+    root 'pages#home', as: :authenticated_root
+  end
+
+   devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 
   resources :orders, only: [ :index, :show, :create, :update, :destroy]
 
@@ -10,5 +17,5 @@ Rails.application.routes.draw do
 
   get '/statistic', to: 'claims#statistic', as: :statistic
 
-  resources :parts, only: [ :index, :show, :new, :create, :update ]
+  resources :parts, only: [:create, :update, :new, :show, :index, :edit]
 end

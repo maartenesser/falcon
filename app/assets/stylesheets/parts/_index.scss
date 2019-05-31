@@ -1,3 +1,5 @@
+
+
 #parts-index {
   padding-bottom: 20px;
 }
@@ -9,6 +11,12 @@
 #parts-index-card-body {
   display: flex;
   align-items: center;
+}
+
+.container-index-parts {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .parts-index-card-text {

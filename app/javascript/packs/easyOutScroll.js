@@ -13,4 +13,4 @@ function scrollToTop(scrollDuration) {
     window.requestAnimationFrame(step);
 }
 
-export default scrollToTop;
+export default scrollToTop

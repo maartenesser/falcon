@@ -1,12 +1,13 @@
 <div id="claims-show-part">
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
+  <div class="card border-left-primary shadow mb-4">
+    <div class="card-header py-3" id="claim-show-card-header">
       <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>
+      <%= link_to "Edit", edit_claim_path, class: "btn btn-info", id: "show-edit-btn" %>
     </div>
     <div class="card-body">
 
       <div>
-        Claim Description:  <%= @claim.description %>
+        Claim description:  <%= @claim.description %>
       </div>
 
       <div>
@@ -17,13 +18,28 @@
         User ID: <%= @claim.user_id %>
       </div>
 
+      <% unless @car.nil? && @part.nil? %>
+        <div>
+          Car make: <%= @car.make %>
+        </div>
+
+        <div>
+          Car model: <%= @car.model %>
+        </div>
+      <% end %>
+
     </div>
     <div class="flex-container-show">
-      <div class="edit-delete-bts">
-        <%= link_to "Edit", edit_claim_path, class: "btn btn-primary", id: "show-edit-btn" %>
-        <%= link_to "Delete", root_path, class: "btn btn-info", id: "show-delete-btn" %>
+      <div>
+        <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
       </div>
+
+      <div>
+        <%= link_to "Delete", claim_path(@claim), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", id: "show-delete-btn" %>
+      </div>
+
     </div>
   </div>
 </div>
+
 

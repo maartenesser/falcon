@@ -18,10 +18,19 @@ class ClaimsController < ApplicationController
   end
 
   def show
+    claim_id = @claim.id
+    if !Part.where(claim_id: claim_id).first.nil?
+      @part = Part.where(claim_id: claim_id).first
+      car_id = @part.car_id
+      @car = Car.find(car_id)
+    end
   end
 
   def index
-    @claims = policy_scope(Claim).order(created_at: :desc)
+    @claims = policy_scope(Claim).order(at_date: :desc)
+    if params[:query].present?
+      @claims = @claims.global_search(params[:query]).order(at_date: :desc)
+    end
   end
 
   def update
@@ -51,6 +60,13 @@ class ClaimsController < ApplicationController
       end
     end.flatten
     skip_authorization
+  end
+
+  def destroy
+    @claim = Claim.find(params[:id])
+    authorize @claim
+    @claim.destroy
+    redirect_to claims_path
   end
 
   private

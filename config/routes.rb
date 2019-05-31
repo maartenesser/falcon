@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
-
-
+  
   authenticated :user do
     root 'pages#home', as: :authenticated_root
   end
@@ -11,8 +9,7 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-
-  resources :orders, only: [ :show ]
+  resources :orders, only: [ :index, :show, :create, :update, :destroy]
 
   resources :order_parts, only: [ :update ]
 

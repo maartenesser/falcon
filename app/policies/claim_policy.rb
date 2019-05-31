@@ -9,6 +9,10 @@ class ClaimPolicy < ApplicationPolicy
     user.insurance
   end
 
+  def destroy?
+    user.insurance
+  end
+
   def new?
     user.insurance
   end

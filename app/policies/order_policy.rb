@@ -25,6 +25,10 @@ class OrderPolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def history?
+    record.where(user: user)
+  end
+
   private
 
   def user_is_owner?

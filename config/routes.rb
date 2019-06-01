@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   authenticated :user do
     root 'pages#home', as: :authenticated_root
   end
@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :orders, only: [ :index, :show, :create, :update, :destroy]
+  resources :orders, only: [ :index, :show, :create, :update, :destroy ]
 
+  get '/order_history', to: 'orders#history', as: :purchasedparts
   resources :order_parts, only: [ :update ]
 
   resources :claims

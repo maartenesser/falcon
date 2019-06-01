@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card shadow">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Order History</h6>
+    </div>
+
+    <% if  %>
+
+    <% else %>
+
+    <% end %>
+
+    <!-- To display "cards" of orders -->
+    <div class="card-body py-3 ">
+      <% current_user.orders.where(status: 'paid').each do |order| %>
+      <div class="border-bottom">
+        <p>Order placed the <%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
+        <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
+        <p>Cost - <%= order.part.price %></p>
+        <p>Sold from - <%= User.find(order.user_id).company_name %></p>
+      </div>
+      <% end %>
+    </div>
+
+
+    <!-- Display a list of orders -->
+    <div class="card-body py-3 ">
+      <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order placed</th>
+            <th scope="col">Part Purchased</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Sold from</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 0  %>
+          <% current_user.orders.where(status: 'paid').each do |order| %>
+            <tr>
+              <th scope="row"><%= i = i + 1 %></th>
+              <td><%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
+              <td><%= link_to order.part.title, order_path(order)  %></td>
+              <td> <%= order.part.price %> €</td>
+              <td><%= User.find(order.user_id).company_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+       </table>
+    </div>
+
+
+
+  </div>
+</div>

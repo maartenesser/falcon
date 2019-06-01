@@ -7,12 +7,23 @@ class PagesController < ApplicationController
         @part_total = Part.count
         @part_earning_total_insurance = Money.new(current_user.parts_as_insurance.sum(:price_cents), 'EUR')
       else
-        # @part_earning_total_garage = Money.new(current_user.parts_as_garage.sum(:price_cents), 'EUR')
-        @part_total = Part.count
-        # @pending_orders = Order.select.sum(status: "pending")
+        parts_bought = 0
+        orders = current_user.orders
+        orders.each do |order|
+          parts_bought += order.part.price_cents
+        end
+        @my_parts_bought = Money.new(parts_bought, 'EUR')
 
-        # Order.where(user: user)
-        # Order.joins(:Parts).where(articles: { author: author })
+
+
+        # @part_earning_total_garage = Money.new(current_user.parts_as_garage.sum(:price_cents), 'EUR')
+        @my_parts_sell = Money.new(current_user.parts.sum(:price_cents), 'EUR')
+
+        #@my_parts_bought = Money.new(parts_bought.sum(:price_cents), 'EUR')
+
+        @part_total = Part.count
+        @pending_orders = current_user.orders.where(status: "pending").count
+
       end
     end
   end

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get '/statistic', to: 'claims#statistic', as: :statistic
 
   resources :parts, only: [:create, :update, :new, :show, :index, :edit]
-  get '/my_bought_part', to: 'parts#my_bought_part', as: :my_bought_part
-  get '/my_selling_part', to: 'claims#my_selling_part', as: :my_selling_part
+  get 'my_bought_parts', to: 'parts#my_bought_parts', as: :my_bought_parts
+  get 'my_selling_parts', to: 'parts#my_selling_parts', as: :my_selling_parts
 
 end

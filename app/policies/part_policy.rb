@@ -7,12 +7,12 @@ class PartPolicy < ApplicationPolicy
     end
   end
 
-  def my_bought_part
-    scope.where(user: user)
+  def my_bought_parts?
+    true
   end
 
-  def my_selling_part
-    scope.where(user: user)
+  def my_selling_parts?
+    true
   end
 
   def show?

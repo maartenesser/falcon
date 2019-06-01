@@ -2,6 +2,8 @@ class OrdersController < ApplicationController
   def index
     # The index is the basket
     @orders = policy_scope(Order)
+    # @orders = policy_scope(Order.available)
+    @orders = @orders.available # Tried and failed
     authorize @orders
   end
 

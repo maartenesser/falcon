@@ -1,6 +1,6 @@
 import Chart from 'chart.js';
 
-const testFunction = (data) => {
+const graphFunction = (data) => {
 const ctx_pie = document.querySelector('#myPieChart');
 const ctx_bar = document.querySelector('#myBarChart');
 
@@ -48,6 +48,7 @@ const ctx_bar = document.querySelector('#myBarChart');
     options: {
         scales: {
             yAxes: [{
+              display: true,
                 ticks: {
                     beginAtZero: true
                 }
@@ -58,4 +59,4 @@ const ctx_bar = document.querySelector('#myBarChart');
 
 }
 
-export default testFunction;
+export default graphFunction;

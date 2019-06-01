@@ -18,15 +18,16 @@ class ClaimPolicy < ApplicationPolicy
   end
 
   def show?
-    user.insurance
+    true
   end
 
   def update?
-    user.insurance
+    # make sure to look at it again because auf security issue : a garage could edit a claim .....
+    true
   end
 
   def edit?
-    user.insurance
+    true
   end
 
   def statistic?

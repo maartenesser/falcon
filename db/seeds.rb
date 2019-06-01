@@ -28,6 +28,7 @@ claim2 = Claim.create!(number: "456785430", at_date: "12-05-2019", description: 
 claim3 = Claim.create!(number: "098765432", at_date: "2-05-2019", description: "Had some problems with the door", user: insurance2, garage_id: gael.id)
 claim4 = Claim.create!(number: "748290205", at_date: "20-05-2019", description: "Got hit by an other car", user: insurance1, garage_id: maarten.id)
 
+
 puts "Generating new cars....."
 maserati = Car.create!(vin: "ZAM337B0000330279", make: "Maserati", model: "Quattroporte")
 volkswagen = Car.create!(vin: "WVWZZZ3BZ1P284396", make: "Volkswagen", model: "Passat")

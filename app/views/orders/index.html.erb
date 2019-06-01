@@ -22,8 +22,14 @@
 
         <% end %>
       <% end %>
-      <%= link_to 'Buy more parts?', parts_path, class: "btn btn-primary" %>
-      <%= link_to 'Your orders', purchasedparts_path, class: "btn btn-primary" %>
+
+      <% if current_user.orders.where(status: 'pending').count  == 0  %>
+        <p>Your basket is empty</p>
+        <%#= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
+      <% end %>
+
+      <%= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
+      <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
     </div>
 
   </div>

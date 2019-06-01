@@ -4,12 +4,6 @@
       <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Order History</h6>
     </div>
 
-    <% if  %>
-
-    <% else %>
-
-    <% end %>
-
     <!-- To display "cards" of orders -->
     <div class="card-body py-3 ">
       <% current_user.orders.where(status: 'paid').each do |order| %>

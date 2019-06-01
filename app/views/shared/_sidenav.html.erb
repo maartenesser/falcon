@@ -82,6 +82,12 @@
         <%= link_to (raw('<i class="fas fa-shopping-cart"></i>
           <span>Basket</span>')), orders_path, class: "nav-link collapsed" %>
       </li>
+      <!-- Nav Item - Order History -->
+      <!-- List of bought parts -->
+      <li class="nav-item">
+        <%= link_to (raw('<i class="fas fa-archive"></i>
+          <span>Order History</span>')), purchasedparts_path, class: "nav-link collapsed" %>
+      </li>
       <!-- Nav Item - My Part -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-database"></i>

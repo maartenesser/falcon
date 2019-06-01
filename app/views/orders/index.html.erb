@@ -3,8 +3,6 @@
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Basket</h6>
     </div>
-
-
     <div class="card-body ">
       <% current_user.orders.each do |order| %>
         <% if order.status == 'pending' %>
@@ -24,7 +22,14 @@
 
         <% end %>
       <% end %>
-      <%= link_to 'Buy more parts?', parts_path, class: "btn btn-primary" %>
+
+      <% if current_user.orders.where(status: 'pending').count  == 0  %>
+        <p>Your basket is empty</p>
+        <%#= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
+      <% end %>
+
+      <%= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
+      <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
     </div>
 
   </div>

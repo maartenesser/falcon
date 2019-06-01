@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :claims
   has_many :parts_as_insurance, through: :claims, source: :parts
-  # has_many :parts_as_garage, through: :orders, source: :parts
+  # has_many :parts_as_garage, through: :parts, source: :orders
   mount_uploader :photo, PhotoUploader
 end

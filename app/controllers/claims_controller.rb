@@ -9,6 +9,7 @@ class ClaimsController < ApplicationController
 
   def create
     @claim = Claim.new(claim_params)
+
     authorize @claim
     if @claim.save
       redirect_to claim_path(@claim.id)
@@ -78,6 +79,6 @@ class ClaimsController < ApplicationController
   end
 
   def claim_params
-    params.require(:claim).permit(:number, :at_date, :description, :user_id, :status)
+    params.require(:claim).permit(:number, :at_date, :description, :user_id, :garage_id, :status)
   end
 end

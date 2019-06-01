@@ -7,6 +7,14 @@ class PartPolicy < ApplicationPolicy
     end
   end
 
+  def my_bought_parts?
+    true
+  end
+
+  def my_selling_parts?
+    true
+  end
+
   def show?
     true
   end

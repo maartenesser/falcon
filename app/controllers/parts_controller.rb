@@ -45,6 +45,30 @@ class PartsController < ApplicationController
     end
   end
 
+  def my_bought_parts
+    # @parts = policy_scope(Part).order(created_at: :desc)
+    # @parts = Part.all
+    # @parts_pending = Part.joins(:oder).where(status: "pending")
+    # @order1= Part.where(Part.order.status = "pending")
+    # orders = Order.where(user_id: current_user)
+
+    parts = Part.joins(:order)
+    @parts = parts.where('orders.status' => 'paid').where('orders.user_id' => current_user.id)
+    authorize @parts
+  end
+
+  def my_selling_parts
+    # @parts = policy_scope(Part).order(created_at: :desc)
+    # @parts = Part.all
+    # @parts_pending = Part.joins(:oder).where(status: "pending")
+    # @order1= Part.where(Part.order.status = "pending")
+    # orders = Order.where(user_id: current_user)
+
+    parts = Part.joins(:order)
+    @parts = parts.where('orders.status' => 'pending').where('parts.user_id' => current_user.id)
+    authorize @parts
+  end
+
   private
 
   def part_params

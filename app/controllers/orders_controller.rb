@@ -38,4 +38,9 @@ class OrdersController < ApplicationController
     @order.destroy
     redirect_to orders_path
   end
+
+  def history
+    @orders = policy_scope(Order)
+    authorize @orders
+  end
 end

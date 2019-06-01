@@ -5,6 +5,62 @@
     </div>
 
 
+      <%# current_user.orders.each do |order| %>
+        <%# if (order.status == 'paid') %>
+          <!-- <p>Your Shopping Basket is empty.</p> -->
+
+        <%# end %>
+
+      <%# end %>
+
+
+<div class="card-body py-3 ">
+
+      <% current_user.orders.where(status: 'paid').each do |order| %>
+      <div class="border-bottom">
+        <p>Order placed the <%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
+        <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
+        <p>Cost - <%= order.part.price %></p>
+        <p>Sold from - <%= User.find(order.user_id).company_name %></p>
+      </div>
+
+        <% end %>
+
+</div>
+
+<div class="card-body py-3 ">
+
+      <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order placed</th>
+      <th scope="col">Part Purchased</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Sold from</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 0  %>
+      <% current_user.orders.where(status: 'paid').each do |order| %>
+    <tr>
+      <th scope="row"><%= i = i + 1 %></th>
+      <td><%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
+      <td><%= link_to order.part.title, order_path(order)  %></td>
+      <td> <%= order.part.price %> €</td>
+      <td><%= User.find(order.user_id).company_name %></td>
+    </tr>
+
+        <% end %>
+
+  </tbody>
+</table>
+
+</div>
+
+
+
+
     <div class="card-body ">
       <% current_user.orders.each do |order| %>
         <% if order.status == 'pending' %>
@@ -30,3 +86,4 @@
   </div>
 </div>
 
+<!-- .where(status: 'pending')  -->

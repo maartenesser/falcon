@@ -77,6 +77,11 @@
         <%= link_to (raw('<i class="fas fa-fw fa-euro-sign"></i>
           <span>Sell a part</span>')), new_part_path, class: "nav-link collapsed" %>
       </li>
+     <!-- Nav Item - basket -->
+      <li class="nav-item">
+        <%= link_to (raw('<i class="fas fa-shopping-cart"></i>
+          <span> Add to basket</span>')), orders_path, class: "nav-link collapsed" %>
+      </li>
       <!-- Nav Item - My Part -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-database"></i>

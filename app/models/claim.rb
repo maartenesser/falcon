@@ -5,6 +5,7 @@ class Claim < ApplicationRecord
   validates :number, presence: true
   validates :at_date, presence: true
   validates :description, presence: true
+  validates :garage_id, presence: true
 
   include PgSearch
   pg_search_scope :global_search,

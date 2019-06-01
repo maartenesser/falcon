@@ -29,24 +29,15 @@
         Insurer menu
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Claims</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">
-              Claims menu:
-            </h6>
-            <%= link_to "My claims", claims_path, class: "collapse-item" %>
-            <%= link_to "Add claim", new_claim_path, class: "collapse-item" %>
-          </div>
-        </div>
-      </li>
-
       <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+          <%= link_to (raw('<i class="fas fa-file"></i>
+          <span>My Claims</span>')), claims_path , class: "nav-link collapsed" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to (raw('<i class="fas fa-plus"></i>
+          <span>Add Claims</span>')), new_claim_path , class: "nav-link collapsed" %>
+        </li>
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-wrench"></i>
           <span>Parts</span>')), statistic_path , class: "nav-link collapsed" %>
@@ -69,13 +60,13 @@
 
       <!-- Nav Item - Buy -->
       <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-fw fa-cart-plus"></i>
-          <span>Buy a part</span>')), parts_path, class: "nav-link collapsed" %>
+        <%= link_to (raw('<i class="fas fa-fw fa-plus"></i>
+          <span>Buy</span>')), parts_path, class: "nav-link collapsed" %>
       </li>
       <!-- Nav Item - sell -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-euro-sign"></i>
-          <span>Sell a part</span>')), new_part_path, class: "nav-link collapsed" %>
+          <span>Sell</span>')), new_part_path, class: "nav-link collapsed" %>
       </li>
      <!-- Nav Item - basket -->
       <li class="nav-item">

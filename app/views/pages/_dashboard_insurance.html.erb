@@ -6,8 +6,8 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Number of Parts available online</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @part_total %></div>
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sold online</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @all_parts_bought %></div>
           </div>
           <div class="col-auto">
             <i class="fas fa-th-list fa-2x text-gray-300"></i>
@@ -60,14 +60,14 @@
     </div>
   </div>
 
-  <!-- Number of claims  in progress -->
+  <!-- Number of claims pending -->
   <div class="col-xl-3 col-md-6 mb-4">
     <div class="card border-left-warning shadow h-100 py-2">
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Selling</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">1868</div>
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pendings </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @all_parts_pending %></div>
           </div>
           <div class="col-auto">
             <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -78,6 +78,7 @@
   </div>
 
 </div>
+
 <!-- Evolution of the selling since January -->
 <div class="row mx-auto">
   <div class="col card shadow mt-4 mr-4">

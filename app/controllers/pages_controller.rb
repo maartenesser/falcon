@@ -10,16 +10,16 @@ class PagesController < ApplicationController
         @labels = []
         @count = @categories.count
 
-        claims = Claim.joins(:user)
-
         # @parts = parts.where('orders.status' => 'pending').where('orders.user_id' => current_user.id)
         @part_total = current_user.parts_as_insurance.count
 
         # Objective for now as default can be modify in the futur => 10.000€
+
+        my_parts = Claim.where('claims.user_id' => current_user.id).pluck(:id)
+        @all_parts_bought = Part.joins(:order).where('orders.status' => 'paid').where(claim_id: my_parts).count
+        @all_parts_pending = Part.joins(:order).where('orders.status' => 'pending').where(claim_id: my_parts).count
+
         objective = 10000.0
-
-        @my_parts_pending =
-
         my_parts_in_cents = current_user.parts_as_insurance.sum(:price_cents)
         @part_earning_total_insurance = Money.new(my_parts_in_cents, 'EUR')
 

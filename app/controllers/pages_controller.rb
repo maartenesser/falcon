@@ -5,13 +5,29 @@ class PagesController < ApplicationController
     if !current_user.blank?
       if current_user.insurance == true
         # Insurance
+
         @categories = Part.group(:category)
         @labels = []
         @count = @categories.count
 
-        @part_total = Part.count
-        @part_earning_total_insurance = Money.new(current_user.parts_as_insurance.sum(:price_cents), 'EUR')
-      else
+        claims = Claim.joins(:user)
+
+        # @parts = parts.where('orders.status' => 'pending').where('orders.user_id' => current_user.id)
+        @part_total = current_user.parts_as_insurance.count
+
+        # Objective for now as default can be modify in the futur => 10.000€
+        objective = 10000.0
+
+        @my_parts_pending =
+
+        my_parts_in_cents = current_user.parts_as_insurance.sum(:price_cents)
+        @part_earning_total_insurance = Money.new(my_parts_in_cents, 'EUR')
+
+        # let like this : (the % is tested and works)
+        @actual_in_percent = my_parts_in_cents / objective
+
+
+        else
 
         # Garage
 

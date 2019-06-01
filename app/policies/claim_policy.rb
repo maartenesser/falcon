@@ -22,6 +22,7 @@ class ClaimPolicy < ApplicationPolicy
   end
 
   def update?
+    # make sure to look at it again because auf security issue : a garage could edit a claim .....
     true
   end
 

@@ -3,14 +3,15 @@ import Chart from 'chart.js';
 const graphFunction = (data) => {
   const ctx_pie = document.querySelector('#myPieChart');
   const ctx_bar = document.querySelector('#myBarChart');
+  console.log(document.querySelector("#myPieChart[data-numbers]"));
 
   new Chart(ctx_pie, {
     type: 'doughnut',
     data: {
-      labels: ['Lighting', 'Body', 'Electric', 'Sensors'],
+      labels: $('#myPieChart').data('label'),
       datasets: [{
         label: '# of Categories',
-        data: [12, 19, 3, 5],
+        data: $('#myPieChart').data('numbers'),
         backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

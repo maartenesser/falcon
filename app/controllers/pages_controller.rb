@@ -8,10 +8,7 @@ class PagesController < ApplicationController
         @categories = Part.group(:category)
         @labels = []
         @count = @categories.count
-        @categories_count.each do |category|
-          labels << category
-        end
-        raise
+
         @part_total = Part.count
         @part_earning_total_insurance = Money.new(current_user.parts_as_insurance.sum(:price_cents), 'EUR')
       else

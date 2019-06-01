@@ -23,10 +23,10 @@ insurance1 = User.create!(first_name: "Helmut", last_name: "Hermanns", company_n
 insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "Axa",email: "insurance2@example.com", password: "123456", insurance: true)
 
 puts "Generating new Claims....."
-claim1 = Claim.create!(number: "123456789", at_date: "28-05-2019", description: "some stupid biker drove into my car. Now i have a broken headlight", user: insurance1)
-claim2 = Claim.create!(number: "456785430", at_date: "12-05-2019", description: "Drove against a lantern...", user: insurance2)
-claim3 = Claim.create!(number: "098765432", at_date: "2-05-2019", description: "Had some problems with the door", user: insurance2)
-claim4 = Claim.create!(number: "748290205", at_date: "20-05-2019", description: "Got hit by an other car", user: insurance1)
+claim1 = Claim.create!(number: "123456789", at_date: "28-05-2019", description: "some stupid biker drove into my car. Now i have a broken headlight", user: insurance1, garage_id: nathanael)
+claim2 = Claim.create!(number: "456785430", at_date: "12-05-2019", description: "Drove against a lantern...", user: insurance2, garage_id: romeo)
+claim3 = Claim.create!(number: "098765432", at_date: "2-05-2019", description: "Had some problems with the door", user: insurance2, garage_id: gael)
+claim4 = Claim.create!(number: "748290205", at_date: "20-05-2019", description: "Got hit by an other car", user: insurance1, garage_id: maarten)
 
 puts "Generating new cars....."
 maserati = Car.create!(vin: "ZAM337B0000330279", make: "Maserati", model: "Quattroporte")

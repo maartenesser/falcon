@@ -28,6 +28,7 @@ class ClaimsController < ApplicationController
 
   def index
     @claims = policy_scope(Claim).order(at_date: :desc)
+    @claims_garage = Claim.where(user_id: current_user.id)
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
     end
@@ -77,6 +78,6 @@ class ClaimsController < ApplicationController
   end
 
   def claim_params
-    params.require(:claim).permit(:number, :at_date, :description, :user_id)
+    params.require(:claim).permit(:number, :at_date, :description, :user_id, :status)
   end
 end

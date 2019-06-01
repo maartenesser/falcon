@@ -18,15 +18,15 @@ class ClaimPolicy < ApplicationPolicy
   end
 
   def show?
-    user.insurance
+    true
   end
 
   def update?
-    user.insurance
+    true
   end
 
   def edit?
-    user.insurance
+    true
   end
 
   def statistic?

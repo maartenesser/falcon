@@ -11,6 +11,9 @@
             <p>
               <%= order.part.title %>
             </p>
+            <p>
+              <%= order.part.price %> €
+            </p>
             <div>
               <span>
                 <%= link_to 'Buy', order_path(order),data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-primary' %>

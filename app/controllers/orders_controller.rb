@@ -28,9 +28,9 @@ class OrdersController < ApplicationController
     authorize @order
     @order.status = 'paid'
     if @order.save
-      # We want to send 2 emails
-      # One to notify the seller that his part has been sold
-      # One to confirm the purchase
+      # Send email to buyer
+      mail = OrderMailer.with(order: @order).order_confirmation
+      mail.deliver_now
       redirect_to order_path(@order)
     else
       render 'parts/show'

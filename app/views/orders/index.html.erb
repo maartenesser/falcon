@@ -9,7 +9,7 @@
         <% if order.status == 'pending' && order.part != nil %>
           <div class="d-flex justify-content-between mt-1">
             <p>
-              <%= order.part.title %>
+              <%= link_to order.part.title, part_path(order.part_id) %>
             </p>
             <p>
               <%= order.part.price %> €

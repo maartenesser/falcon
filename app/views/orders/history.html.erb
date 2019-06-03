@@ -10,7 +10,7 @@
     <div class="card-body py-3 ">
       <% current_user.orders.where(status: 'paid').each do |order| %>
       <div class="border-bottom">
-        <p>Order placed the <%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
+        <p>Order placed the <%= order.created_at.strftime("%d/%m/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
         <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
         <p>Cost - <%= order.part.price %></p>
         <!-- Note to self User.(order.user_id) is buyer -->
@@ -37,7 +37,7 @@
           <% current_user.orders.where(status: 'paid').each do |order| %>
             <tr>
               <th scope="row"><%= i = i + 1 %></th>
-              <td><%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
+              <td><%= order.created_at.strftime("%d/%m/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
               <td><%= link_to order.part.title, order_path(order)  %></td>
               <td> <%= order.part.price %> €</td>
               <td><%= User.find(order.part.user_id).company_name %></td>

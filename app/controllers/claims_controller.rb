@@ -1,5 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [:show, :edit, :update]
+  before_action :set_claim, only: %i[show edit update]
 
   def new
     @claim = Claim.new
@@ -32,6 +32,11 @@ class ClaimsController < ApplicationController
     @claims_garage = Claim.where(garage_id: current_user.id)
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
+    end
+
+    if params[:status].present?
+      @claims = @claims.where(status: params[:status])
+      @claims_garage = @claims_garage.where(status: params[:status])
     end
   end
 

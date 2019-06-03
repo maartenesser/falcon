@@ -1,7 +1,7 @@
 class PartPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.left_outer_joins(:order).where.not(user: user).where(orders: { status: "pending" }).or(Part.left_outer_joins(:order).where.not(user: user).where(orders: { id: nil }))
+      scope.left_outer_joins(:order).where.not(user: user, orders: { user: user }).where(orders: { status: "pending" }).or(Part.left_outer_joins(:order).where.not(user: user).where(orders: { id: nil }))
     end
   end
 

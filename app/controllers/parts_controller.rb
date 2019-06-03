@@ -8,10 +8,12 @@ class PartsController < ApplicationController
     @claim = Claim.find(claim_id)
     car_id = @part.car_id
     @car = Car.find(car_id)
+    # raise
   end
 
   def index
     @parts = policy_scope(Part).order(created_at: :desc)
+    # raise
     if params[:query].present?
       @parts = Part.global_search(params[:query])
     end
@@ -23,6 +25,11 @@ class PartsController < ApplicationController
   end
 
   def update
+    # if !@part.order.nil? && @part.order.user_id == current_user.id
+    #   notice: 'You cannot buy the same part twice'
+    #   redirect_to root_path
+    # end
+
     if @part.update(part_params)
       redirect_to part_path(@part)
     else

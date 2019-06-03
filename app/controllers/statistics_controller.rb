@@ -5,7 +5,7 @@ class StatisticsController < ApplicationController
   def index
     if !current_user.blank?
       if current_user.insurance == true
-        @part_total = current_user.parts_as_insurance.count
+        # @part_total = current_user.parts_as_insurance.count
         set_objectif_insurance
         set_bought_and_pending
         donut_category
@@ -19,6 +19,7 @@ class StatisticsController < ApplicationController
         set_objectif_garage
         donut_category
         evolution_sell_garage
+
       end
     end
   end
@@ -44,14 +45,14 @@ class StatisticsController < ApplicationController
   end
 
   def set_bought_and_pending
-    my_parts = Claim.where('claims.user_id' => current_user.id).pluck(:id)
+    @my_parts = Claim.where(user: current_user).pluck(:id)
     @all_parts_bought = Part.joins(:order)
                             .where('orders.status' => 'paid')
-                            .where(claim_id: my_parts)
+                            .where(claim_id: @my_parts)
                             .count
     @all_parts_pending = Part.joins(:order)
                              .where('orders.status' => 'pending')
-                             .where(claim_id: my_parts)
+                             .where(claim_id: @my_parts)
                              .count
   end
 

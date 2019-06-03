@@ -4,9 +4,17 @@ class PagesController < ApplicationController
   def home
     if !current_user.blank?
       if current_user.insurance == true
+        # Insurance
+        @categories = Part.group(:category)
+        @labels = []
+        @count = @categories.count
+
         @part_total = Part.count
         @part_earning_total_insurance = Money.new(current_user.parts_as_insurance.sum(:price_cents), 'EUR')
       else
+
+        # Garage
+
         parts_bought = 0
         orders = current_user.orders
         orders.each do |order|
@@ -16,7 +24,6 @@ class PagesController < ApplicationController
           end
         end
         @my_parts_bought = Money.new(parts_bought, 'EUR')
-
 
 
         # @part_earning_total_garage = Money.new(current_user.parts_as_garage.sum(:price_cents), 'EUR')

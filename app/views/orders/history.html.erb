@@ -3,7 +3,9 @@
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Order History</h6>
     </div>
-
+  <% if current_user.orders.count == 0 %>
+    <div class='p-3'>You have not purchased anything yet..</div>
+  <% else %>
     <!-- To display "cards" of orders -->
     <div class="card-body py-3 ">
       <% current_user.orders.where(status: 'paid').each do |order| %>
@@ -44,6 +46,7 @@
         </tbody>
        </table>
     </div>
+  <% end %>
 
 
 

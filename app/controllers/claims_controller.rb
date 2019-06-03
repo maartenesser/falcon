@@ -1,5 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [:show, :edit, :update]
+  before_action :set_claim, only: %i[show edit update]
 
   def new
     @claim = Claim.new
@@ -9,9 +9,17 @@ class ClaimsController < ApplicationController
 
   def create
     @claim = Claim.new(claim_params)
-
+    @claim.user = current_user
     authorize @claim
     if @claim.save
+      company_name = current_user.company_name
+      garage_first_name = User.find(@claim.garage_id).company_name
+      # add the ohone number of the reciever.
+      message = "Hello #{garage_first_name},
+      There is a new claim from #{company_name}, ready to be procesed click on the link to see the details of the claim:
+      http://www.falcon-parts.com/"
+      # Uncomment the line beneeth to recieve sms message to phone when claim is created
+      # NotificationService.new().send_sms(message)
       redirect_to claim_path(@claim.id)
     else
       render :new
@@ -29,15 +37,21 @@ class ClaimsController < ApplicationController
 
   def index
     @claims = policy_scope(Claim).order(at_date: :desc)
-    @claims_garage = Claim.where(user_id: current_user.id)
+    @claims_garage = Claim.where(garage_id: current_user.id)
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
+    end
+
+    if params[:status].present?
+      @claims = @claims.where(status: params[:status])
+      @claims_garage = @claims_garage.where(status: params[:status])
     end
   end
 
   def update
     if @claim.update(claim_params)
-      redirect_to claim_path(@claim)
+      @claim.user = current_user
+      redirect_to claim_path(@claim.id)
     else
       render :edit
     end
@@ -79,6 +93,11 @@ class ClaimsController < ApplicationController
   end
 
   def claim_params
-    params.require(:claim).permit(:number, :at_date, :description, :user_id, :garage_id, :status)
+    # Merging the garage_id to the claim form.
+    form_params.merge(garage_id: form_params[:user_id])
+  end
+
+  def form_params
+    params.require(:claim).permit(:number, :at_date, :description, :user_id, :status)
   end
 end

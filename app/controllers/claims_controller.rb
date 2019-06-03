@@ -16,7 +16,7 @@ class ClaimsController < ApplicationController
       garage_first_name = User.find(@claim.garage_id).company_name
       # add the ohone number of the reciever.
       message = "Hello #{garage_first_name},
-      There is a new claim from #{company_name}, ready to be procesed klik on the link to see the details of the claim klik on the link
+      There is a new claim from #{company_name}, ready to be procesed click on the link to see the details of the claim:
       http://www.falcon-parts.com/"
       # Uncomment the line beneeth to recieve sms message to phone when claim is created
       # NotificationService.new().send_sms(message)

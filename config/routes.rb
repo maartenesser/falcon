@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   authenticated :user do
     root 'claims#index', as: :authenticated_root
-    get '/dashboard_garage', to: 'pages#home', as: :dashboard_garage
-    get '/dashboard_insurance', to: 'pages#home', as: :dashboard_insurance
   end
 
    devise_scope :user do
@@ -18,8 +16,12 @@ Rails.application.routes.draw do
 
   resources :claims
     get '/table', to: 'claims#table', as: :table
-    get '/statistic', to: 'claims#statistic', as: :statistic
 
+
+    # get '/statistic', to: 'claims#statistic', as: :statistic
+
+    get '/statistics_garage', to: 'statistics#index', as: :statistics_garage
+    get '/statistics_insurance', to: 'statistics#index', as: :statistics_insurance
 
 
   resources :parts, only: [:create, :update, :new, :show, :index, :edit]

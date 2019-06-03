@@ -4,7 +4,7 @@ import 'datatables.net-dt/css/jquery.dataTables.css'
 function tables() {
   $(document).ready( function () {
       $('#table_id').DataTable({
-        data: $('#table_id').data('statistics'),
+        data: $('#table_id').data('table'),
         columns:
         [
           { data: 'claim_number',

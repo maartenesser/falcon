@@ -1,6 +1,7 @@
 import "bootstrap";
 import "./sb-admin-2/sb-admin-2";
 import graphFunction from './charts/donutPie';
+import number_format from './charts/chartArea';
 import tables from './data_tables/tables.js';
 import scrollToTop from './easyOutScroll.js';
 
@@ -36,3 +37,4 @@ $(function() {
 });
 
 graphFunction();
+number_format();

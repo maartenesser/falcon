@@ -1,0 +1,7 @@
+<%if !current_user.blank?  %>
+  <% if current_user.insurance == true %>
+    <%= render 'statistics_insurance'  %>
+    <% else %>
+    <%= render 'statistics_garage' %>
+  <% end %>
+<% end %>

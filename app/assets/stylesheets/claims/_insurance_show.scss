@@ -2,7 +2,6 @@
   margin: 0 auto;
 }
 
-
 #show-edit-btn {
   padding: 10px 30px;
 }
@@ -23,8 +22,17 @@
   margin: 15px;
 }
 
-#claim-show-card-header {
+#insurance-show-form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  direction: column;
+}
+
+#claim-insurer-show-header {
+  display: flex;
+  direction: column;
+
+}
+
+#update-claim-btn-insurance {
+  margin-left: 10px;
 }

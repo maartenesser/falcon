@@ -12,7 +12,7 @@
         <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
         <p>Cost - <%= order.part.price %></p>
         <!-- Note to self User.(order.user_id) is buyer -->
-        <p>Sold from - <%= User.find(order.part.user_id).company_name %></p>
+        <p>Sold by - <%= User.find(order.part.user_id).company_name %></p>
       </div>
       <% end %>
     </div>
@@ -27,7 +27,7 @@
             <th scope="col">Order placed</th>
             <th scope="col">Part Purchased</th>
             <th scope="col">Cost</th>
-            <th scope="col">Sold from</th>
+            <th scope="col">Sold by</th>
           </tr>
         </thead>
         <tbody>

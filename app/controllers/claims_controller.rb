@@ -46,9 +46,9 @@ class ClaimsController < ApplicationController
   def edit
   end
 
-  def statistic
+  def table
     @claims = Claim.all
-    @statistics = current_user.claims.map do |claim|
+    @table = current_user.claims.map do |claim|
       claim.parts.map do |part|
         {
           claim_number: claim.number,

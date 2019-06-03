@@ -33,40 +33,7 @@ const graphFunction = (data) => {
     }
   });
 
-  new Chart(ctx_bar, {
-    type: 'line',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'Juni'],
-      datasets: [{
-        label: 'Sold Parts',
-        data: [1, 3, 2, 5, 8, 15],
-        backgroundColor: [
-        'rgba(54, 162, 235, 0.2)'
-        ],
 
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          display: false,
-          ticks: {
-            beginAtZero: true
-          },
-          gridLines: {
-            display: false,
-            drawBorder: false
-          },
-        }],
-        xAxes:[{
-          gridLines: {
-          display: false,
-          drawBorder: false
-        }
-        }],
-      }
-    }
-  });
 
 }
 

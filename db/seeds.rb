@@ -53,7 +53,7 @@ part4.save!
 
 part5 = Part.new(part_model_code: "B204I", title: "Right back door Saab", description: "Right back door Saab", category: "used", car: saab, user: gael, claim: claim3, price_cents: "11099")
 part5[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Saab/right%20door/rightdoor.jpg"
-part5.save!
+part5
 
 part6 = Part.new(part_model_code: "B204L", title: "Front gril of Saab", description: "Almost new Frontgrill Saad", category: "used", car: saab, user: gael, claim: claim3, price_cents: "6980")
 part6[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Saab/front%20gril/gril1.jpg"
@@ -69,14 +69,14 @@ part8.save!
 
 
 puts "Generating new Orders every user gets 2 pending and sold orders...."
-order1 = Order.create!(user: nathanael, status: "pending", part: part2)
-order2 = Order.create!(user: nathanael, status: "paid", part: part4)
-order3 = Order.create!(user: romeo, status: "paid", part: part8)
-order4 = Order.create!(user: romeo, status: "pending", part: part6)
-order5 = Order.create!(user: gael, status: "pending", part: part5)
-order6 = Order.create!(user: gael, status: "paid", part: part1)
-order7 = Order.create!(user: maarten, status: "pending", part: part7)
-order8 = Order.create!(user: maarten, status: "paid", part: part3)
+# order1 = Order.create!(user: nathanael, status: "pending")
+# order2 = Order.create!(user: nathanael, status: "paid")
+# order3 = Order.create!(user: romeo, status: "paid")
+# order4 = Order.create!(user: romeo, status: "pending")
+# order5 = Order.create!(user: gael, status: "pending")
+# order6 = Order.create!(user: gael, status: "paid")
+# order7 = Order.create!(user: maarten, status: "pending")
+# order8 = Order.create!(user: maarten, status: "paid")
 
 puts "Done with seeding the whole database"
 

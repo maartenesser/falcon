@@ -11,7 +11,8 @@
         <p>Order placed the <%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
         <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
         <p>Cost - <%= order.part.price %></p>
-        <p>Sold from - <%= User.find(order.user_id).company_name %></p>
+        <!-- Note to self User.(order.user_id) is buyer -->
+        <p>Sold from - <%= User.find(order.part.user_id).company_name %></p>
       </div>
       <% end %>
     </div>
@@ -37,7 +38,7 @@
               <td><%= order.created_at.strftime("%m/%d/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
               <td><%= link_to order.part.title, order_path(order)  %></td>
               <td> <%= order.part.price %> €</td>
-              <td><%= User.find(order.user_id).company_name %></td>
+              <td><%= User.find(order.part.user_id).company_name %></td>
             </tr>
           <% end %>
         </tbody>

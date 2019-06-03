@@ -10,7 +10,10 @@ class PagesController < ApplicationController
         parts_bought = 0
         orders = current_user.orders
         orders.each do |order|
-          parts_bought += order.part.price_cents
+          # can be removed buy when I created orders without parts it made the website crash
+          if order.part != nil
+            parts_bought += order.part.price_cents
+          end
         end
         @my_parts_bought = Money.new(parts_bought, 'EUR')
 

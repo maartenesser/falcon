@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :part
+  belongs_to :part, optional: true
 
-  # scope :available, -> { (where("`status` =?", 'pending')) }
 end

@@ -30,7 +30,7 @@ class ClaimPolicy < ApplicationPolicy
     true
   end
 
-  def statistic?
+  def table?
     user.insurance
   end
 end

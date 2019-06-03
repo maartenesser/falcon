@@ -5,7 +5,8 @@
     </div>
     <div class="card-body ">
       <% current_user.orders.each do |order| %>
-        <% if order.status == 'pending' %>
+      <!-- the order.part is here to prevent crashes -->
+        <% if order.status == 'pending' && order.part != nil %>
           <div class="d-flex justify-content-between mt-1">
             <p>
               <%= order.part.title %>

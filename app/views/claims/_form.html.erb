@@ -13,14 +13,15 @@
                 <div class="form-group">
                   <%= f.input :number, autofocus: true, label: false, input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
                 </div>
+                <div class="form-group">
+                  <!-- TODO: Why can't i store the id of the user into the garage_id? -->
+                   <%= f.association :user, collection: User.where(insurance: false), label_method: ->(user) { "#{user.company_name}"},  value_method: :id, label: false, placeholder: "select your garage" %>
+                </div>
                 <div class="form-group ">
                   <%= f.input :at_date, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true , label: false, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
                   </div>
                   <div class="form-group">
                     <%= f.input :description, label: false, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
-                  </div>
-                  <div class="form-group">
-                    <%= f.input :user_id, input_html: { value: current_user.id }, as: :hidden %>
                   </div>
                 </div>
                 <%= f.button :submit, class: "btn btn-primary btn-user btn-block w-50 mx-auto", style: "border-radius: 25px;" %>

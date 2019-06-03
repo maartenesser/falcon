@@ -81,12 +81,12 @@
 <!-- Evolution of the selling since January -->
 <div class="row mx-auto">
   <div class="col-xl-6 col-md-6 mb-4">
-    <div class="col card shadow mt-4">
+    <div class="col card shadow mt-4 p-0">
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Evolutions</h6>
       </div>
       <div class="card-body">
-          <canvas id="myAreaChart" height="400" width="650"></canvas>
+          <canvas id="myAreaChart" height="400" width="650" data-count-all='<%= @count_all.to_json %>'></canvas>
         <hr>
         <p>Evolution of the sell since January.</p>
       </div>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="col-xl-6 col-md-6 mb-4">
-    <div class="col card shadow mt-4">
+    <div class="col card shadow mt-4 p-0">
       <!-- Card Header - Dropdown -->
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Categories</h6>

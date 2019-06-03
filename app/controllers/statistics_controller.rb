@@ -9,6 +9,7 @@ class StatisticsController < ApplicationController
         set_objectif_insurance
         set_bought_and_pending
         donut_category
+        evolution_sell_insurance
       else
         @part_total = Part.joins(:order)
                           .where('orders.status' => 'pending')
@@ -17,7 +18,7 @@ class StatisticsController < ApplicationController
         @pending_orders = current_user.orders.where(status: "pending").count
         set_objectif_garage
         donut_category
-        evolution_sell
+        evolution_sell_garage
       end
     end
   end
@@ -60,13 +61,32 @@ class StatisticsController < ApplicationController
     @count = @categories.count
   end
 
-  def evolution_sell
-    @count_all = current_user.parts.joins(:order).where('orders.status' => 'paid').count
+  def evolution_sell_insurance
+    my_parts = Claim.where('claims.user_id' => current_user.id).pluck(:id)
+    @count_all = []
+    12.times do |i|
+      from_date = Date.new(Time.zone.now.year, i + 1, 1).to_datetime
+      to_date = from_date + 1.month
+      @count_all << Part.joins(:order)
+                            .where('orders.status' => 'paid')
+                            .where(claim_id: my_parts)
+                            .where(created_at: from_date..to_date).count
+    end
+    @count_all
+  end
 
-    # start_date = params[:start_date].to_date.beginning_of_day
-    # end_date = params[:end_date].to_date.end_of_day
-    # records = Campaign.where(:created_at => start_date..end_date)
+  def evolution_sell_garage
+    # @count_sum = current_user.parts.joins(:order).where('orders.status' => 'paid').count
 
-    @count_january = current_user.parts.joins(:order).where('orders.status' => 'paid').where(:created_at=>1.days.ago..Time.now)
+    @count_all = []
+    12.times do |i|
+      from_date = Date.new(Time.zone.now.year, i + 1, 1).to_datetime
+      to_date = from_date + 1.month
+      @count_all << current_user.parts
+                                .joins(:order)
+                                .where('orders.status' => 'paid')
+                                .where(created_at: from_date..to_date).count
+    end
+    @count_all
   end
 end

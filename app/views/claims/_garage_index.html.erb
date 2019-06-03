@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <h1 class="h3 mb-0 text-gray-800"><%= current_user.company_name %>'s claims </h1>
 
+
   <% @claims_garage.each do |claim| %>
     <div id="claims-index">
       <div class="card border-left-<%= claim.status == 'new' ? 'success' : 'primary' %> shadow">

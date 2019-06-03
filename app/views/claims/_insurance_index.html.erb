@@ -1,9 +1,16 @@
 <div class="container-fluid">
   <h1 class="h3 mb-0 text-gray-800"><%= current_user.company_name %>'s claims </h1>
 
+  <div class="garage-claims-index-filter">
+    <%= button_to "New", claims_path, method: :get, class: "btn btn-success", id: "garage-claims-index-btns", params: { status: "new"} %>
+    <%= button_to "In progress", claims_path, method: :get, class: "btn btn-primary", id: "garage-claims-index-btns",params: { status: "in progress"} %>
+    <%= button_to "Finished", claims_path, method: :get, class: "btn btn-info", id: "garage-claims-index-btns",params: { status: "finished"} %>
+    <%= button_to "Reclaimed", claims_path, method: :get, class: "btn btn-warning", id: "garage-claims-index-btns",params: { status: "reclaimed"} %>
+  </div>
+
   <% @claims.each do |claim| %>
     <div id="claims-index">
-      <div class="card border-left-primary shadow">
+      <div class="card border-left-<%= status_class(claim) %> shadow">
         <div class="card-header py-3" id="index-claim-card-header">
           <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= link_to claim.number, claim_path(claim) %></h6>
           <%= link_to "info", claim_path(claim), class: "btn btn-info", id: "index-claim-card-btn" %>

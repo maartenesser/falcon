@@ -70,9 +70,14 @@ class PartsController < ApplicationController
     # @order1= Part.where(Part.order.status = "pending")
     # orders = Order.where(user_id: current_user)
 
-    parts = Part.joins(:order)
-    @parts = parts.where('orders.status' => 'pending').where('parts.user_id' => current_user.id)
+    @parts = Part.left_outer_joins(:order)
+                  .where(user: current_user, orders: { user: current_user })
+                  .where(orders: { status: "pending" })
+                  .or(Part.left_outer_joins(:order)
+                  .where(user: current_user)
+                  .where(orders: { id: nil }))
     authorize @parts
+
   end
 
   private

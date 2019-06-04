@@ -10,6 +10,7 @@
               <%= simple_form_for @claim, html: { class: "user"} do |f|-%>
                 <%= f.error_notification %>
                 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                <%= f.input :status, collection: [ "new", "in progress", "finished" ], label: false, include_blank: false, as: :hidden %>
                 <div class="form-group">
                   <%= f.input :number, autofocus: true, label: false, input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
                 </div>

@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def create
     @part = Part.find(params[:part_id])
+    # raise
     @order = Order.new(part: @part, user: current_user)
     authorize @order
     if @order.save

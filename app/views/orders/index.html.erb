@@ -7,13 +7,14 @@
       <% current_user.orders.each do |order| %>
       <!-- the order.part is here to prevent crashes -->
         <% if order.status == 'pending' && order.part != nil %>
+        <!-- Try to implement logic with div-cloumn -->
           <div class="d-flex justify-content-between mt-1">
-            <p>
+            <div div class="col">
               <%= link_to order.part.title, part_path(order.part_id) %>
-            </p>
-            <p>
+            </div>
+            <div div class="col">
               <%= order.part.price %> €
-            </p>
+            </div>
             <div>
               <span>
                 <%= link_to 'Buy', order_path(order),data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-info' %>

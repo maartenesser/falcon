@@ -2,10 +2,17 @@ class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update]
 
   def show
+    # The logic below will have to be implemented and we will have to raise
+    # an error if a user tries to access his part like that
+    # But the selling parts controller will have to be checked first
+    # part = Part.where.not(user: current_user)
+    # @part = part.find(params[:id])
+
     user_id = @part.user_id
     @user = User.find(user_id)
     claim_id = @part.claim_id
     @claim = Claim.find(claim_id)
+    policy_scope(Part)
     car_id = @part.car_id
     @car = Car.find(car_id)
     # raise

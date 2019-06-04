@@ -3,6 +3,12 @@
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Order History</h6>
     </div>
+
+    <% current_user.orders.each do |order| %>
+      <% if order.status == 'pending'  %>
+        <div class=' card-body p-3'>You have not purchased anything yet...</div>
+      <% end %>
+    <% end %>
   <% if current_user.orders.count == 0 %>
     <div class=' card-body p-3'>You have not purchased anything yet...</div>
   <% else %>

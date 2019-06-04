@@ -8,12 +8,12 @@
       <!-- the order.part is here to prevent crashes -->
         <% if order.status == 'pending' && order.part != nil %>
         <!-- Try to implement logic with div-cloumn -->
-          <div class="d-flex justify-content-between mt-1">
+          <div class="d-flex justify-content-between mt-1 py-1">
             <div div class="col">
               <%= link_to order.part.title, part_path(order.part_id) %>
             </div>
             <div div class="col">
-              <%= order.part.price %> €
+              € <%= order.part.price %>
             </div>
             <div>
               <span>
@@ -32,9 +32,10 @@
         <p>Your basket is empty</p>
         <%#= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
       <% end %>
-
-      <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary" %>
-      <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
+      <div class="py-3 d-flex justify-content-between">
+        <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary" %>
+        <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
+      </div>
     </div>
 
   </div>

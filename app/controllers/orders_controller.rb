@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
         {
           id: order.id,
           title: order.part.title,
+          created_at: order.created_at.strftime("%d/%m/%Y at %H:%M:%S"),
           price: Money.new(order.part.price_cents, "EUR").format,
           company: User.find(order.part.user_id).company_name,
           # date: order.created_at.strftime("%d/%m/%Y")

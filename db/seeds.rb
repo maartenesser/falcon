@@ -64,20 +64,20 @@ part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattrop
 part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
 part7.save!
 
-part8 = Part.new(part_model_code: "M139A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", condition: "used",category: "electric",  car: maserati, user: maarten, claim: claim4, price_cents: "16980")
+part8 = Part.new(part_model_code: "M138A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", condition: "used",category: "electric",  car: maserati, user: maarten, claim: claim4, price_cents: "16980")
 part8[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Maserati/right%20mirror/rightmirror1.jpg"
 part8.save!
 
 
 puts "Generating new Orders every user gets 2 pending and sold orders...."
-# order1 = Order.create!(user: nathanael, status: "pending")
-# order2 = Order.create!(user: nathanael, status: "paid")
-# order3 = Order.create!(user: romeo, status: "paid")
-# order4 = Order.create!(user: romeo, status: "pending")
-# order5 = Order.create!(user: gael, status: "pending")
-# order6 = Order.create!(user: gael, status: "paid")
-# order7 = Order.create!(user: maarten, status: "pending")
-# order8 = Order.create!(user: maarten, status: "paid")
+order1 = Order.create!(user: nathanael, status: "pending", part: part3)
+order2 = Order.create!(user: nathanael, status: "paid", part: part4)
+order3 = Order.create!(user: romeo, status: "paid", part: part5)
+order4 = Order.create!(user: romeo, status: "pending", part: part6)
+order5 = Order.create!(user: gael, status: "pending", part: part7)
+order6 = Order.create!(user: gael, status: "paid", part: part8)
+order7 = Order.create!(user: maarten, status: "pending", part: part1)
+order8 = Order.create!(user: maarten, status: "paid", part: part2)
 
 puts "Done with seeding the whole database"
 

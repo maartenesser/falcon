@@ -1,5 +1,5 @@
 <div id="claims-show-part">
-  <div class="card border-left-<%= @claim.status == 'new' ? 'success' : 'primary' %> shadow mb-4">
+  <div class="card border-left-<%= status_class(@claim) %> shadow mb-4">
     <div class="card-header py-3" id="claim-show-card-header">
 
       <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>

@@ -1,8 +1,28 @@
 <div id="claims-show-part">
-  <div class="card border-left-<%= @claim.status == 'new' ? 'success' : 'primary' %> shadow mb-4">
+  <div class="card border-left-<%= status_class(@claim) %> shadow mb-4">
     <div class="card-header py-3" id="claim-show-card-header">
       <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>
-      <%= link_to "Edit", edit_claim_path, class: "btn btn-info", id: "show-edit-btn" %>
+
+      <div class="claim-insurer-show-header">
+        <%= simple_form_for @claim do |f|%>
+          <div class="form-group" id="insurance-show-form">
+
+            <div>
+              <%= f.input :status, collection: [ "new", "reclaimed" ], label: false, include_blank: false %>
+            </div>
+
+            <%= f.input :number, as: :hidden, autofocus: true, label: false, input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
+            <%= f.input :at_date, as: :hidden, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true , label: false, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
+            <%= f.input :description, as: :hidden, label: false, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
+            <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id }, as: :hidden %>
+
+            <div>
+              <%= f.button :submit, data: { confirm: "are you sure?" }, class: "btn btn-success", id: "update-claim-btn-insurance", value: "Update status" %>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="card-body">
 
@@ -38,9 +58,12 @@
 
     </div>
     <div class="flex-container-show">
-        <div>
-          <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
-        </div>
+      <div>
+        <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
+      </div>
+      <div>
+        <%= link_to "Edit claim", edit_claim_path, class: "btn btn-info", id: "show-edit-btn" %>
+      </div>
       <div>
         <%= link_to "Delete", claim_path(@claim), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", id: "show-delete-btn" %>
       </div>

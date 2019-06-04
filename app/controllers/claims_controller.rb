@@ -1,6 +1,7 @@
 class ClaimsController < ApplicationController
-  before_action :set_claim, only: [:show, :edit, :update]
-after_action :send_notification, only: [:create]
+  after_action :send_notification, only: [:create]
+  before_action :set_claim, only: %i[show edit update]
+
   def new
     @claim = Claim.new
     @user = current_user.id
@@ -41,6 +42,11 @@ after_action :send_notification, only: [:create]
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
     end
+
+    if params[:status].present?
+      @claims = @claims.where(status: params[:status])
+      @claims_garage = @claims_garage.where(status: params[:status])
+    end
   end
 
   def update
@@ -68,9 +74,9 @@ after_action :send_notification, only: [:create]
   def edit
   end
 
-  def statistic
+  def table
     @claims = Claim.all
-    @statistics = current_user.claims.map do |claim|
+    @table = current_user.claims.map do |claim|
       claim.parts.map do |part|
         {
           claim_number: claim.number,

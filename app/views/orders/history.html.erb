@@ -1,54 +1,26 @@
-<div class="container">
-  <div class="card shadow">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Order History</h6>
-    </div>
-  <% if current_user.orders.count == 0 %>
-    <div class=' card-body p-3'>You have not purchased anything yet...</div>
-  <% else %>
-    <!-- To display "cards" of orders -->
-    <div class="card-body py-3 ">
-      <% current_user.orders.where(status: 'paid').each do |order| %>
-      <div class="border-bottom">
-        <p>Order placed the <%= order.created_at.strftime("%d/%m/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></p>
-        <p>Part purchased - <%= link_to order.part.title, order_path(order)  %> </p>
-        <p>Cost - €<%= order.part.price %></p>
-        <!-- Note to self User.(order.user_id) is buyer -->
-        <p>Sold by - <%= User.find(order.part.user_id).company_name %></p>
-      </div>
-      <% end %>
-    </div>
-
-
-    <!-- Display a list of orders -->
-    <div class="card-body py-3 ">
-      <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Order placed</th>
-            <th scope="col">Part Purchased</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Sold by</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% i = 0  %>
-          <% current_user.orders.where(status: 'paid').each do |order| %>
-            <tr>
-              <th scope="row"><%= i = i + 1 %></th>
-              <td><%= order.created_at.strftime("%d/%m/%Y") %> at <%= order.created_at.strftime("%H:%M:%S") %></td>
-              <td><%= link_to order.part.title, order_path(order)  %></td>
-              <td>€<%= order.part.price %></td>
-              <td><%= User.find(order.part.user_id).company_name %></td>
-            </tr>
-          <% end %>
-        </tbody>
-       </table>
-    </div>
-  <% end %>
-
-
-
+<!-- <div class="container"> -->
+<!-- Container class removed to make this table look like the one on table.html.erb -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Order History</h6>
+  </div>
+  <div class="card-body">
+   <div class="table-responsive">
+    <table id="order_table_id" class="display" data-table="<%= @table.to_json %>" class="table table-bordered" width="100%" >
+       <thead>
+         <tr>
+          <th>Invoice #</th>
+          <th>Part Purchased</th>
+          <th>Date</th>
+          <th>Cost</th>
+          <th>Sold by</th>
+         </tr>
+       </thead>
+      <tbody>
+      <!-- Here comes the date -->
+      </tbody>
+     </table>
+   </div>
   </div>
 </div>
+<!-- </div> -->

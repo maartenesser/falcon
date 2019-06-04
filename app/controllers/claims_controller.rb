@@ -40,6 +40,7 @@ class ClaimsController < ApplicationController
     @claims_garage = Claim.where(garage_id: current_user.id)
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
+      @claims_garage = @claims_garage.global_search(params[:query]).order(at_date: :desc)
     end
 
     if params[:status].present?

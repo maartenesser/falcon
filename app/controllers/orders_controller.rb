@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
     @order = Order.new(part: @part, user: current_user)
     authorize @order
     if @order.save
-      #raise
       redirect_to orders_path
     else
       render 'parts/show'
@@ -24,10 +23,12 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    # raise
     authorize @order
     @order.status = 'paid'
     if @order.save
+      # Send email to buyer
+      mail = OrderMailer.with(order: @order).order_confirmation
+      mail.deliver_now
       redirect_to order_path(@order)
     else
       render 'parts/show'

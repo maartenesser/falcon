@@ -52,7 +52,7 @@
           <div><%= @car.vin %></div>
         </div>
         <div class="col-sm-3 col-xs-6 title-second-col">
-          <div class="font-weight-bold">Providing from: </div>
+          <div class="font-weight-bold">Provided by: </div>
           <div class="font-weight-bold">Category: </div>
           <div class="font-weight-bold">Condition: </div>
           <br>
@@ -62,7 +62,8 @@
 
           <div><%= @user.email%></div>
           <div><%= @part.category%></div>
-          <div><%= @part.category%></div>
+          <!-- Changed to confition to match the  column -->
+          <div><%= @part.condition%></div>
           <br>
           <div><%= @part.price %> €</div>
         </div>
@@ -97,16 +98,19 @@
                 <%= link_to "Delete part", part_path(@part), data: { confirm: "are you sure?" }, method: :delete, class: "btn btn-danger btn-block"%>
               <% end %>
             </div>
-            <div class="col-sm-3 col-xs-6 mx-auto">
-              <%= form_tag orders_path do %>
-                <%= hidden_field_tag 'part_id', @part.id %>
-                <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
-                  <i class="fas fa-shopping-cart"></i>
-                  <span> Add to basket</span>
+            <% if @part.order.blank?  %>
+              <div class="col-sm-3 col-xs-6 mx-auto">
+                <%= form_tag orders_path do %>
+                  <%= hidden_field_tag 'part_id', @part.id %>
+                  <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span> Add to basket</span>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
+
+            <% end %>
           <% end %>
-        </div>
       </div>
     </div>
   </div>

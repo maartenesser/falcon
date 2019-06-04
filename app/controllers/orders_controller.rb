@@ -45,19 +45,15 @@ class OrdersController < ApplicationController
   def history
     @orders = policy_scope(Order)
     authorize @orders
-    i = 0
-      @table = current_user.claims.map do |claim|
-      claim.parts.map do |part|
+      @table = @orders.map do |order|
         {
-          claim_number: i = i + 1,
-          company: User.find(part.user_id).company_name,
-          title: part.title,
-          price: Money.new(part.price_cents, "EUR").format,
-          part_id: part.id,
-          claim_id: claim.id
-          # status: Order.find(part.oder_id)
+          id: order.id,
+          title: order.part.title,
+          price: Money.new(order.part.price_cents, "EUR").format,
+          company: User.find(order.part.user_id).company_name,
+          # date: order.created_at.strftime("%d/%m/%Y")
         }
-      end
+
     end.flatten
     skip_authorization
 

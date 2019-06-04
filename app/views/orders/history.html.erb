@@ -58,3 +58,26 @@
 
   </div>
 </div>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Order History</h6>
+  </div>
+  <div class="card-body">
+   <div class="table-responsive">
+    <table id="order_table_id" class="display" data-table="<%= @table.to_json %>" class="table table-bordered" width="100%" >
+       <thead>
+         <tr>
+          <th>Invoice #</th>
+          <th>Part Purchased</th>
+          <th>Cost</th>
+          <th>Sold by</th>
+          <!-- <th>Order Placed</th> -->
+         </tr>
+       </thead>
+      <tbody>
+      <!-- Here comes the date -->
+      </tbody>
+     </table>
+   </div>
+  </div>
+</div>

@@ -1,3 +1,12 @@
-Order#order_confirmation
+Invoice #<%= @order.id %>
 
-<%= @greeting %>, find me in app/views/order_mailer/order_confirmation.text.erb
+
+Hi <%= @order.user.first_name%> <%= @order.user.last_name %>
+
+Thank you for your purchase!
+
+The part you ordered will be shipped within the next 48 hours
+
+Thank you for your business!
+
+Falcon Spare Parts

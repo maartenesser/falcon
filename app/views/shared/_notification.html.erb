@@ -21,7 +21,23 @@
       <%= link_to claim_path(@claim, garage_read: true, notification_id: notification.id), class: 'dropdown-item d-flex align-items-center' do  %>
         <div class="mr-3">
           <div class="icon-circle bg-primary">
-            <i class="fas fa-file-alt text-white"></i>
+            <% @insurance = User.find(@claim.user_id) %>
+            <% if !current_user.insurance? %>
+              <% if @insurance.photo? %>
+                <%= cl_image_tag @insurance.photo, crop: :thumb, radius: :max, height: 100, width: 100, gravity: :face, class: " img-fluid img-profile rounded-circle"%>
+              <% else  %>
+                <%= cl_image_tag "user_nixstg", class: " img-fluid img-profile rounded-circle"%>
+              <% end %>
+              <% else %>
+                <% @garage = User.find(@claim.garage_id) %>
+                <% if @garage.photo? %>
+                  <%= cl_image_tag @garage.photo, crop: :thumb, radius: :max, height: 100, width: 100, gravity: :face, class: " img-fluid img-profile rounded-circle"%>
+                <% else %>
+                  <%= cl_image_tag "user_nixstg", class: " img-fluid img-profile rounded-circle"%>
+                <% end %>
+
+              <% end %>
+
           </div>
         </div>
         <div>

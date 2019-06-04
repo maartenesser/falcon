@@ -3,9 +3,12 @@ import "./sb-admin-2/sb-admin-2";
 import graphFunction from './charts/donutPie';
 import number_format from './charts/chartArea';
 import tables from './data_tables/tables.js';
+import order_table from './data_tables/order_table.js';
 import scrollToTop from './easyOutScroll.js';
 
 tables();
+order_table();
+
 
 let scroller = document.querySelector('.scroll-to-top').addEventListener("click", (event) => {
   scrollToTop(1000);

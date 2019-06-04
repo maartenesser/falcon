@@ -52,6 +52,47 @@
 
     </div>
   </div>
+  <hr>
+  <h2> Part's from claim</h2>
+  <hr>
+  <div class="container-index-parts">
+  <div class="row">
+      <% @all_parts_for_this_claim.each do |part| %>
+          <div class="col-xl-3 col-lg-6 mb-4">
+            <div class="card shadow border" style="width: 100%">
+              <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
+              <div class="card-body">
+                <h5 class="card-title" style="height: 50px"><strong><%= part.title%></strong></h5>
+                <p class="card-text" style="height: 40px;"><%= part.description %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Category: <%= part.category %></li>
+                <li class="list-group-item">Make: <%= part.car.make %></li>
+                <li class="list-group-item">Model: <%= part.car.model %></li>
+
+                <% if Part.find(part.id).order.present? %>
+                  <% @status = Part.find(part.id).order.status %>
+                  <%  if @status == "paid" %>
+                    <li class="list-group-item">Status: Sold</li>
+                  <% else %>
+                    <%  if @status == "pending" %>
+                        <li class="list-group-item">Status: in transaction </li>
+                    <% else %>
+                          <li class="list-group-item">Status: Online </li>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <li class="list-group-item">Price: <%= Money.new(part.price_cents, "EUR").format %></li>
+              </ul>
+               <div class="card-body text-center">
+                <%= link_to (raw('<span class="icon text-white-50"><i class="fas fa-info-circle"></i></span><span class="text">More Info</span>')), part_path(part), class: "btn btn-info btn-icon-split" %>
+               </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
+
 </div>
 
 

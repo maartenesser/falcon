@@ -31,15 +31,26 @@ class ClaimsController < ApplicationController
     claim_id = @claim.id
     read_status = params[:garage_read]
     notification_id = params[:notification_id]
+
+    # Status noptification for the insurance logic needed for garage_show
     if !read_status.nil?
       @notification = Notification.find(notification_id)
       @notification.garage_read = read_status
       @notification.save
     end
+    # End
+
+    # Show info for both sides (isurance and garage)
     if !Part.where(claim_id: claim_id).first.nil?
       @part = Part.where(claim_id: claim_id).first
       car_id = @part.car_id
       @car = Car.find(car_id)
+    end
+    # end
+
+    # Show parts that are linked to the claim number. logic for insurecnce show
+    if current_user.insurance?
+      @all_parts_for_this_claim = Part.where(claim_id: claim_id)
     end
   end
 

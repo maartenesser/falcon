@@ -7,10 +7,9 @@
               <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
               <div class="card-body">
                 <h5 class="card-title" style="height: 25px;"><strong><%= part.title%></strong></h5>
-<!--                 <p class="card-text" style="height: 40px;"><%= part.description %></p> -->
+
               </div>
               <ul class="list-group list-group-flush">
-<!--                 <li class="list-group-item"><strong>Seller:</strong> <%= User.find(part.user_id).company_name %></li> -->
                 <li class="list-group-item"><strong>Make:</strong> <%= part.car.make %></li>
                 <li class="list-group-item"><strong>Model:</strong> <%= part.car.model %></li>
                 <li class="list-group-item"><strong>Price:</strong> <%= Money.new(part.price_cents, "EUR").format %></li>

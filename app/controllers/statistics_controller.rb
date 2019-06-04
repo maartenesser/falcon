@@ -7,20 +7,12 @@ class StatisticsController < ApplicationController
       if current_user.insurance == true
         # @part_total = current_user.parts_as_insurance.count
         set_objectif_insurance
-        set_bought_and_pending
+        set_total_amount_of_part
         donut_category
         evolution_sell_insurance
+        set_bought_and_pending_parts_from_claims
       else
-        @part_total = Part.joins(:order)
-                          .where.not('orders.status' => 'paid')
-                          .count
-        # @part_all = Part.left_outer_joins(:order)
-        #                 .where.not(user: user, orders: { user: user })
-        #                 .where(orders: { status: "pending" })
-        #                 .or(Part.left_outer_joins(:order)
-        #                 .where.not(user: user)
-        #                 .where(orders: { id: nil })).count
-
+        set_total_amount_of_part
         @my_parts_sell = Money.new(current_user.parts.sum(:price_cents), 'EUR')
         @pending_orders = current_user.orders.where(status: "pending").count
         set_objectif_garage
@@ -32,6 +24,15 @@ class StatisticsController < ApplicationController
   end
 
   private
+
+  def set_total_amount_of_part
+    @part_total = Part.left_outer_joins(:order)
+                      .where.not(user: current_user, orders: { user: current_user })
+                      .where(orders: { status: "pending" })
+                      .or(Part.left_outer_joins(:order)
+                      .where.not(user: current_user)
+                      .where(orders: { id: nil })).count
+  end
 
   def set_objectif_insurance
     objective = 10000.0 #in EUR
@@ -51,7 +52,7 @@ class StatisticsController < ApplicationController
     @actual_in_percent = parts_bought / objective_garage
   end
 
-  def set_bought_and_pending
+  def set_bought_and_pending_parts_from_claims
     @my_parts = Claim.where(user: current_user).pluck(:id)
     @all_parts_bought = Part.joins(:order)
                             .where('orders.status' => 'paid')
@@ -64,7 +65,12 @@ class StatisticsController < ApplicationController
   end
 
   def donut_category
-    @categories = Part.joins(:order).where('orders.status' => 'pending').group(:category)
+    @categories = Part.left_outer_joins(:order)
+                      .where.not(user: current_user, orders: { user: current_user })
+                      .where(orders: { status: "pending" })
+                      .or(Part.left_outer_joins(:order)
+                      .where.not(user: current_user)
+                      .where(orders: { id: nil })).group(:category)
     @labels = []
     @count = @categories.count
   end

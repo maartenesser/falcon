@@ -16,7 +16,7 @@
             </p>
             <div>
               <span>
-                <%= link_to 'Buy', order_path(order),data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-primary' %>
+                <%= link_to 'Buy', order_path(order),data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-info' %>
               </span>
                <span>
                 <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'delete', class: 'btn btn-danger' %>
@@ -32,7 +32,7 @@
         <%#= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
       <% end %>
 
-      <%= link_to 'Buy a part', parts_path, class: "btn btn-primary" %>
+      <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary" %>
       <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
     </div>
 

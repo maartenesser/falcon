@@ -12,11 +12,9 @@ class OrdersController < ApplicationController
 
   def create
     @part = Part.find(params[:part_id])
-    # raise
     @order = Order.new(part: @part, user: current_user)
     authorize @order
     if @order.save
-      # raise
       redirect_to orders_path
     else
       render 'parts/show'
@@ -25,7 +23,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    # raise
     authorize @order
     @order.status = 'paid'
     if @order.save

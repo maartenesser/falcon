@@ -17,7 +17,15 @@
                   <%= f.input :title, input_html: { autocomplete: "title"} %>
                   <%= f.input :category, input_html: { autocomplete: "category"} %>
                   <%= f.input :description, input_html: { autocomplete: "description"} %>
-                  <%= f.input :photo, input_html: { autocomplete: "photo"} %>
+                    <label for="files" class="btn btn-info btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-camera"></i>
+                      </span>
+                      <span class="text">
+                        Upload Picture
+                        <input class="form-control-file file optional" type="file" name="part[photo]" id="files" style="display: none">
+                      </span>
+                    </label>
                   <%= f.input :photo_cache, as: :hidden %>
                   <%= f.input :part_model_code, input_html: { autocomplete: "part_model_code"} %>
                   <%= f.input :price, as: :integer, input_html: { autocomplete: "price"} %>

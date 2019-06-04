@@ -17,7 +17,7 @@ class ClaimsController < ApplicationController
       garage_first_name = User.find(@claim.garage_id).company_name
       # add the ohone number of the reciever.
       message = "Hello #{garage_first_name},
-      There is a new claim from #{company_name}, ready to be procesed click on the link to see the details of the claim:
+      There is a new claim from #{company_name}, ready to be processed. Click on the link to see the details of the claim:
       http://www.falcon-parts.com/"
       # Uncomment the line beneeth to recieve sms message to phone when claim is created
       # NotificationService.new().send_sms(message)
@@ -62,7 +62,7 @@ class ClaimsController < ApplicationController
         @claim.user = current_user
       else
         if @claim.status == "finished"
-          content = "Hi #{@insurance_company_name}, the status for cliam #{@claim.number} changed from in progress to, finished!"
+          content = "Hi #{@insurance_company_name}, the status for claim #{@claim.number} has changed to 'finished!'"
           Notification.create(content: content, claim_id: @claim.id, user_id: @claim.user_id)
         end
         redirect_to claim_path(@claim.id), notice: "Claim was succesfully updated to #{@claim.status}"

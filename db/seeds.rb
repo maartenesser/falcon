@@ -16,8 +16,8 @@ Car.destroy_all
 # Generating all the different seeds for the database
 puts "Generating new users....."
 nathanael = User.create!(first_name: "Nathanael", last_name: "Alain", company_name: "PDR-team", email: "nathanael@example.com",password: "123456")
-romeo = User.create!(first_name: "Romeo", last_name: "Saint-Albin", company_name: "Romeoauto Manchester Ltd.",email: "romeo@example.com", password: "123456")
-gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "Autocar GmbH Garage - Berlin",email: "gael@example.com", password: "123456")
+romeo = User.create!(first_name: "Romeo", last_name: "Saint-Albin", company_name: "Romeoauto Manc Ltd.",email: "romeo@example.com", password: "123456")
+gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "Autocar GmbH Garage",email: "gael@example.com", password: "123456")
 maarten = User.create!(first_name: "Maarten", last_name: "Esser", company_name: "DriveNow",email: "maarten@example.com", password: "123456")
 insurance1 = User.create!(first_name: "Helmut", last_name: "Hermanns", company_name: "DEVK",email: "insurance1@example.com", password: "123456", insurance: true)
 insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "Axa",email: "insurance2@example.com", password: "123456", insurance: true)

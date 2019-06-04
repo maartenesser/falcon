@@ -11,9 +11,10 @@ class StatisticsController < ApplicationController
         donut_category
         evolution_sell_insurance
       else
-        @part_total = Part.joins(:order)
-                          .where('orders.status' => 'pending')
+        @part_total = current_user.parts.joins(:order)
+                          .where.not('orders.status' => 'paid')
                           .count
+        @part_all = Part.all.count
         @my_parts_sell = Money.new(current_user.parts.sum(:price_cents), 'EUR')
         @pending_orders = current_user.orders.where(status: "pending").count
         set_objectif_garage

@@ -67,11 +67,11 @@
           <div><%= @part.price %> €</div>
         </div>
         <% if !@order.blank? %>
-        <li>
-          <% if @part.user_id == current_user.id  %>
-          my part
-          <% end %>
-        </li>
+          <li>
+            <% if @part.user_id == current_user.id  %>
+            my part
+            <% end %>
+          </li>
 
           <li>order.id <%= @order.id %></li>
         <% end %>

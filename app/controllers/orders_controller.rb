@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.new(part: @part, user: current_user)
     authorize @order
     if @order.save
-      # raise
+      #raise
       redirect_to orders_path
     else
       render 'parts/show'

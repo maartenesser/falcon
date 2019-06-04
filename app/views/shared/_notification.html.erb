@@ -18,7 +18,7 @@
     </h6>
     <% @notifications.each do |notification| %>
       <% @claim = Claim.find(notification.claim_id) %>
-      <%= link_to claim_path(@claim), class: 'dropdown-item d-flex align-items-center' do  %>
+      <%= link_to claim_path(@claim, garage_read: true, notification_id: notification.id), class: 'dropdown-item d-flex align-items-center' do  %>
         <div class="mr-3">
           <div class="icon-circle bg-primary">
             <i class="fas fa-file-alt text-white"></i>

@@ -21,7 +21,7 @@ class ClaimsController < ApplicationController
       http://www.falcon-parts.com/"
       # Uncomment the line beneeth to recieve sms message to phone when claim is created
       # NotificationService.new().send_sms(message)
-      redirect_to claim_path(@claim.id)
+      redirect_to claim_path(@claim.id), notice: "Claim #{@claim.number} was succesfully created and a message was sent to #{garage_first_name}"
     else
       render :new
     end
@@ -29,6 +29,13 @@ class ClaimsController < ApplicationController
 
   def show
     claim_id = @claim.id
+    read_status = params[:garage_read]
+    notification_id = params[:notification_id]
+    if !read_status.nil?
+      @notification = Notification.find(notification_id)
+      @notification.garage_read = read_status
+      @notification.save
+    end
     if !Part.where(claim_id: claim_id).first.nil?
       @part = Part.where(claim_id: claim_id).first
       car_id = @part.car_id
@@ -54,17 +61,11 @@ class ClaimsController < ApplicationController
       if current_user.insurance == true
         @claim.user = current_user
       else
-        if @claim.status == "in progress"
-          # if claim_id is the same as @claim.number && the claim.status == "in progres" do something
-          @insurance_company_name = User.find(@claim.user_id).company_name
-          content = "Hi #{@insurance_company_name}, the status for cliam #{@claim.number} changed from new to, in progress!"
-          Notification.create(content: content, claim_id: @claim.id, user_id: @claim.user_id)
-        end
         if @claim.status == "finished"
           content = "Hi #{@insurance_company_name}, the status for cliam #{@claim.number} changed from in progress to, finished!"
           Notification.create(content: content, claim_id: @claim.id, user_id: @claim.user_id)
         end
-        redirect_to claim_path(@claim.id)
+        redirect_to claim_path(@claim.id), notice: "Claim was succesfully updated to #{@claim.status}"
       end
     else
       render :edit

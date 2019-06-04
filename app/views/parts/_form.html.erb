@@ -15,7 +15,7 @@
                   <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
                   <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
                   <div class="text-right">
-                  <%= link_to "Add new Car", new_car_path, class: "btn btn-outline-secondary btn-icon-split p-2 text-right" %>
+                  <%= link_to "Add new car", new_car_path, class: "btn btn-outline-secondary btn-icon-split p-2 text-right" %>
                   </div>
                   <%= f.input :title, input_html: { autocomplete: "title"} %>
                   <%= f.input :description, input_html: { autocomplete: "description"} %>

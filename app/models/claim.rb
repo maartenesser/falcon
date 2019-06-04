@@ -10,7 +10,7 @@ class Claim < ApplicationRecord
 
   include PgSearch
   pg_search_scope :global_search,
-    against: %i[number at_date description],
+    against: %i[number at_date description status garage_id],
     using: {
       tsearch: { prefix: true }
     }

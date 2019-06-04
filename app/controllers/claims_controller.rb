@@ -1,6 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update]
-
+after_action :send_notification, only: [:create]
   def new
     @claim = Claim.new
     @user = current_user.id
@@ -45,8 +45,21 @@ class ClaimsController < ApplicationController
 
   def update
     if @claim.update(claim_params)
-      @claim.user = current_user
-      redirect_to claim_path(@claim.id)
+      if current_user.insurance == true
+        @claim.user = current_user
+      else
+        if @claim.status == "in progress"
+          # if claim_id is the same as @claim.number && the claim.status == "in progres" do something
+          @insurance_company_name = User.find(@claim.user_id).company_name
+          content = "Hi #{@insurance_company_name}, the status for cliam #{@claim.number} changed from new to, in progress!"
+          Notification.create(content: content, claim_id: @claim.id, user_id: @claim.user_id)
+        end
+        if @claim.status == "finished"
+          content = "Hi #{@insurance_company_name}, the status for cliam #{@claim.number} changed from in progress to, finished!"
+          Notification.create(content: content, claim_id: @claim.id, user_id: @claim.user_id)
+        end
+        redirect_to claim_path(@claim.id)
+      end
     else
       render :edit
     end
@@ -82,6 +95,14 @@ class ClaimsController < ApplicationController
 
   private
 
+  def send_notification
+    # something
+    garage_first_name = User.find(@claim.garage_id).company_name
+    content = "Hi #{garage_first_name},
+    There is a new claim for you #{@claim.number}."
+    Notification.create(content: content, claim_id: @claim.id, user_id: @claim.garage_id)
+  end
+
   def set_claim
     @claim = Claim.find(params[:id])
     authorize @claim
@@ -89,7 +110,11 @@ class ClaimsController < ApplicationController
 
   def claim_params
     # Merging the garage_id to the claim form.
-    form_params.merge(garage_id: form_params[:user_id])
+    if current_user.insurance == true
+      form_params.merge(garage_id: form_params[:user_id])
+    else
+      form_params
+    end
   end
 
   def form_params

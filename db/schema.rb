@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_112545) do
+ActiveRecord::Schema.define(version: 2019_06_03_131135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2019_06_01_112545) do
     t.string "status", default: "new"
     t.bigint "garage_id"
     t.index ["user_id"], name: "index_claims_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "content"
+    t.boolean "insurance_read", default: false
+    t.boolean "garage_read", default: false
+    t.bigint "claim_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["claim_id"], name: "index_notifications_on_claim_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -90,6 +102,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_112545) do
   end
 
   add_foreign_key "claims", "users"
+  add_foreign_key "notifications", "claims"
+  add_foreign_key "notifications", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "parts", "cars"
   add_foreign_key "parts", "claims"

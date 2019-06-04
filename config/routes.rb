@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
+  resources :notifications, only: [ :index, :create, :show, :update]
+
   resources :orders, only: [ :index, :show, :create, :update, :destroy ]
 
   get '/order_history', to: 'orders#history', as: :purchasedparts

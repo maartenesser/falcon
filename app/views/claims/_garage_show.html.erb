@@ -5,22 +5,26 @@
       <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>
 
       <div>
-        <%= simple_form_for @claim do |f|%>
-          <div class="form-group" id="garage-show-form">
-
-            <div>
-              <%= f.input :status, collection: [ "new", "in progress", "finished" ], label: false, include_blank: false %>
+        <%= simple_form_for @claim, html: { class: "user"} do |f|-%>
+                <%= f.error_notification %>
+                <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+                <%= f.input :status, collection: [ "new", "in progress", "finished" ], label: false, include_blank: false %>
+                <div class="form-group">
+                  <%= f.input :number, as: :hidden,autofocus: true, label: false, input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
+                </div>
+                <div class="form-group">
+                  <!-- TODO: Why can't i store the id of the user into the garage_id? -->
+                   <%= f.association :user,  as: :hidden, collection: User.where(insurance: false), label_method: ->(user) { "#{user.company_name}"},  value_method: :id, label: false, placeholder: "select your garage" %>
+                </div>
+                <div class="form-group ">
+                  <%= f.input :at_date,  as: :hidden, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true , label: false, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.input :description,  as: :hidden, label: false, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
+                  </div>
+                </div>
+                <%= f.button :submit, data: { confirm: "are you sure?" }, class: "btn btn-success", id: "update-claim-btn-garages" %>
             </div>
-
-            <%= f.input :number, as: :hidden, autofocus: true, label: false, input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
-            <%= f.input :at_date, as: :hidden, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true , label: false, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
-            <%= f.input :description, as: :hidden, label: false, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
-            <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id }, as: :hidden %>
-
-            <div>
-              <%= f.button :submit, data: { confirm: "are you sure?" }, class: "btn btn-success", id: "update-claim-btn-garages" %>
-            </div>
-
           </div>
         <% end %>
       </div>
@@ -40,7 +44,10 @@
       </div>
 
       <div>
-        User ID: <%= @claim.user_id %>
+        Insurance ID: <%= @claim.user_id %>
+      </div>
+      <div>
+        Garage ID: <%= @claim.garage_id %>
       </div>
 
       <% unless @car.nil? && @part.nil? %>

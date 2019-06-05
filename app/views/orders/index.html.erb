@@ -17,7 +17,7 @@
             </div>
             <div>
               <span>
-                <%= link_to 'Buy', order_path(order),target: "_blank" , data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-success' %>
+                <%= link_to 'Buy', order_path(order), data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-success' %>
               </span>
                <span>
                 <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'delete', class: 'btn btn-danger' %>

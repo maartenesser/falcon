@@ -5,11 +5,8 @@
         <!-- Nested Row within Card Body -->
             <div class="p-5">
               <div class="text-center">
-                <!-- <h1 class="h4 text-gray-900 mb-4">Add/Edit Claim</h1> -->
-                <%# raise %>
-
                 <% if @claim.user_id.present?  %>
-                <h1 class="h4 text-gray-900 mb-4">Edit claim</h1>
+                  <h1 class="h4 text-gray-900 mb-4">Edit claim</h1>
                   <% else %>
                   <h1 class="h4 text-gray-900 mb-4">Add a claim</h1>
                 <% end %>

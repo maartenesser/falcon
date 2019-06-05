@@ -20,7 +20,7 @@ class ClaimsController < ApplicationController
       There is a new claim from #{company_name}, ready to be processed. Click on the link to see the details of the claim:
       http://www.falcon-parts.com/"
       # Uncomment the line beneeth to recieve sms message to phone when claim is created
-      # NotificationService.new().send_sms(message)
+      NotificationService.new().send_sms(message)
       redirect_to claim_path(@claim.id), notice: "Claim #{@claim.number} was successfully created and a message was sent to #{garage_first_name}"
     else
       render :new

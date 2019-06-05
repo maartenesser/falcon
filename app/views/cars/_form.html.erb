@@ -4,7 +4,12 @@
         <!-- Nested Row within Card Body -->
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Add/Edit Car</h1>
+                <%# raise %>
+                <% if @car.id.present? %>
+                  <h1 class="h4 text-gray-900 mb-4">Edit the car</h1>
+                <% else %>
+                  <h1 class="h4 text-gray-900 mb-4">Add a car</h1>
+                <% end %>
               </div>
               <%= simple_form_for @car, html: { class: "user"} do |f|-%>
                 <%= f.error_notification %>
@@ -13,7 +18,7 @@
                   <%= f.input :make, input_html: { autocomplete: "make", class: "form-control", placeholder: "Write the make" }%>
                 </div>
                 <div class="form-group">
-                  <%= f.input :model, input_html: { autocomplete: "model", class: "form-control", placeholder: "Write the make" }%>
+                  <%= f.input :model, input_html: { autocomplete: "model", class: "form-control", placeholder: "Write the model" }%>
                 </div>
                 <div class="form-group">
                   <%= f.input :vin, input_html: { autocomplete: "Vin", class: "form-control", placeholder: "Vin Number" } %>

@@ -49,7 +49,7 @@ class PartsController < ApplicationController
     @part = Part.new(part_params)
     @part.user = current_user
     authorize @part
-    if @part.save!
+    if @part.save
       redirect_to root_path, notice: 'Part successfully created'
 
     else
@@ -59,24 +59,12 @@ class PartsController < ApplicationController
   end
 
   def my_bought_parts
-    # @parts = policy_scope(Part).order(created_at: :desc)
-    # @parts = Part.all
-    # @parts_pending = Part.joins(:oder).where(status: "pending")
-    # @order1= Part.where(Part.order.status = "pending")
-    # orders = Order.where(user_id: current_user)
-
     parts = Part.joins(:order)
     @parts = parts.where('orders.status' => 'paid').where('orders.user_id' => current_user.id)
     authorize @parts
   end
 
   def my_selling_parts
-    # @parts = policy_scope(Part).order(created_at: :desc)
-    # @parts = Part.all
-    # @parts_pending = Part.joins(:oder).where(status: "pending")
-    # @order1= Part.where(Part.order.status = "pending")
-    # orders = Order.where(user_id: current_user)
-
     @parts = Part.left_outer_joins(:order)
                   .where(user: current_user, orders: { user: current_user })
                   .where(orders: { status: "pending" })
@@ -84,7 +72,6 @@ class PartsController < ApplicationController
                   .where(user: current_user)
                   .where(orders: { id: nil }))
     authorize @parts
-
   end
 
   private

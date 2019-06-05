@@ -5,7 +5,6 @@ class StatisticsController < ApplicationController
   def index
     if !current_user.blank?
       if current_user.insurance == true
-        # @part_total = current_user.parts_as_insurance.count
         set_objectif_insurance
         set_total_amount_of_part
         donut_category

@@ -28,7 +28,7 @@
             <%= f.association :user,  as: :hidden, collection: User.where(insurance: false), label_method: ->(user) { "#{user.company_name}"},  value_method: :id, label: false, placeholder: "select your garage" %>
             <%= f.input :at_date,  as: :hidden, start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true , label: false, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
             <%= f.input :description,  as: :hidden, label: false, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
-            <%= f.button :submit, data: { confirm: "Are you sure you whant to update claim #{@claim.number} to finished?",  disable_with: "Updating..." }, class: "btn btn-success", id: "update-claim-btn-garages" %>
+            <%= f.button :submit, data: { confirm: "Are you sure you want to update claim #{@claim.number} to finished?",  disable_with: "Updating..." }, class: "btn btn-success", id: "update-claim-btn-garages" %>
           <% end %>
           <% if @claim.status == "finished" %>
           <% end %>

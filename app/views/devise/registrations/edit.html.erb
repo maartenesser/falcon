@@ -14,7 +14,7 @@
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Edit <%= resource_name.to_s.humanize %></h1>
+                <h1 class="h4 text-gray-900 mb-4">Edit profile</h1>
               </div>
               <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: "user"}) do |f| %>
                 <%= f.error_notification %>
@@ -47,7 +47,7 @@
                   </div>
                   <div class="col-sm-6">
                    <div class="d-flex justify-content-center align-items-center mt-1">
-                      <label for="files" class="btn btn-info btn-icon-split">
+                      <label for="files" class="btn btn-info btn-icon-split rounded-pill">
                        <span class="icon text-white-50">
                          <i class="fas fa-camera"></i>
                        </span>
@@ -85,11 +85,10 @@
                 <%= f.button :submit, "Update", class: "btn btn-primary btn-user btn-block"  %>
               <% end %>
               <hr>
-              <div class="text-center">
-                <h3>Cancel my account</h3>
-                <%= link_to (raw('<span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Cancel my account</span>')), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-icon-split", style: "border-radius: 10rem; font-size: 0.8rem;" %>
-                <hr>
                 <%= link_to "Back", :back, class: "btn btn-primary btn-user btn-block", style: "border-radius: 10rem; font-size: 0.8rem; padding: 0.75rem 1rem;" %>
+              <hr>
+                <div class="text-center">
+                <%= link_to (raw('<span class="text">Delete my account</span>')), registration_path(resource_name), data: { confirm: "If you want to cancel your account email account@falcon-part.com" }, method: :delete, class: "btn btn-danger btn-icon-split w-100 p-1", style: "border-radius: 10rem; font-size: 0.8rem;" %>
               </div>
             </div>
           </div>

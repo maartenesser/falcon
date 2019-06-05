@@ -14,7 +14,7 @@
                 <div>
                   <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
 
-                  <div class="row d-flex justify-content-center align-items-center">
+                  <div class="row d-flex justify-content-center align-items-center mb-2">
                     <div class="col-md-12 col-lg-9">
                       <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id %>
                     </div>
@@ -29,7 +29,7 @@
                   <%= f.input :photo, input_html: {autocomplete: "photo"} %>
                   <%= f.input :photo_cache, as: :hidden %>
                   <%= f.input :part_model_code, input_html: { autocomplete: "part_model_code"} %>
-                  <%= f.input :price, as: :integer, input_html: { autocomplete: "price"} %>
+                  <%= f.input :price, as: :integer, input_html: {value: ' '} %>
                   <%= f.button :submit, class: "btn btn-success btn-icon-split p-2"  %>
                   <%= link_to "Cancel", parts_path, class: "btn btn-outline-secondary btn-icon-split p-2" %>
                 </div>

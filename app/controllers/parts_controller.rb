@@ -57,6 +57,13 @@ class PartsController < ApplicationController
     end
   end
 
+  def destroy
+    # @part.destroy
+    part = Part.find(@part)
+    part.destroy
+    redirect_to parts_path
+  end
+
   def my_bought_parts
     # @parts = policy_scope(Part).order(created_at: :desc)
     # @parts = Part.all

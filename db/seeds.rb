@@ -40,7 +40,7 @@ claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description:
 claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: gael.id, status: "in progress")
 claim13 = Claim.create!(number: "863102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
 claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: gael.id)
-claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "reclaimed")
+claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "finished")
 claim16 = Claim.create!(number: "362123530", at_date: "07-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: gael.id)
 
 

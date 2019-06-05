@@ -28,6 +28,11 @@ class ClaimsController < ApplicationController
   end
 
   def show
+    insurance_id = Claim.find(@claim.id).user_id
+    garage_id = Claim.find(@claim.id).garage_id
+    @garage = User.find(garage_id).company_name
+    @insurance = User.find(insurance_id).company_name
+
     claim_id = @claim.id
     read_status = params[:garage_read]
     notification_id = params[:notification_id]

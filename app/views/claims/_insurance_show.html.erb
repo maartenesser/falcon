@@ -21,11 +21,11 @@
       </div>
 
       <div>
-        Insurance ID: <%= @claim.user_id %>
+        Insurance: <%= @insurance %>
       </div>
 
       <div>
-        Garage ID: <%= @claim.garage_id %>
+        Garage: <%= @garage %>
       </div>
 
       <% unless @car.nil? && @part.nil? %>
@@ -52,18 +52,23 @@
 
     </div>
   </div>
-  <hr>
-  <h2>Associated parts</h2>
-  <hr>
+  <div class="title-num-of-part">
+    <% if @all_parts_for_this_claim.present? %>
+      <h6 style=" margin: 51px 0; color: #b1b1b1; font-size: 24px; text-align: -webkit-center; ">
+       <strong><%= pluralize @all_parts_for_this_claim.count, "part" %> </strong> associated to this claim :</h6>
+    <% else %>
+      <h6 style=" margin: 51px 0; color: #b1b1b1; font-size: 24px; text-align: -webkit-center; font-weight: bold;">
+      There is no associated parts to this claim.</h6>
+    <% end %>
+  </div>
   <div class="container-index-parts">
-  <div class="row">
+  <div class="row justify-content-md-center">
       <% @all_parts_for_this_claim.each do |part| %>
           <div class="col-xl-3 col-lg-6 mb-4">
             <div class="card shadow border" style="width: 100%">
               <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
               <div class="card-body">
-                <h5 class="card-title" style="height: 50px"><strong><%= part.title%></strong></h5>
-                <p class="card-text" style="height: 40px;"><%= part.description %></p>
+                <h5 class="card-title" style="height: 25px"><strong><%= part.title%></strong></h5>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Category: <%= part.category %></li>

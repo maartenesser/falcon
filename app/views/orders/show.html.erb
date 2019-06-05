@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header">Invoice
-      <strong><%= @order.created_at %></strong>
+      <strong>74586824 - <%= @order.id %></strong>
       <span class="float-right">
         <strong>Status:</strong> Delivery Pending
       </span>
@@ -38,7 +38,7 @@
             <th>Item</th>
             <th>Description</th>
 
-            <th class="right">Unit Cost</th>
+            <th class="right">Cost</th>
             <th class="center">Qty</th>
             <th class="right">Total</th>
           </tr>
@@ -49,22 +49,23 @@
             <td class="left strong"><%= @order.part.title %></td>
             <td class="left"><%= @order.part.description %></td>
 
-            <td class="right">€ <%= @order.part.price %></td>
+            <td class="right">€<%= @order.part.price %></td>
               <td class="center">1</td>
-          <td class="right">€ <%= @order.part.price %></td>
+          <td class="right">€<%= @order.part.price %></td>
           </tr>
         </tbody>
       </table>
     </div>
 
 
-
+    <div class="py-4">A detailed invoice has been sent to <%= link_to current_user.email %>
     </div>
-
-    <p class="p-1">A detailed invoice has been sent to <%= link_to current_user.email %></p>
-</div>
    <div class="d-flex justify-content-between">
     <%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
     <%= link_to 'Browse Parts', parts_path, class: "btn btn-success"  %>
   </div>
+
+    </div>
+
+</div>
 </div>

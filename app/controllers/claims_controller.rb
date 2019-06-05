@@ -28,11 +28,6 @@ class ClaimsController < ApplicationController
   end
 
   def show
-
-    # guser_id = @part.user_id
-    # @user = User.find(user_id)
-    # claim_id = @part.claim_id
-    # @claim = Claim.find(claim_id)
     insurance_id = Claim.find(@claim.id).user_id
     garage_id = Claim.find(@claim.id).garage_id
     @garage = User.find(garage_id).company_name

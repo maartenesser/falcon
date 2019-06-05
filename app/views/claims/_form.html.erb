@@ -15,7 +15,6 @@
                   <%= f.input :number, autofocus: true, label: "Claim number", input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
                 </div>
                 <div class="form-group">
-                  <!-- TODO: Why can't i store the id of the user into the garage_id? -->
                    <%= f.association :user, label: "Garage", collection: User.where(insurance: false), label_method: ->(user) { "#{user.company_name}"},  value_method: :id, placeholder: "select your garage" %>
                 </div>
                 <div class="form-group ">

@@ -26,22 +26,22 @@ insurance4 = User.create!(first_name: "Rolf", last_name: "Heidelbeck", company_n
 
 
 puts "Generating new Claims....."
-claim1 = Claim.create!(number: "613261233", at_date: "28-05-2019", description: "Bicyclist hit car. Front right headlight damaged & mirror damage, light damage on body panels near front right headlight", user: insurance1, garage_id: nathanael.id)
-claim2 = Claim.create!(number: "455331230", at_date: "12-05-2019", description: "Drove against a lantern and damaged bonnet & front windshield", user: insurance2, garage_id: romeo.id)
+claim1 = Claim.create!(number: "613261233", at_date: "28-01-2019", description: "Bicyclist hit car. Front right headlight damaged & mirror damage, light damage on body panels near front right headlight", user: insurance1, garage_id: nathanael.id)
+claim2 = Claim.create!(number: "455331230", at_date: "12-02-2019", description: "Drove against a lantern and damaged bonnet & front windshield", user: insurance2, garage_id: romeo.id)
 claim3 = Claim.create!(number: "098723331", at_date: "02-05-2019", description: "Issues opening door, broken doorhandle as a result of wear & tear", user: insurance1, garage_id: gael.id, status: "in progress")
 claim4 = Claim.create!(number: "385203985", at_date: "21-04-2019", description: "Rear-end pile-up on highway, car was hit from behind at medium speed. Airbags & whiplash system in seat activated", user: insurance1, garage_id: maarten.id)
 claim5 = Claim.create!(number: "748292355", at_date: "27-03-2019", description: "Driver lost control in the rain and had a side impact with a curb. Rear right wheel/tire & suspension components damaged", user: insurance1, garage_id: gael.id, status: "in progress")
 claim6 = Claim.create!(number: "791250321", at_date: "13-05-2019", description: "Hail damage on body work, glass intact but bonnet/roof/bootlid/fenders damaged", user: insurance1, garage_id: gael.id)
 claim7 = Claim.create!(number: "910413496", at_date: "19-05-2019", description: "Flooding in garage, engine seized & wiring harness need replacing", user: insurance1, garage_id: gael.id)
-claim8 = Claim.create!(number: "162316332", at_date: "03-06-2019", description: "Sunroof stopped working, rear glass panel doesn't operate anymore", user: insurance4, garage_id: gael.id)
+claim8 = Claim.create!(number: "162316332", at_date: "02-06-2019", description: "Sunroof stopped working, rear glass panel doesn't operate anymore", user: insurance4, garage_id: gael.id)
 claim9 = Claim.create!(number: "531900512", at_date: "01-06-2019", description: "Front right headlight damaged in parking garage (driver hit a small pole)", user: insurance1, garage_id: gael.id)
 claim10 = Claim.create!(number: "602366301", at_date: "30-05-2019", description: "Driver hit highway divider due to falling asleep, full left side body damage", user: insurance1, garage_id: gael.id, status: "finished")
 claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description: "Rear bumper damage when reversing in garage, parking sensors need to be replaced", user: insurance1, garage_id: gael.id)
 claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: gael.id, status: "in progress")
-claim13 = Claim.create!(number: "863102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
+claim13 = Claim.create!(number: "363102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
 claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: gael.id)
 claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "finished")
-claim16 = Claim.create!(number: "362123530", at_date: "07-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: gael.id)
+claim16 = Claim.create!(number: "362123530", at_date: "01-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: gael.id)
 
 
 puts "Generating new cars....."
@@ -194,15 +194,7 @@ part32.save!
 
 
 puts "Generating new Orders every user gets 2 pending and sold orders...."
-order1 = Order.create!(user: nathanael, status: "pending", part: part3)
-order2 = Order.create!(user: nathanael, status: "paid", part: part4)
-order3 = Order.create!(user: romeo, status: "paid", part: part5)
-order4 = Order.create!(user: romeo, status: "pending", part: part6)
-order5 = Order.create!(user: gael, status: "pending", part: part7)
-order6 = Order.create!(user: gael, status: "paid", part: part31)
-order7 = Order.create!(user: gael, status: "paid", part: part8)
-order8 = Order.create!(user: maarten, status: "pending", part: part1)
-order9 = Order.create!(user: maarten, status: "paid", part: part2)
+order1 = Order.create!(user: gael, status: "paid", part: part24)
 
 puts "Done with seeding the whole database"
 

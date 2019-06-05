@@ -51,11 +51,17 @@ class PartsController < ApplicationController
     authorize @part
     if @part.save
       redirect_to root_path, notice: 'Part successfully created'
-
     else
       render :new
 
     end
+  end
+
+  def destroy
+    # @part.destroy
+    part = Part.find(@part)
+    part.destroy
+    redirect_to parts_path
   end
 
   def my_bought_parts

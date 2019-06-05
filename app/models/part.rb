@@ -12,6 +12,8 @@ class Part < ApplicationRecord
   validates :title, presence: true
   validates :category, presence: true
   validates :photo, presence: true
+  validates :price, presence: true
+  # validates :condition, presence: true
 
   include PgSearch
   pg_search_scope :global_search,

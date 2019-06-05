@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get '/statistics_garage', to: 'statistics#index', as: :statistics_garage
     get '/statistics_insurance', to: 'statistics#index', as: :statistics_insurance
 
-  resources :parts, only: [:create, :update, :new, :show, :index, :edit]
+  resources :parts
     get 'my_bought_parts', to: 'parts#my_bought_parts', as: :my_bought_parts
     get 'my_selling_parts', to: 'parts#my_selling_parts', as: :my_selling_parts
 

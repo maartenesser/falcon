@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-
   def index
     @notifications = policy_scope(Notification).order(created_at: :desc)
   end
@@ -7,7 +6,7 @@ class NotificationsController < ApplicationController
   def create
     @notification = Notification.new(notification_params)
     authorize @notification
-    if @notification.save!
+    if @notification.save
       redirect_to root_path, notice: 'Garage has been notified'
     end
   end

@@ -49,9 +49,8 @@ class PartsController < ApplicationController
     @part = Part.new(part_params)
     @part.user = current_user
     authorize @part
-    if @part.save!
+    if @part.save
       redirect_to root_path, notice: 'Part successfully created'
-
     else
       render :new
 

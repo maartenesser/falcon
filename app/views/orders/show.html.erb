@@ -1,40 +1,70 @@
 <div class="container">
-    <div class="card-header">
-      <h6 class="m-0 font-weight-bold text-primary" id="parts-index-card-header">Thank you for purchasing <%= @order.part.title%>!</h6>
-    </div>
-  <div class="card shadow mb-4 pl-4 pt-4">
-    <div class="text-center pr-4">
-      <%= cl_image_tag @order.part.photo, crop: :fill, :width => 475, class: "parts-index-card-image img-fluid" %>
+  <div class="card">
+    <div class="card-header">Invoice
+      <strong><%= @order.created_at %></strong>
+      <span class="float-right">
+        <strong>Status:</strong> Delivery Pending
+      </span>
     </div>
 
-   <div class="row border-bottom py-4">
-    <div class="col-sm-3 col-xs-6 title-first-col">
-      <div class="font-weight-bold">Part Num: </div>
-      <div class="font-weight-bold">Car Make: </div>
-      <div class="font-weight-bold">Car Model: </div>
-      <div class="font-weight-bold">VIN: </div>
-    </div>
-    <div class="col-sm-3 col-xs-6 details-first-col">
-      <div><%= @order.part.part_model_code %></div>
-      <div><%= @order.part.car.make %></div>
-      <div><%= @order.part.car.model %></div>
-      <div><%= @order.part.car.vin %></div>
-    </div>
-    <div class="col-sm-3 col-xs-6 title-second-col">
-      <div class="font-weight-bold">Price: </div>
-    </div>
-    <div class="col-sm-3 col-xs-6 title-second-col">
-      <div><%= @order.part.price %> € </div>
-    </div>
-  </div>
+    <div class="card-body">
+      <div class="row mb-4">
+        <div class="col-sm-6">
+          <h6 class="mb-3">From:</h6>
+          <div>
+            <strong><%= User.find(@order.part.user_id).company_name %></strong>
+          </div>
+          <div>Rudi-Dutschke-Straße 26, 10969 Berlin</div>
+          <div>Email: <%= User.find(@order.part.user_id).email %></div>
+          <div>Phone: +49 444 666 3333</div>
+        </div>
 
-    <!-- Link is not point to anything -->
-    <p class="pt-1">An invoice has been sent to <%= link_to current_user.email %></p>
+        <div class="col-sm-6">
+          <h6 class="mb-3">To:</h6>
+          <div>
+            <strong><%= User.find(@order.user_id).company_name %></strong>
+          </div>
+          <div>416 Villa Gaudelet, 75011 Paris, France</div>
+          <div>Email: <%= User.find(@order.user_id).email  %></div>
+          <div>Phone: +33 1 48 58 51 20</div>
+        </div>
+    </div>
 
-  </div>
+    <div class="table-responsive-sm table-responsive-lg">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="center">#</th>
+            <th>Item</th>
+            <th>Description</th>
 
-  <div class="d-flex justify-content-between">
+            <th class="right">Unit Cost</th>
+            <th class="center">Qty</th>
+            <th class="right">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center">1</td>
+            <td class="left strong"><%= @order.part.title %></td>
+            <td class="left"><%= @order.part.description %></td>
+
+            <td class="right">€ <%= @order.part.price %></td>
+              <td class="center">1</td>
+          <td class="right">€ <%= @order.part.price %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    </div>
+
+    <p class="p-1">A detailed invoice has been sent to <%= link_to current_user.email %></p>
+</div>
+   <div class="d-flex justify-content-between">
     <%= link_to 'Back to Basket', orders_path, class: "btn btn-primary"  %>
-    <%= link_to 'Browse Parts', parts_path, class: "btn btn-primary"  %>
+    <%= link_to 'Browse Parts', parts_path, class: "btn btn-success"  %>
   </div>
 </div>

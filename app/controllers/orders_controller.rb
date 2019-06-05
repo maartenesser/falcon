@@ -27,8 +27,9 @@ class OrdersController < ApplicationController
     @order.status = 'paid'
     if @order.save
       # Send email to buyer
-      mail = OrderMailer.with(order: @order).order_confirmation
-      mail.deliver_now
+      # Turned off as annoying
+      # mail = OrderMailer.with(order: @order).order_confirmation
+      # mail.deliver_now
       redirect_to order_path(@order)
     else
       render 'parts/show'

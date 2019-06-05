@@ -17,7 +17,7 @@
             </div>
             <div>
               <span>
-                <%= link_to 'Buy', order_path(order),data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-info' %>
+                <%= link_to 'Buy', order_path(order), data: { confirm: 'Confirm purchase?' } , method: 'patch', class: 'btn btn-success' %>
               </span>
                <span>
                 <%= link_to (raw('<i class="fas fa-trash"></i>')) ,order_path(order), method: 'delete', class: 'btn btn-danger' %>
@@ -34,7 +34,6 @@
       <% end %>
       <div class="py-3 d-flex justify-content-between">
         <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary" %>
-        <%= link_to 'Order history', purchasedparts_path, class: "btn btn-primary" %>
       </div>
     </div>
 

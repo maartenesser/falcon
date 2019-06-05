@@ -19,17 +19,23 @@
                 <div class="parts-index-btns">
                   <%= link_to (raw('<i class="fas fa-info-circle"></i><span> Info</span>')), part_path(part), class: "btn btn-primary btn-block" %>
                 </div>
-
                 <div class="parts-index-btns">
-                <%= form_tag orders_path do %>
+                <% if part.user_id != current_user.id %>
+              <% if part.order.blank? %>
+                  <%= form_tag orders_path do %>
                     <%= hidden_field_tag 'part_id', part.id %>
                     <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
                       <i class="fas fa-shopping-cart"></i>
                       <span>Basket</span>
                     <% end %>
                   <% end %>
-                </div>
+                <% else %>
+                  <%= link_to (raw('<i class="fas fa-shopping-cart"></i>
+            <span> See in Basket</span>')), orders_path, class: "btn btn-success"  %>
+              <% end %>
 
+            <% end %>
+</div>
                </div>
             </div>
           </div>

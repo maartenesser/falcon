@@ -12,7 +12,8 @@ class PartsController < ApplicationController
     @user = User.find(user_id)
     claim_id = @part.claim_id
     @claim = Claim.find(claim_id)
-    policy_scope(Part)
+
+
     car_id = @part.car_id
     @car = Car.find(car_id)
     # raise
@@ -21,7 +22,7 @@ class PartsController < ApplicationController
   def index
     @parts = policy_scope(Part).order(created_at: :desc)
     if params[:query].present?
-      @parts = Part.global_search(params[:query])
+      @parts = (Part.global_search(params[:query]))
     end
   end
 

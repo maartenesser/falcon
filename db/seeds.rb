@@ -64,11 +64,11 @@ ford = Car.create!(vin: "1FAHP3F26CL228943", make: "Ford", model: "Focus 2.0tdci
 
 
 puts "Generating new parts....."
-part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right", description: "Right mirror of a mercedes benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "40185")
+part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right for Mercedes Benz", description: "Right mirror of a mercedes benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "40185")
 part1[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Mercedes/RightMirror/rightmirror2.jpg"
 part1.save!
 
-part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
+part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror for Mercedes Benz", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
 part2[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Mercedes/LeftMirror/LeftMirrorMercedes4.jpg"
 part2.save!
 

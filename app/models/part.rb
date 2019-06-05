@@ -5,12 +5,12 @@ class Part < ApplicationRecord
 
   has_one :order
 
-
   mount_uploader :photo, PhotoUploader
   monetize :price_cents
 
   validates :part_model_code, presence: true
   validates :title, presence: true
+  validates :category, presence: true
   validates :photo, presence: true
 
   include PgSearch

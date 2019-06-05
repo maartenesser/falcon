@@ -1,5 +1,8 @@
 <div class="container-index-parts">
   <div class="row">
+    <% if @parts.count == 0 %>
+      <div class=' card-body p-3'>You are not sell anything yet...</div>
+    <% else %>
       <% @parts.each do |part| %>
           <div class="col-xl-3 col-lg-6 mb-4">
             <div class="card shadow border" style="width: 100%">
@@ -20,5 +23,6 @@
             </div>
           </div>
       <% end %>
+    <% end %>
   </div>
 </div>

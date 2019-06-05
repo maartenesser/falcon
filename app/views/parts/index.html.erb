@@ -6,17 +6,30 @@
             <div class="card shadow border" style="width: 100%">
               <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
               <div class="card-body">
-                <h5 class="card-title" style="height: 50px"><strong><%= part.title%></strong></h5>
-                <p class="card-text" style="height: 40px;"><%= part.description %></p>
+                <h5 class="card-title" style="height: 25px;"><strong><%= part.title%></strong></h5>
+
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Category: <%= part.category %></li>
-                <li class="list-group-item">Make: <%= part.car.make %></li>
-                <li class="list-group-item">Model: <%= part.car.model %></li>
-                <li class="list-group-item">Price: <%= Money.new(part.price_cents, "EUR").format %></li>
+                <li class="list-group-item"><strong>Make:</strong> <%= part.car.make %></li>
+                <li class="list-group-item"><strong>Model:</strong> <%= part.car.model %></li>
+                <li class="list-group-item"><strong>Price:</strong> <%= Money.new(part.price_cents, "EUR").format %></li>
               </ul>
-               <div class="card-body text-center">
-                <%= link_to (raw('<span class="icon text-white-50"><i class="fas fa-info-circle"></i></span><span class="text">More Info</span>')), part_path(part), class: "btn btn-info btn-icon-split" %>
+               <div class="card-body text-center d-flex justify-content-around">
+
+                <div class="parts-index-btns">
+                  <%= link_to (raw('<i class="fas fa-info-circle"></i><span> Info</span>')), part_path(part), class: "btn btn-primary btn-block" %>
+                </div>
+
+                <div class="parts-index-btns">
+                <%= form_tag orders_path do %>
+                    <%= hidden_field_tag 'part_id', part.id %>
+                    <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
+                      <i class="fas fa-shopping-cart"></i>
+                      <span>Basket</span>
+                    <% end %>
+                  <% end %>
+                </div>
+
                </div>
             </div>
           </div>

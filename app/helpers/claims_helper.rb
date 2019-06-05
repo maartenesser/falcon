@@ -1,10 +1,10 @@
 module ClaimsHelper
   def status_class(a_claim)
     case a_claim.status
-    when 'new' then 'success'
-    when 'in progress' then 'primary'
-    when 'finished' then 'info'
-    when 'reclaimed' then 'warning'
+    when 'new' then 'primary'
+    when 'in progress' then 'warning'
+    when 'finished' then 'success'
+    when 'reclaimed' then 'secondary'
     end
   end
 end

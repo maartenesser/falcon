@@ -1,11 +1,16 @@
 <div class="container-fluid">
-  <h1 class="h3 mb-0 text-gray-800"><%= current_user.company_name %>'s claims </h1>
+  <div class="garage-claims-filter-options">
+    <div class="garage-claims-filter-header">
+      Filter claims by status
+    </div>
 
-  <div class="garage-claims-index-filter">
-    <%= button_to "New", claims_path, method: :get, class: "btn btn-success", id: "garage-claims-index-btns", params: { status: "new"} %>
-    <%= button_to "In progress", claims_path, method: :get, class: "btn btn-primary", id: "garage-claims-index-btns",params: { status: "in progress"} %>
-    <%= button_to "Finished", claims_path, method: :get, class: "btn btn-info", id: "garage-claims-index-btns",params: { status: "finished"} %>
-    <%= button_to "Reclaimed", claims_path, method: :get, class: "btn btn-warning", id: "garage-claims-index-btns",params: { status: "reclaimed"} %>
+    <div class="garage-claims-index-filter">
+      <%= button_to "New", claims_path, method: :get, class: "btn btn-primary", id: "garage-claims-index-btns", params: { status: "new"} %>
+      <%= button_to "In progress", claims_path, method: :get, class: "btn btn-warning", id: "garage-claims-index-btns",params: { status: "in progress"} %>
+      <%= button_to "Finished", claims_path, method: :get, class: "btn btn-success", id: "garage-claims-index-btns",params: { status: "finished"} %>
+      <%= button_to "Show all", claims_path, method: :get, class: "btn btn-secondary", id: "garage-claims-index-btns" %>
+    </div>
+
   </div>
 
   <% @claims.each do |claim| %>

@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def history
-    @orders = policy_scope(Order)
+    @orders = policy_scope(Order).where(status: 'paid')
     authorize @orders
       @table = @orders.map do |order|
         {

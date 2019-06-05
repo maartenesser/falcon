@@ -17,7 +17,7 @@
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
     <%= link_to (raw('<i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span>')), root_path, class: "nav-link" %>
+      <span>Statistics</span>')), current_user.insurance ? statistics_insurance_path : statistics_garage_path, class: "nav-link" %>
     </li>
 
     <!-- Divider -->
@@ -31,21 +31,16 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-          <%= link_to (raw('<i class="fas fa-file"></i>
+          <%= link_to (raw('<i class="fas fa-fw fa-file"></i>
           <span>My claims</span>')), claims_path , class: "nav-link collapsed" %>
         </li>
         <li class="nav-item">
-          <%= link_to (raw('<i class="fas fa-plus"></i>
+          <%= link_to (raw('<i class="fas fa-fw fa-plus"></i>
           <span>Add a claim</span>')), new_claim_path , class: "nav-link collapsed" %>
         </li>
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-wrench"></i>
           <span>Parts overview</span>')), table_path , class: "nav-link collapsed" %>
-      </li>
-
-      <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-fw fa-table"></i>
-          <span>Statistics</span>')), statistics_insurance_path , class: "nav-link collapsed" %>
       </li>
 
       <!-- Divider -->
@@ -58,6 +53,11 @@
         Bodyshop Menu
       </div>
 
+      <!-- Nav Item - My claims -->
+      <li class="nav-item">
+        <%= link_to (raw('<i class="fas fa-fw fa-file"></i>
+          <span>My claims</span>')), claims_path, class: "nav-link collapsed" %>
+      </li>
       <!-- Nav Item - Buy -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-plus"></i>
@@ -70,24 +70,19 @@
       </li>
      <!-- Nav Item - basket -->
       <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-shopping-cart"></i>
+        <%= link_to (raw('<i class="fas fa-fw fa-shopping-cart"></i>
           <span>Basket</span>')), orders_path, class: "nav-link collapsed" %>
       </li>
       <!-- Nav Item - Order History -->
       <!-- List of bought parts -->
       <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-archive"></i>
+        <%= link_to (raw('<i class="fas fa-fw fa-archive"></i>
           <span>Order history</span>')), purchasedparts_path, class: "nav-link collapsed" %>
       </li>
       <!-- Nav Item - My Part -->
       <li class="nav-item">
         <%= link_to (raw('<i class="fas fa-fw fa-database"></i>
-          <span>My online parts</span>')), my_selling_parts_path, class: "nav-link collapsed" %>
-      </li>
-      <!-- Nav Item - Overview -->
-      <li class="nav-item">
-        <%= link_to (raw('<i class="fas fa-fw fa-table"></i>
-          <span>Statistics</span>')), statistics_garage_path, class: "nav-link collapsed" %>
+          <span>Selling overview</span>')), my_selling_parts_path, class: "nav-link collapsed" %>
       </li>
 
     <!-- Divider -->

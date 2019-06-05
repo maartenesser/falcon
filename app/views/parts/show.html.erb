@@ -95,7 +95,8 @@
             <div class="col-sm-3 col-xs-6">
               <% if current_user.id == @part.user_id %>
                 <%= link_to "Edit part", edit_part_path, class: "btn btn-warning btn-block"  %>
-                <%= link_to "Delete part", part_path(@part), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block "%>
+                <%= link_to "Delete part", part_path(@part), data: { confirm: "Do you really want to delete #{@part.title}" }, method: :delete, class: "btn btn-danger btn-block"%>
+
               <% end %>
             </div>
             <!-- This is fix number 2 - To prevent us from being our own parts -->

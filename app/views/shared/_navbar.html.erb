@@ -65,7 +65,7 @@
             <% end %>
             </span>
           <% if current_user.photo? %>
-            <%= cl_image_tag current_user.photo, crop: :thumb, radius: :max, height: 100, width: 100, gravity: :face, class: " img-fluid img-profile rounded-circle"%>
+            <%= cl_image_tag current_user.photo, crop: :thumb, radius: :max, height: 100, width: 100, gravity: :face, class: "img-profile rounded-circle"%>
             <% else %>
             <%= cl_image_tag "user_nixstg", class: " img-fluid img-profile rounded-circle"%>
           <% end %>

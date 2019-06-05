@@ -40,7 +40,7 @@ claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description:
 claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: gael.id, status: "in progress")
 claim13 = Claim.create!(number: "863102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
 claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: gael.id)
-claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "reclaimed")
+claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "finished")
 claim16 = Claim.create!(number: "362123530", at_date: "07-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: gael.id)
 
 
@@ -64,11 +64,11 @@ ford = Car.create!(vin: "1FAHP3F26CL228943", make: "Ford", model: "Focus 2.0tdci
 
 
 puts "Generating new parts....."
-part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right for Mercedes Benz", description: "Right mirror of a mercedes benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "40185")
+part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right for Mercedes Benz", description: "Right mirror of a mercedes benz S500", condition: "used", category: "body", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "40185")
 part1[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Mercedes/RightMirror/rightmirror2.jpg"
 part1.save!
 
-part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror for Mercedes Benz", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "electric", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
+part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror for Mercedes Benz", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "body", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
 part2[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Mercedes/LeftMirror/LeftMirrorMercedes4.jpg"
 part2.save!
 
@@ -88,11 +88,11 @@ part6 = Part.new(part_model_code: "B204L", title: "Front gril of Saab 900", desc
 part6[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Saab/front%20gril/gril1.jpg"
 part6.save!
 
-part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", condition: "used", category: "electric", car: maserati, user: maarten, claim: claim4, price_cents: "14890")
+part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", condition: "used", category: "body", car: maserati, user: maarten, claim: claim4, price_cents: "14890")
 part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
 part7.save!
 
-part8 = Part.new(part_model_code: "M138A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", condition: "used",category: "electric",  car: maserati, user: maarten, claim: claim4, price_cents: "16980")
+part8 = Part.new(part_model_code: "M138A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", condition: "used",category: "body",  car: maserati, user: maarten, claim: claim4, price_cents: "16980")
 part8[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Maserati/right%20mirror/rightmirror1.jpg"
 part8.save!
 
@@ -112,15 +112,15 @@ part12 = Part.new(part_model_code: "31383332", title: "Rear bumper Volvo V90 CC"
 part12[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652924/Foto%27s%20parts/Volvo/s-l1600_dtri73.jpg"
 part12.save!
 
-part13 = Part.new(part_model_code: "KD45675X0C", title: "Mazda CX-5 ECU", description: "2.2d ECU 2016", condition: "used", category: "electric",  car: mazda, user: romeo, claim: claim7, price_cents: "23750")
+part13 = Part.new(part_model_code: "KD45675X0C", title: "Mazda CX-5 ECU", description: "2.2d ECU 2016", condition: "used", category: "other",  car: mazda, user: romeo, claim: claim7, price_cents: "23750")
 part13[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653258/Foto%27s%20parts/Mazda/s-l1600_ttrx9g.jpg"
 part13.save!
 
-part14 = Part.new(part_model_code: "GHP966DH0F", title: "Mazda CX-5 Electronic Unit (steering)", description: "Electronic steering rack controller 2012 cx-5", condition: "used", category: "electric",  car: mazda, user: romeo, claim: claim7, price_cents: "9550")
+part14 = Part.new(part_model_code: "GHP966DH0F", title: "Mazda CX-5 Electronic Unit (steering)", description: "Electronic steering rack controller 2012 cx-5", condition: "used", category: "other",  car: mazda, user: romeo, claim: claim7, price_cents: "9550")
 part14[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653591/Foto%27s%20parts/Mazda/s-l1600_nfpu4m.jpg"
 part14.save!
 
-part15 = Part.new(part_model_code: "ID-2368", title: "X3 Sunroof Accessories", description: "Panoramic sunroof replacement mechanism bmw x3 2014", condition: "new", category: "electric",  car: bmw, user: nathanael, claim: claim8, price_cents: "6595")
+part15 = Part.new(part_model_code: "ID-2368", title: "X3 Sunroof Accessories", description: "Panoramic sunroof replacement mechanism bmw x3 2014", condition: "new", category: "glass",  car: bmw, user: nathanael, claim: claim8, price_cents: "6595")
 part15[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653761/Foto%27s%20parts/Bmw/s-l1600_b6gbyy.png"
 part15.save!
 
@@ -140,7 +140,7 @@ part19 = Part.new(part_model_code: "7700834103", title: "Renault Megane Front Ri
 part19[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654914/Foto%27s%20parts/Renault/s-l1600_eg4lii.jpg"
 part19.save!
 
-part20 = Part.new(part_model_code: "EIS48397", title: "Renault Megane Door Lock Mechanism", description: "2006-2009 door lock mechanism - driver side - functioning", condition: "used", category: "electric", car: renault, user: romeo, claim: claim10, price_cents: "3599")
+part20 = Part.new(part_model_code: "EIS48397", title: "Renault Megane Door Lock Mechanism", description: "2006-2009 door lock mechanism - driver side - functioning", condition: "used", category: "sensors", car: renault, user: romeo, claim: claim10, price_cents: "3599")
 part20[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559655060/Foto%27s%20parts/Renault/s-l1600_usubgb.jpg"
 part20.save!
 
@@ -148,7 +148,7 @@ part21 = Part.new(part_model_code: "1S0919275A", title: "PDC Sensor Seat Ibiza",
 part21[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656224/Foto%27s%20parts/Seat/s-l1600_ibrlpg.jpg"
 part21.save!
 
-part22 = Part.new(part_model_code: "6J4807421E", title: "Seat Ibiza Rear Bumper Black", description: "Seat Ibiza Cupra 6J Bumper Black - heavy markings & scratches", condition: "used", category: "electric", car: seat, user: nathanael, claim: claim11, price_cents: "31000")
+part22 = Part.new(part_model_code: "6J4807421E", title: "Seat Ibiza Rear Bumper Black", description: "Seat Ibiza Cupra 6J Bumper Black - heavy markings & scratches", condition: "used", category: "body", car: seat, user: nathanael, claim: claim11, price_cents: "31000")
 part22[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656334/Foto%27s%20parts/Seat/s-l1600_zgxkii.jpg"
 part22.save!
 

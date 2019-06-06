@@ -4,7 +4,7 @@ class ClaimsController < ApplicationController
 
   def index
     @claims = policy_scope(Claim).order(at_date: :desc)
-    @claims_garage = Claim.where(garage_id: current_user.id)
+    @claims_garage = Claim.where(garage_id: current_user.id).order(created_at: :desc)
     if params[:query].present?
       @claims = @claims.global_search(params[:query]).order(at_date: :desc)
       @claims_garage = @claims_garage.global_search(params[:query]).order(at_date: :desc)

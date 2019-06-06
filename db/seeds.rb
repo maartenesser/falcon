@@ -17,8 +17,8 @@ Car.destroy_all
 puts "Generating new users....."
 nathanael = User.create!(first_name: "Nathanael", last_name: "Alain", company_name: "PDR-team", email: "nathanael@example.com",password: "123456")
 romeo = User.create!(first_name: "Romeo", last_name: "Saint-Albin", company_name: "Romeoauto Manc Ltd.",email: "romeo@example.com", password: "123456")
-gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "Autocar GmbH Garage",email: "gael@example.com", password: "123456")
-maarten = User.create!(first_name: "Maarten", last_name: "Esser", company_name: "DriveNow",email: "maarten@example.com", password: "123456")
+gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "DriveNow",email: "gael@example.com", password: "123456")
+maarten = User.create!(first_name: "Maarten", last_name: "Esser", company_name: "Autocar GmbH Garage",email: "maarten@example.com", password: "123456")
 insurance1 = User.create!(first_name: "Gael", last_name: "Tims", company_name: "AXA",email: "insurance1@example.com", password: "123456", insurance: true)
 insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "DEVK",email: "insurance2@example.com", password: "123456", insurance: true)
 insurance3 = User.create!(first_name: "Max", last_name: "Janssen", company_name: "Aviva", email: "insurance3@example.com", password: "123456", insurance: true)
@@ -38,10 +38,10 @@ claim9 = Claim.create!(number: "531900512", at_date: "01-06-2019", description: 
 claim10 = Claim.create!(number: "602366301", at_date: "30-05-2019", description: "Driver hit highway divider due to falling asleep, full left side body damage", user: insurance1, garage_id: maarten.id, status: "finished")
 claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description: "Rear bumper damage when reversing in garage, parking sensors need to be replaced", user: insurance1, garage_id: maarten.id)
 claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: maarten.id, status: "in progress")
-claim13 = Claim.create!(number: "363102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
+claim13 = Claim.create!(number: "363102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance2, garage_id: gael.id)
 claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: maarten.id)
 claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: maarten.id, status: "finished")
-claim16 = Claim.create!(number: "362123530", at_date: "01-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: maarten.id)
+claim16 = Claim.create!(number: "362123530", at_date: "01-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance1, garage_id: maarten.id)
 
 
 puts "Generating new cars....."
@@ -68,13 +68,13 @@ part1 = Part.new(part_model_code: "A2208100416", title: "Mirror Right for Merced
 part1[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Mercedes/RightMirror/rightmirror2.jpg"
 part1.save!
 
-part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror for Mercedes Benz", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "body", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
-part2[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Mercedes/LeftMirror/LeftMirrorMercedes4.jpg"
-part2.save!
+part18 = Part.new(part_model_code: "8E0821106B", title: "Audi A4 B8 Front Left Fender", description: "color code: LZ9W - black - light scratches near headlight area", condition: "used", category: "body", car: audi, user: romeo, claim: claim9, price_cents: "6850")
+part18[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654509/Foto%27s%20parts/Audi/s-l1600_sri4e4.jpg"
+part18.save!
 
-part3 = Part.new(part_model_code: "6803-00-9540280P", title: "Bonnet for VW Passat", description: "Bonnet for VW passat 2012", condition: "new", category: "body", car: volkswagen, user: romeo, claim: claim2, price_cents: "18051")
-part3[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Volkswagen/bonnet/bonnet1.jpg"
-part3.save!
+part10 = Part.new(part_model_code: "4061965603978", title: "Front right fender Peugeot 3008", description: "Front right fender (plastic) - no mounting hardware 2009-2014 peugeot 3008", condition: "used", category: "body",  car: peugeot, user: nathanael, claim: claim5, price_cents: "32050")
+part10[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652098/Foto%27s%20parts/Peugeot/s-l1600_zu9v3r.jpg"
+part10.save!
 
 part4 = Part.new(part_model_code: "3C5827025H", title: "Tailgate VW Passat", description: "Tailgate VW Passat without any extra parts and two dents", category: "body", condition: "new", car: volkswagen, user: romeo, claim: claim2, price_cents: "12890")
 part4[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062840/Foto%27s%20parts/Volkswagen/tailgate/tailgate3.jpg"
@@ -84,13 +84,9 @@ part5 = Part.new(part_model_code: "B204I", title: "Right back door Saab 900", de
 part5[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Saab/right%20door/rightdoor.jpg"
 part5
 
-part6 = Part.new(part_model_code: "B204L", title: "Front gril of Saab 900", description: "Almost new Frontgrill Saab", condition: "used", car: saab, user: gael, category: "body", claim: claim3, price_cents: "6980")
-part6[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Saab/front%20gril/gril1.jpg"
-part6.save!
-
-part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", condition: "used", category: "body", car: maserati, user: maarten, claim: claim4, price_cents: "14890")
-part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
-part7.save!
+part31 = Part.new(part_model_code: "3M519G444AB", title: "Exhaust Lambda Sensor Ford Focus 2012", description: "2012 Lambda Sensor in useable condition - not refurbished", condition: "used", category: "other",  car: ford, user: romeo, claim: claim16, price_cents: "13295")
+part31[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657853/Foto%27s%20parts/Ford/s-l1600_i7sx2c.jpg"
+part31.save!
 
 part8 = Part.new(part_model_code: "M138A", title: "Right mirror Maserati Quattroporte", description: "Used Right mirror Maserati Quattroporte", condition: "used",category: "body",  car: maserati, user: maarten, claim: claim4, price_cents: "16980")
 part8[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Maserati/right%20mirror/rightmirror1.jpg"
@@ -100,9 +96,13 @@ part9 = Part.new(part_model_code: "9809687377", title: "Rear rim peugeot 3008", 
 part9[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652400/Foto%27s%20parts/Peugeot/s-l1600_x7tou6.jpg"
 part9.save!
 
-part10 = Part.new(part_model_code: "4061965603978", title: "Front right fender Peugeot 3008", description: "Front right fender (plastic) - no mounting hardware 2009-2014 peugeot 3008", condition: "used", category: "body",  car: peugeot, user: nathanael, claim: claim5, price_cents: "32050")
-part10[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652098/Foto%27s%20parts/Peugeot/s-l1600_zu9v3r.jpg"
-part10.save!
+part2 = Part.new(part_model_code: "2208100116", title: "Left Mirror for Mercedes Benz", description: "Left mirror without mirror Mercedes-Benz S500", condition: "used", category: "body", car: mercedes_benz, user: nathanael, claim: claim1, price_cents: "14000")
+part2[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Mercedes/LeftMirror/LeftMirrorMercedes4.jpg"
+part2.save!
+
+part16 = Part.new(part_model_code: "7316396", title: "X3 Sunroof Assembly", description: "Panoramic sunroof mechanism for bmw x3 2014", condition: "used", category: "glass", car: bmw, user: nathanael, claim: claim8, price_cents: "64550")
+part16[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653918/Foto%27s%20parts/Bmw/s-l1600_adetdh.jpg"
+part16.save!
 
 part11 = Part.new(part_model_code: "31386635", title: "Bonnet Volvo V90", description: "Front bonnet V90 Storm Grey - hail damage", condition: "used", category: "body",  car: volvo, user: maarten, claim: claim6, price_cents: "98500")
 part11[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652688/Foto%27s%20parts/Volvo/s-l1600_riamnm.jpg"
@@ -120,21 +120,26 @@ part14 = Part.new(part_model_code: "GHP966DH0F", title: "Mazda CX-5 Electronic U
 part14[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653591/Foto%27s%20parts/Mazda/s-l1600_nfpu4m.jpg"
 part14.save!
 
+part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", condition: "used", category: "body", car: maserati, user: maarten, claim: claim4, price_cents: "14890")
+part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
+part7.save!
+
+part3 = Part.new(part_model_code: "6803-00-9540280P", title: "Bonnet for VW Passat", description: "Bonnet for VW passat 2012", condition: "new", category: "body", car: volkswagen, user: romeo, claim: claim2, price_cents: "18051")
+part3[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Volkswagen/bonnet/bonnet1.jpg"
+part3.save!
+
 part15 = Part.new(part_model_code: "ID-2368", title: "X3 Sunroof Accessories", description: "Panoramic sunroof replacement mechanism bmw x3 2014", condition: "new", category: "glass",  car: bmw, user: nathanael, claim: claim8, price_cents: "6595")
 part15[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653761/Foto%27s%20parts/Bmw/s-l1600_b6gbyy.png"
 part15.save!
 
-part16 = Part.new(part_model_code: "7316396", title: "X3 Sunroof Assembly", description: "Panoramic sunroof mechanism for bmw x3 2014", condition: "used", category: "glass", car: bmw, user: nathanael, claim: claim8, price_cents: "64550")
-part16[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653918/Foto%27s%20parts/Bmw/s-l1600_adetdh.jpg"
-part16.save!
 
 part17 = Part.new(part_model_code: "8W0941005B", title: "Audi A4 B8 Front Right Headlight", description: "Xenon headlight B8 Audi A4 S-line", condition: "used", category: "lighting", car: audi, user: romeo, claim: claim9, price_cents: "39000")
 part17[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654166/Foto%27s%20parts/Audi/s-l1600_natn2u.jpg"
 part17.save!
 
-part18 = Part.new(part_model_code: "8E0821106B", title: "Audi A4 B8 Front Left Fender", description: "color code: LZ9W - black - light scratches near headlight area", condition: "used", category: "body", car: audi, user: romeo, claim: claim9, price_cents: "6850")
-part18[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654509/Foto%27s%20parts/Audi/s-l1600_sri4e4.jpg"
-part18.save!
+part6 = Part.new(part_model_code: "B204L", title: "Front gril of Saab 900", description: "Almost new Frontgrill Saab", condition: "used", car: saab, user: gael, category: "body", claim: claim3, price_cents: "6980")
+part6[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062841/Foto%27s%20parts/Saab/front%20gril/gril1.jpg"
+part6.save!
 
 part19 = Part.new(part_model_code: "7700834103", title: "Renault Megane Front Right Door", description: "2006 right front door (LHD car) for renault megane - black", condition: "used", category: "body", car: renault, user: romeo, claim: claim10, price_cents: "14095")
 part19[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654914/Foto%27s%20parts/Renault/s-l1600_eg4lii.jpg"
@@ -184,9 +189,6 @@ part30 = Part.new(part_model_code: "1K6955651", title: "Screenwash Pump VW", des
 part30[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657703/Foto%27s%20parts/Volkswagen2/s-l1600_fvdcre.jpg"
 part30.save!
 
-part31 = Part.new(part_model_code: "3M519G444AB", title: "Exhaust Lambda Sensor Ford Focus 2012", description: "2012 Lambda Sensor in useable condition - not refurbished", condition: "used", category: "other",  car: ford, user: romeo, claim: claim16, price_cents: "13295")
-part31[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657853/Foto%27s%20parts/Ford/s-l1600_i7sx2c.jpg"
-part31.save!
 
 part32 = Part.new(part_model_code: "3M515230UA", title: "Ford Focus 2012 2.0t Full Exhaust", description: "Resonator + midpipes - no header or catalytic converted - needs refurbishing", condition: "used", category: "other",  car: ford, user: romeo, claim: claim16, price_cents: "9250")
 part32[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657950/Foto%27s%20parts/Ford/s-l1600_bndaqh.jpg"
@@ -195,6 +197,8 @@ part32.save!
 
 puts "Generating new Orders every user gets 2 pending and sold orders...."
 order1 = Order.create!(user: gael, status: "paid", part: part24)
+order2 = Order.create!(user: nathanael, status: "paid", part: part31)
+order2 = Order.create!(user: nathanael, status: "paid", part: part32)
 
 puts "Done with seeding the whole database"
 

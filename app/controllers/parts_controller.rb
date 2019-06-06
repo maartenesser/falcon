@@ -31,7 +31,7 @@ class PartsController < ApplicationController
     @part.user = current_user
     authorize @part
     if @part.save
-      redirect_to root_path, notice: 'Part successfully created'
+      redirect_to my_selling_parts_path, notice: 'Part successfully created'
     else
       render :new
     end

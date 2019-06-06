@@ -16,9 +16,9 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-           <div class="item active">
+           <div class="item active text-center">
             <%# @parts.each do |part| %>
-            <%= cl_image_tag @part.photo, :width=>400, :height=>300, :fetch_format=>:auto, :crop=> :fill %>
+            <%= cl_image_tag @part.photo, :width => 600, :height => 450, :fetch_format => :auto, :crop => :fill %>
             <%# end %>
             </div>
           </div>

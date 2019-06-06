@@ -16,30 +16,10 @@
                 <li class="list-group-item"><strong>Model:</strong> <%= part.car.model %></li>
                 <li class="list-group-item"><strong>Price:</strong> <%= Money.new(part.price_cents, "EUR").format %></li>
               </ul>
-               <div class="card-body text-center d-flex justify-content-around">
-
-                <div class="col-sm-3 col-xs-6">
+               <div class="card-body text-center d-flex justify-content-center">
+                <div>
                   <%= link_to (raw('<i class="fas fa-info-circle"></i><span> Info</span>')), part_path(part), class: "btn btn-primary" %>
                 </div>
-                  <!-- If false is an easy way of commenting -->
-                <% if false %>
-                  <div class="col-sm-3 col-xs-6">
-                  <% if part.user_id != current_user.id %>
-                    <% if part.order.blank? %>
-                      <%= form_tag orders_path do %>
-                        <%= hidden_field_tag 'part_id', part.id %>
-                        <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
-                          <i class="fas fa-shopping-cart"></i>
-                          <span>Basket</span>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> See in Basket</span>')), orders_path, class: "btn btn-success"  %>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-              <!-- This is where the comment ends -->
                </div>
             </div>
           </div>

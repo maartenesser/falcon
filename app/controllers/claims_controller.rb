@@ -65,7 +65,7 @@ class ClaimsController < ApplicationController
       http://www.falcon-parts.com/"
       # Uncomment the line beneeth to recieve sms message to phone when claim is created
       NotificationService.new().send_sms(message)
-      redirect_to claim_path(@claim.id), notice: "Claim #{@claim.number} was successfully created and a message was sent to #{garage_first_name}"
+      redirect_to claims_path, notice: "Claim #{@claim.number} was successfully created and a message was sent to #{garage_first_name}"
     else
       render :new
     end

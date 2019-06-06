@@ -90,20 +90,14 @@
 
         <% if current_user.insurance %>
           <!-- Submition/Add to basket -->
-          <%= link_to "Back", claim_path(@claim), class: "btn btn-primary btn-block"  %>
-          <% else %>
-          <div class="row mt-4 d-flex justify-content-between">
-            <div class="col-sm-3 col-xs-6">
-              <%= link_to "Back to parts", parts_path, class: "btn btn-primary btn-block"  %>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-              <% if current_user.id == @part.user_id %>
-                <%= link_to "Edit part", edit_part_path, class: "btn btn-warning btn-block"  %>
-                <%= link_to "Delete part", part_path(@part), data: { confirm: "Do you really want to delete #{@part.title}" }, method: :delete, class: "btn btn-danger btn-block"%>
-
-              <% end %>
-            </div>
+          <%= link_to "Back", claim_path(@claim), class: "btn btn-primary "  %>
+        <% else %>
+          <div class="mt-4 d-flex justify-content-between">
+            <%= link_to "Back to parts", parts_path, class: "btn btn-primary w-25"  %>
+            <% if current_user.id == @part.user_id %>
+              <%= link_to "Edit part", edit_part_path, class: "btn btn-warning w-25"  %>
+              <%= link_to "Delete part", part_path(@part), data: { confirm: "Do you really want to delete #{@part.title}" }, method: :delete, class: "btn btn-danger w-25"%>
+            <% end %>
             <!-- This is fix number 2 - To prevent us from being our own parts -->
             <% if @part.user_id != current_user.id %>
               <% if @part.order.blank? %>
@@ -117,11 +111,11 @@
                     <% end %>
                   <% end %>
                 <% else %>
-                <div class="col-sm-3 col-xs-6">
-                  <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> See in basket</span>')), orders_path, class: "btn btn-success btn-block"  %>
-                </div>
+                  <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> See in basket</span>')), orders_path, class: "btn btn-success"  %>
               <% end %>
-
             <% end %>
-          <% end %>
-      </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -4,8 +4,13 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
     authorize @orders
     total_price = 0
+    @basket_full = false
     current_user.orders.each do |order|
-      total_price += order.part.price_cents
+      if order.status == 'pending' && order.part != nil
+        total_price += order.part.price_cents
+        # checking if there is an item in the basket. if not don't show the buy button
+        @basket_full = true
+      end
     end
     @total_price_format = Money.new(total_price, "EUR").format
   end
@@ -27,28 +32,22 @@ class OrdersController < ApplicationController
   end
 
   def update
-    # @order = Order.find(params[:id])
     @orders = current_user.orders
+    @unsuccesfull_orders = []
+
     @orders.each do |order|
+      authorize order
       order.status = 'paid'
-      order.save
+      unless order.save
+        @unsuccesfull_orders << order
+      end
     end
 
-    redirect_to parts_path, notice: "You succesfully bought all your parts"
-    authorize @orders
-
-
-    # if @order.save
-    #   # Send email to buyer
-    #   # Turned off as annoying
-    #   # mail = OrderMailer.with(order: @order).order_confirmation
-    #   # mail.deliver_now
-    #   redirect_to order_path(@order)
-    # else
-    #   render 'parts/show'
-    # end
-
-
+    if @unsuccesfull_orders.length == 0
+      redirect_to parts_path, notice: "You succesfully bought all your parts"
+    else
+      redirect_to orders_path, notice: "not all the parts have been bought"
+    end
   end
 
   def destroy

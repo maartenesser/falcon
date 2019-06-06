@@ -54,7 +54,9 @@
                 <div class="summary-item"><span class="text">Shipping</span><span class="price">€ 0</span></div>
                 <div class="summary-item"><span class="text">Total</span><span class="price"><%= @total_price_format %></span></div>
                 <br>
-                <%= link_to "Buy", order_path(current_user.orders), data: { confirm: "Confirm purchase?" } , method: "patch", class: "btn btn-success btn-lg btn-block" %>
+                <% if @basket_full == true %>
+                  <%= link_to "Buy", order_path(current_user.orders), data: { confirm: "Confirm purchase?" } , method: "patch", class: "btn btn-success btn-lg btn-block" %>
+                <% end %>
                 <hr>
                 <%= link_to 'Back to Parts', parts_path, class: "btn btn-primary w-100 p-2 btn-lg btn-block" %>
               </div>

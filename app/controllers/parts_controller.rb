@@ -4,7 +4,9 @@ class PartsController < ApplicationController
   def index
     @parts = policy_scope(Part).order(created_at: :desc)
     if params[:query].present?
-      @parts = (Part.where.not(user: current_user).global_search(params[:query]))
+      # If it fails let's go back to the initial method below implemented by Nath :)
+      # @parts = (Part.where.not(user: current_user).global_search(params[:query]))
+      @parts = (Part.left_outer_joins(:order).where.not(user: current_user).where(orders: { id: nil })).where.not(user: current_user).global_search(params[:query])
     end
   end
 

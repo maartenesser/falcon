@@ -1,3 +1,8 @@
+<% content_for :meta_title, "#{@part.part_model_code} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @part.description %>
+<% content_for :meta_image, cl_image_path(@part.photo) %>
+
+
 <div class="container">
   <div class="card shadow mb-4">
     <div class="card-header py-3">

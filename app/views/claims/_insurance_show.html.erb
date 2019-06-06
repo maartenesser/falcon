@@ -7,27 +7,19 @@
       </div>
     </div>
     <div class="card-body">
-
-      <div>
-        Claim status: <%= @claim.status %>
-      </div>
-
-      <div>
-        Claim description:  <%= @claim.description %>
-      </div>
-
-      <div>
-        Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
-      </div>
-
-      <div>
-        Insurance: <%= @insurance %>
-      </div>
-
       <div>
         Garage: <%= @garage %>
       </div>
-
+      <div>
+        Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
+      </div>
+      <div>
+        Claim status: <%= @claim.status %>
+      </div>
+      <div>
+        Claim description:  <%= @claim.description %>
+      </div>
+      <br>
       <% unless @car.nil? && @part.nil? %>
         <div>
           Car make: <%= @car.make %>
@@ -37,8 +29,8 @@
           Car model: <%= @car.model %>
         </div>
       <% end %>
-
     </div>
+
     <div class="flex-container-show">
       <div>
         <%= link_to "Back to claims", claims_path, class: "btn btn-primary", id: "show-return-btn" %>
@@ -49,7 +41,6 @@
       <div>
         <%= link_to "Delete", claim_path(@claim), data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-danger", id: "show-delete-btn" %>
       </div>
-
     </div>
   </div>
   <div class="title-num-of-part">
@@ -62,7 +53,7 @@
     <% end %>
   </div>
   <div class="container-index-parts">
-  <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center">
       <% @all_parts_for_this_claim.each do |part| %>
           <div class="col-xl-3 col-lg-6 mb-4">
             <div class="card shadow border" style="width: 100%">
@@ -95,9 +86,8 @@
             </div>
           </div>
       <% end %>
+    </div>
   </div>
-</div>
-
 </div>
 
 

@@ -1,0 +1,8 @@
+# config/meta.yml
+
+meta_product_name: "falcon"
+meta_title: "falcon - Spare parts platform between insurances and repair car centers"
+meta_description: "Easy platform where the claims can be spread to the body shops and the spare parts will be uploded. Insurance and body shops will get trough it a win win situation. Happy using"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
+meta_product_name: "Spare part show"

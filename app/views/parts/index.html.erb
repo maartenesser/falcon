@@ -24,6 +24,12 @@
         </div>
       <% end %>
   </div>
+  <div class="row p-2">
+    <%  if params[:query].present? && @parts.count ==0 %>
+    <h2>No matches for "<%= params[:query] %>"</h2>
+    <h2>, go back to <%= link_to 'parts', parts_path  %></h2>
+    <% end %>
+  </div>
 </div>
 
 

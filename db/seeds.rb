@@ -19,8 +19,8 @@ nathanael = User.create!(first_name: "Nathanael", last_name: "Alain", company_na
 romeo = User.create!(first_name: "Romeo", last_name: "Saint-Albin", company_name: "Romeoauto Manc Ltd.",email: "romeo@example.com", password: "123456")
 gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "Autocar GmbH Garage",email: "gael@example.com", password: "123456")
 maarten = User.create!(first_name: "Maarten", last_name: "Esser", company_name: "DriveNow",email: "maarten@example.com", password: "123456")
-insurance1 = User.create!(first_name: "Helmut", last_name: "Hermanns", company_name: "DEVK",email: "insurance1@example.com", password: "123456", insurance: true)
-insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "Axa",email: "insurance2@example.com", password: "123456", insurance: true)
+insurance1 = User.create!(first_name: "Gael", last_name: "Tims", company_name: "AXA",email: "insurance1@example.com", password: "123456", insurance: true)
+insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "DEVK",email: "insurance2@example.com", password: "123456", insurance: true)
 insurance3 = User.create!(first_name: "Max", last_name: "Janssen", company_name: "Aviva", email: "insurance3@example.com", password: "123456", insurance: true)
 insurance4 = User.create!(first_name: "Rolf", last_name: "Heidelbeck", company_name: "ADAC", email: "insurance4@example.com", password: "123456", insurance: true)
 
@@ -32,16 +32,16 @@ claim3 = Claim.create!(number: "098723331", at_date: "02-05-2019", description: 
 claim4 = Claim.create!(number: "385203985", at_date: "21-04-2019", description: "Rear-end pile-up on highway, car was hit from behind at medium speed. Airbags & whiplash system in seat activated", user: insurance1, garage_id: maarten.id)
 claim5 = Claim.create!(number: "748292355", at_date: "27-03-2019", description: "Driver lost control in the rain and had a side impact with a curb. Rear right wheel/tire & suspension components damaged", user: insurance1, garage_id: gael.id, status: "in progress")
 claim6 = Claim.create!(number: "791250321", at_date: "13-05-2019", description: "Hail damage on body work, glass intact but bonnet/roof/bootlid/fenders damaged", user: insurance1, garage_id: gael.id)
-claim7 = Claim.create!(number: "910413496", at_date: "19-05-2019", description: "Flooding in garage, engine seized & wiring harness need replacing", user: insurance1, garage_id: gael.id)
-claim8 = Claim.create!(number: "162316332", at_date: "02-06-2019", description: "Sunroof stopped working, rear glass panel doesn't operate anymore", user: insurance4, garage_id: gael.id)
-claim9 = Claim.create!(number: "531900512", at_date: "01-06-2019", description: "Front right headlight damaged in parking garage (driver hit a small pole)", user: insurance1, garage_id: gael.id)
-claim10 = Claim.create!(number: "602366301", at_date: "30-05-2019", description: "Driver hit highway divider due to falling asleep, full left side body damage", user: insurance1, garage_id: gael.id, status: "finished")
-claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description: "Rear bumper damage when reversing in garage, parking sensors need to be replaced", user: insurance1, garage_id: gael.id)
-claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: gael.id, status: "in progress")
+claim7 = Claim.create!(number: "910413496", at_date: "19-05-2019", description: "Flooding in garage, engine seized & wiring harness need replacing", user: insurance1, garage_id: maarten.id)
+claim8 = Claim.create!(number: "162316332", at_date: "02-06-2019", description: "Sunroof stopped working, rear glass panel doesn't operate anymore", user: insurance4, garage_id: maarten.id)
+claim9 = Claim.create!(number: "531900512", at_date: "01-06-2019", description: "Front right headlight damaged in parking garage (driver hit a small pole)", user: insurance1, garage_id: maarten.id)
+claim10 = Claim.create!(number: "602366301", at_date: "30-05-2019", description: "Driver hit highway divider due to falling asleep, full left side body damage", user: insurance1, garage_id: maarten.id, status: "finished")
+claim11 = Claim.create!(number: "261233610", at_date: "04-05-2019", description: "Rear bumper damage when reversing in garage, parking sensors need to be replaced", user: insurance1, garage_id: maarten.id)
+claim12 = Claim.create!(number: "414321260", at_date: "09-05-2019", description: "Left rear rim & tire damage from parking accident (driver scratched against a high curb)", user: insurance1, garage_id: maarten.id, status: "in progress")
 claim13 = Claim.create!(number: "363102351", at_date: "14-03-2019", description: "Small animal was hit driving at highway speed, front bumper & radiator + washer bottle need replacing", user: insurance1, garage_id: gael.id)
-claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: gael.id)
-claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: gael.id, status: "finished")
-claim16 = Claim.create!(number: "362123530", at_date: "01-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: gael.id)
+claim14 = Claim.create!(number: "615230511", at_date: "22-02-2019", description: "Rear tailgate was open while driver was moving his car in personal garage - rear tailgate left hinge broken", user: insurance1, garage_id: maarten.id)
+claim15 = Claim.create!(number: "742360122", at_date: "19-01-2019", description: "Car + tram collision - front right side full repair (fender + headlight + sensors + radiator + fog light + frame damage)", user: insurance1, garage_id: maarten.id, status: "finished")
+claim16 = Claim.create!(number: "362123530", at_date: "01-06-2019", description: "Exhaust hanger broke loose on highway - headers back need replacing", user: insurance3, garage_id: maarten.id)
 
 
 puts "Generating new cars....."
@@ -128,11 +128,11 @@ part16 = Part.new(part_model_code: "7316396", title: "X3 Sunroof Assembly", desc
 part16[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653918/Foto%27s%20parts/Bmw/s-l1600_adetdh.jpg"
 part16.save!
 
-part17 = Part.new(part_model_code: "8W0941005B", title: "Audi A4 B8 Front Right Headlight", description: "Xenon headlight B8 Audi A4 S-line", condition: "used", category: "lighting", car: audi, user: maarten, claim: claim9, price_cents: "39000")
+part17 = Part.new(part_model_code: "8W0941005B", title: "Audi A4 B8 Front Right Headlight", description: "Xenon headlight B8 Audi A4 S-line", condition: "used", category: "lighting", car: audi, user: romeo, claim: claim9, price_cents: "39000")
 part17[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654166/Foto%27s%20parts/Audi/s-l1600_natn2u.jpg"
 part17.save!
 
-part18 = Part.new(part_model_code: "8E0821106B", title: "Audi A4 B8 Front Left Fender", description: "color code: LZ9W - black - light scratches near headlight area", condition: "used", category: "body", car: audi, user: maarten, claim: claim9, price_cents: "6850")
+part18 = Part.new(part_model_code: "8E0821106B", title: "Audi A4 B8 Front Left Fender", description: "color code: LZ9W - black - light scratches near headlight area", condition: "used", category: "body", car: audi, user: romeo, claim: claim9, price_cents: "6850")
 part18[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654509/Foto%27s%20parts/Audi/s-l1600_sri4e4.jpg"
 part18.save!
 
@@ -152,11 +152,11 @@ part22 = Part.new(part_model_code: "6J4807421E", title: "Seat Ibiza Rear Bumper 
 part22[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656334/Foto%27s%20parts/Seat/s-l1600_zgxkii.jpg"
 part22.save!
 
-part23 = Part.new(part_model_code: "9673773677", title: "Peugeot 208 Alloy", description: "16inch 6Jx16 ET23 - 2012+", condition: "used", category: "wheel",  car: peugeot2, user: maarten, claim: claim12, price_cents: "19000")
+part23 = Part.new(part_model_code: "9673773677", title: "Peugeot 208 Alloy", description: "16inch 6Jx16 ET23 - 2012+", condition: "used", category: "wheel",  car: peugeot2, user: romeo, claim: claim12, price_cents: "19000")
 part23[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656577/Foto%27s%20parts/Peugeot2/s-l1600_n0txir.jpg"
 part23.save!
 
-part24 = Part.new(part_model_code: "3322937716319", title: "Peugeot 208 Rear Brake Discs", description: "TRW Rear Brake discs fits peugeot 208", condition: "new", category: "other",  car: peugeot2, user: maarten, claim: claim12, price_cents: "9285")
+part24 = Part.new(part_model_code: "3322937716319", title: "Peugeot 208 Rear Brake Discs", description: "TRW Rear Brake discs fits peugeot 208", condition: "new", category: "other",  car: peugeot2, user: romeo, claim: claim12, price_cents: "9285")
 part24[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656772/Foto%27s%20parts/Peugeot2/s-l1600_kxembx.jpg"
 part24.save!
 
@@ -176,11 +176,11 @@ part28 = Part.new(part_model_code: "915DI691", title: "Tesla Model S Tailgate", 
 part28[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657319/Foto%27s%20parts/Tesla/s-l1600_hn3uxp.jpg"
 part28.save!
 
-part29 = Part.new(part_model_code: "1S0807221B", title: "Front Bumper VW Up 2016", description: "Candy White front bumper vw up 2011+", condition: "used", category: "body",  car: volkswagen2, user: maarten, claim: claim15, price_cents: "8900")
+part29 = Part.new(part_model_code: "1S0807221B", title: "Front Bumper VW Up 2016", description: "Candy White front bumper vw up 2011+", condition: "used", category: "body",  car: volkswagen2, user: romeo, claim: claim15, price_cents: "8900")
 part29[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657466/Foto%27s%20parts/Volkswagen2/s-l1600_tllema.jpg"
 part29.save!
 
-part30 = Part.new(part_model_code: "1K6955651", title: "Screenwash Pump VW", description: "VW UP 2011+ screenwasher pump", condition: "used", category: "other",  car: volkswagen2, user: maarten, claim: claim15, price_cents: "2299")
+part30 = Part.new(part_model_code: "1K6955651", title: "Screenwash Pump VW", description: "VW UP 2011+ screenwasher pump", condition: "used", category: "other",  car: volkswagen2, user: romeo, claim: claim15, price_cents: "2299")
 part30[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657703/Foto%27s%20parts/Volkswagen2/s-l1600_fvdcre.jpg"
 part30.save!
 

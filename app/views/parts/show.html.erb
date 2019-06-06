@@ -107,15 +107,15 @@
             <!-- This is fix number 2 - To prevent us from being our own parts -->
             <% if @part.user_id != current_user.id %>
               <% if @part.order.blank? %>
-                <div class="col-sm-3 col-xs-6">
                   <%= form_tag orders_path do %>
                     <%= hidden_field_tag 'part_id', @part.id %>
-                    <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
-                      <i class="fas fa-shopping-cart"></i>
-                      <span> Add to basket</span>
+                    <%= button_tag type: 'submit', class: 'btn btn-success btn-icon-split' do %>
+                      <span class="icon text-white-50">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                      <span class="text">Add to basket</span>
                     <% end %>
                   <% end %>
-                </div>
                 <% else %>
                 <div class="col-sm-3 col-xs-6">
                   <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> See in basket</span>')), orders_path, class: "btn btn-success btn-block"  %>

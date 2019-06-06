@@ -36,7 +36,7 @@ $(document).ready(function(){
 $(function() {
   setTimeout(function(){
     $('.alert').slideUp(500);
-  }, 1000);
+  }, 1500);
 });
 
 graphFunction();

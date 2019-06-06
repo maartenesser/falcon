@@ -34,7 +34,6 @@ class PartsController < ApplicationController
       redirect_to root_path, notice: 'Part successfully created'
     else
       render :new
-
     end
   end
 

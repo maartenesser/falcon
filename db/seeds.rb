@@ -18,8 +18,15 @@ puts "Generating new users....."
 nathanael = User.create!(first_name: "Nathanael", last_name: "Alain", company_name: "PDR-team", email: "nathanael@example.com",password: "123456")
 romeo = User.create!(first_name: "Romeo", last_name: "Saint-Albin", company_name: "Romeoauto Manc Ltd.",email: "romeo@example.com", password: "123456")
 gael = User.create!(first_name: "Gael", last_name: "Tims", company_name: "DriveNow",email: "gael@example.com", password: "123456")
+
 maarten = User.create!(first_name: "Maarten", last_name: "Esser", company_name: "Autocar GmbH Garage",email: "maarten@example.com", password: "123456")
+maarten[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062276/profilePic/maarten.jpg"
+maarten.save!
+
 insurance1 = User.create!(first_name: "Gael", last_name: "Tims", company_name: "AXA",email: "insurance1@example.com", password: "123456", insurance: true)
+insurance1[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1558709873/profilePic/gael.jpg"
+insurance1.save!
+
 insurance2 = User.create!(first_name: "Siegmund", last_name: "Meier", company_name: "DEVK",email: "insurance2@example.com", password: "123456", insurance: true)
 insurance3 = User.create!(first_name: "Max", last_name: "Janssen", company_name: "Aviva", email: "insurance3@example.com", password: "123456", insurance: true)
 insurance4 = User.create!(first_name: "Rolf", last_name: "Heidelbeck", company_name: "ADAC", email: "insurance4@example.com", password: "123456", insurance: true)
@@ -108,17 +115,15 @@ part11 = Part.new(part_model_code: "31386635", title: "Bonnet Volvo V90", descri
 part11[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652688/Foto%27s%20parts/Volvo/s-l1600_riamnm.jpg"
 part11.save!
 
-part12 = Part.new(part_model_code: "31383332", title: "Rear bumper Volvo V90 CC", description: "Rear bumper V90 CC - no sensors/electronics - inscription white", condition: "used", category: "body",  car: volvo, user: maarten, claim: claim6, price_cents: "18500")
-part12[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652924/Foto%27s%20parts/Volvo/s-l1600_dtri73.jpg"
-part12.save!
 
 part13 = Part.new(part_model_code: "KD45675X0C", title: "Mazda CX-5 ECU", description: "2.2d ECU 2016", condition: "used", category: "other",  car: mazda, user: romeo, claim: claim7, price_cents: "23750")
 part13[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653258/Foto%27s%20parts/Mazda/s-l1600_ttrx9g.jpg"
 part13.save!
 
-part14 = Part.new(part_model_code: "GHP966DH0F", title: "Mazda CX-5 Electronic Unit (steering)", description: "Electronic steering rack controller 2012 cx-5", condition: "used", category: "other",  car: mazda, user: romeo, claim: claim7, price_cents: "9550")
-part14[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653591/Foto%27s%20parts/Mazda/s-l1600_nfpu4m.jpg"
-part14.save!
+
+part12 = Part.new(part_model_code: "31383332", title: "Rear bumper Volvo V90 CC", description: "Rear bumper V90 CC - no sensors/electronics - inscription white", condition: "used", category: "body",  car: volvo, user: maarten, claim: claim6, price_cents: "18500")
+part12[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559652924/Foto%27s%20parts/Volvo/s-l1600_dtri73.jpg"
+part12.save!
 
 part7 = Part.new(part_model_code: "M139A", title: "Left mirror Maserati Quattroporte", description: "Used Left mirror Maserati Quattroporte", condition: "used", category: "body", car: maserati, user: maarten, claim: claim4, price_cents: "14890")
 part7[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062842/Foto%27s%20parts/Maserati/left%20mirror/leftmirror2.jpg"
@@ -127,6 +132,10 @@ part7.save!
 part3 = Part.new(part_model_code: "6803-00-9540280P", title: "Bonnet for VW Passat", description: "Bonnet for VW passat 2012", condition: "new", category: "body", car: volkswagen, user: romeo, claim: claim2, price_cents: "18051")
 part3[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559062839/Foto%27s%20parts/Volkswagen/bonnet/bonnet1.jpg"
 part3.save!
+
+part14 = Part.new(part_model_code: "GHP966DH0F", title: "Mazda CX-5 Electronic Unit (steering)", description: "Electronic steering rack controller 2012 cx-5", condition: "used", category: "other",  car: mazda, user: romeo, claim: claim7, price_cents: "9550")
+part14[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653591/Foto%27s%20parts/Mazda/s-l1600_nfpu4m.jpg"
+part14.save!
 
 part15 = Part.new(part_model_code: "ID-2368", title: "X3 Sunroof Accessories", description: "Panoramic sunroof replacement mechanism bmw x3 2014", condition: "new", category: "glass",  car: bmw, user: nathanael, claim: claim8, price_cents: "6595")
 part15[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559653761/Foto%27s%20parts/Bmw/s-l1600_b6gbyy.png"
@@ -145,55 +154,55 @@ part19 = Part.new(part_model_code: "7700834103", title: "Renault Megane Front Ri
 part19[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559654914/Foto%27s%20parts/Renault/s-l1600_eg4lii.jpg"
 part19.save!
 
-part20 = Part.new(part_model_code: "EIS48397", title: "Renault Megane Door Lock Mechanism", description: "2006-2009 door lock mechanism - driver side - functioning", condition: "used", category: "sensors", car: renault, user: romeo, claim: claim10, price_cents: "3599")
-part20[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559655060/Foto%27s%20parts/Renault/s-l1600_usubgb.jpg"
-part20.save!
+part25 = Part.new(part_model_code: "2534664", title: "Mini Cooper Clubman S All4 Front Bumper", description: "F54 front bumper in 'blazing red' for mini cooper s clubman  f54 2015+", condition: "used", category: "body", car: mini, user: romeo, claim: claim13, price_cents: "51000")
+part25[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656897/Foto%27s%20parts/Mini/s-l1600_ojvjcj.jpg"
+part25.save!
 
 part21 = Part.new(part_model_code: "1S0919275A", title: "PDC Sensor Seat Ibiza", description: "VW/Audi/Seat PDC sensor - like new", condition: "used", category: "sensors",  car: seat, user: nathanael, claim: claim11, price_cents: "4250")
 part21[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656224/Foto%27s%20parts/Seat/s-l1600_ibrlpg.jpg"
 part21.save!
 
-part22 = Part.new(part_model_code: "6J4807421E", title: "Seat Ibiza Rear Bumper Black", description: "Seat Ibiza Cupra 6J Bumper Black - heavy markings & scratches", condition: "used", category: "body", car: seat, user: nathanael, claim: claim11, price_cents: "31000")
-part22[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656334/Foto%27s%20parts/Seat/s-l1600_zgxkii.jpg"
-part22.save!
 
 part23 = Part.new(part_model_code: "9673773677", title: "Peugeot 208 Alloy", description: "16inch 6Jx16 ET23 - 2012+", condition: "used", category: "wheel",  car: peugeot2, user: romeo, claim: claim12, price_cents: "19000")
 part23[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656577/Foto%27s%20parts/Peugeot2/s-l1600_n0txir.jpg"
 part23.save!
 
-part24 = Part.new(part_model_code: "3322937716319", title: "Peugeot 208 Rear Brake Discs", description: "TRW Rear Brake discs fits peugeot 208", condition: "new", category: "other",  car: peugeot2, user: romeo, claim: claim12, price_cents: "9285")
-part24[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656772/Foto%27s%20parts/Peugeot2/s-l1600_kxembx.jpg"
-part24.save!
+part30 = Part.new(part_model_code: "1K6955651", title: "Screenwash Pump VW", description: "VW UP 2011+ screenwasher pump", condition: "used", category: "other",  car: volkswagen2, user: romeo, claim: claim15, price_cents: "2299")
+part30[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657703/Foto%27s%20parts/Volkswagen2/s-l1600_fvdcre.jpg"
+part30.save!
 
-part25 = Part.new(part_model_code: "2534664", title: "F54 Clubman S All4 Front Bumper", description: "F54 front bumber in 'blazing red' for mini cooper s clubman 2015+", condition: "used", category: "body", car: mini, user: romeo, claim: claim13, price_cents: "51000")
-part25[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656897/Foto%27s%20parts/Mini/s-l1600_ojvjcj.jpg"
-part25.save!
-
-part26 = Part.new(part_model_code: "9271204", title: "Mini Clubman F54 Front Radiator", description: "Almost new front radiator for clubman s f54 2015+", condition: "used", category: "other",  car: mini, user: romeo, claim: claim13, price_cents: "17900")
+part26 = Part.new(part_model_code: "9271204", title: "Mini Cooper Clubman S All4 Front Radiator", description: "Almost new front radiator for clubman s f54 2015+", condition: "used", category: "other",  car: mini, user: romeo, claim: claim13, price_cents: "17900")
 part26[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657044/Foto%27s%20parts/Mini/s-l1600_ns8acg.jpg"
 part26.save!
+
+part20 = Part.new(part_model_code: "EIS48397", title: "Renault Megane Door Lock Mechanism", description: "2006-2009 door lock mechanism - driver side - functioning", condition: "used", category: "sensors", car: renault, user: romeo, claim: claim10, price_cents: "3599")
+part20[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559655060/Foto%27s%20parts/Renault/s-l1600_usubgb.jpg"
+part20.save!
 
 part27 = Part.new(part_model_code: "915DE134", title: "Tesla Model S Rear Right Headlight", description: "Perfect condition rear right taillight for Tesla Model S 2014+", condition: "used", category: "lighting", car: tesla, user: nathanael, claim: claim14, price_cents: "62000")
 part27[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657211/Foto%27s%20parts/Tesla/s-l1600_makr3f.jpg"
 part27.save!
 
-part28 = Part.new(part_model_code: "915DI691", title: "Tesla Model S Tailgate", description: "Tailgate & bootlid for model s p85d - no taillight, glass or mounting kit", condition: "used", category: "body",  car: tesla, user: nathanael, claim: claim14, price_cents: "145000")
-part28[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657319/Foto%27s%20parts/Tesla/s-l1600_hn3uxp.jpg"
-part28.save!
+part22 = Part.new(part_model_code: "6J4807421E", title: "Seat Ibiza Rear Bumper Black", description: "Seat Ibiza Cupra 6J Bumper Black - heavy markings & scratches", condition: "used", category: "body", car: seat, user: nathanael, claim: claim11, price_cents: "31000")
+part22[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656334/Foto%27s%20parts/Seat/s-l1600_zgxkii.jpg"
+part22.save!
+
 
 part29 = Part.new(part_model_code: "1S0807221B", title: "Front Bumper VW Up 2016", description: "Candy White front bumper vw up 2011+", condition: "used", category: "body",  car: volkswagen2, user: romeo, claim: claim15, price_cents: "8900")
 part29[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657466/Foto%27s%20parts/Volkswagen2/s-l1600_tllema.jpg"
 part29.save!
 
-part30 = Part.new(part_model_code: "1K6955651", title: "Screenwash Pump VW", description: "VW UP 2011+ screenwasher pump", condition: "used", category: "other",  car: volkswagen2, user: romeo, claim: claim15, price_cents: "2299")
-part30[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657703/Foto%27s%20parts/Volkswagen2/s-l1600_fvdcre.jpg"
-part30.save!
-
+part24 = Part.new(part_model_code: "3322937716319", title: "Peugeot 208 Rear Brake Discs", description: "TRW Rear Brake discs fits peugeot 208", condition: "new", category: "other",  car: peugeot2, user: romeo, claim: claim12, price_cents: "9285")
+part24[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559656772/Foto%27s%20parts/Peugeot2/s-l1600_kxembx.jpg"
+part24.save!
 
 part32 = Part.new(part_model_code: "3M515230UA", title: "Ford Focus 2012 2.0t Full Exhaust", description: "Resonator + midpipes - no header or catalytic converted - needs refurbishing", condition: "used", category: "other",  car: ford, user: romeo, claim: claim16, price_cents: "9250")
 part32[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657950/Foto%27s%20parts/Ford/s-l1600_bndaqh.jpg"
 part32.save!
 
+part28 = Part.new(part_model_code: "915DI691", title: "Tesla Model S Tailgate", description: "Tailgate & bootlid for model s p85d - no taillight, glass or mounting kit", condition: "used", category: "body",  car: tesla, user: nathanael, claim: claim14, price_cents: "145000")
+part28[:photo] = "https://res.cloudinary.com/dbimnldt2/image/upload/v1559657319/Foto%27s%20parts/Tesla/s-l1600_hn3uxp.jpg"
+part28.save!
 
 puts "Generating new Orders every user gets 2 pending and sold orders...."
 order1 = Order.create!(user: gael, status: "paid", part: part24)

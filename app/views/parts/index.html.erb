@@ -2,45 +2,31 @@
 <div class="container-index-parts">
   <div class="row">
       <% @parts.each do |part| %>
-          <div class="col-xl-3 col-lg-6 mb-4">
+ <div class="col-xl-3 col-lg-6 mb-4">
             <div class="card shadow border" style="width: 100%">
-              <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
+              <%= link_to part_path(part), class: "text-decoration-none text-reset" do %>
+                <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
+              <% end %>
+
               <div class="card-body">
                 <h5 class="card-title" style="height: 25px;"><strong><%= part.title%></strong></h5>
 
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Make:</strong> <%= part.car.make %></li>
-                <li class="list-group-item"><strong>Model:</strong> <%= part.car.model %></li>
-                <li class="list-group-item"><strong>Price:</strong> <%= Money.new(part.price_cents, "EUR").format %></li>
-              </ul>
-               <div class="card-body text-center d-flex justify-content-around">
-
-                <div class="col-sm-3 col-xs-6 px-3">
-                  <%= link_to (raw('<i class="fas fa-info-circle"></i><span> Info</span>')), part_path(part), class: "btn btn-primary " %>
-                </div>
-
-                <% if false %>
-                  <div class="col-sm-3 col-xs-6">
-                  <% if part.user_id != current_user.id %>
-                    <% if part.order.blank? %>
-                      <%= form_tag orders_path do %>
-                        <%= hidden_field_tag 'part_id', part.id %>
-                        <%= button_tag type: 'submit', class: 'btn btn-success btn-block' do %>
-                          <i class="fas fa-shopping-cart"></i>
-                          <span>Basket</span>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                      <%= link_to (raw('<i class="fas fa-shopping-cart"></i><span> See in Basket</span>')), orders_path, class: "btn btn-success"  %>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
+              <div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Make:</strong> <%= part.car.make %></li>
+                  <li class="list-group-item"><strong>Model:</strong> <%= part.car.model %></li>
+                  <li class="list-group-item"><strong>Price:</strong> <%= Money.new(part.price_cents, "EUR").format %></li>
+                </ul>
+              </div>
+               <div class="card-body text-center d-flex justify-content-center">
+                  <%= link_to (raw('<i class="fas fa-info-circle"></i><span> Info</span>')), part_path(part), class: "btn btn-primary" %>
                </div>
             </div>
           </div>
-      <% end %>
+<% end %>
+
+
   </div>
 </div>
 

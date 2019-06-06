@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
     # The index is the basket
     @orders = policy_scope(Order)
     authorize @orders
+    total_price = 0
+    current_user.orders.each do |order|
+      total_price += order.part.price_cents
+    end
+    @total_price_format = Money.new(total_price, "EUR").format
   end
 
   def show
@@ -22,18 +27,28 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
-    authorize @order
-    @order.status = 'paid'
-    if @order.save
-      # Send email to buyer
-      # Turned off as annoying
-      # mail = OrderMailer.with(order: @order).order_confirmation
-      # mail.deliver_now
-      redirect_to order_path(@order)
-    else
-      render 'parts/show'
+    # @order = Order.find(params[:id])
+    @orders = current_user.orders
+    @orders.each do |order|
+      order.status = 'paid'
+      order.save
     end
+
+    redirect_to parts_path, notice: "You succesfully bought all your parts"
+    authorize @orders
+
+
+    # if @order.save
+    #   # Send email to buyer
+    #   # Turned off as annoying
+    #   # mail = OrderMailer.with(order: @order).order_confirmation
+    #   # mail.deliver_now
+    #   redirect_to order_path(@order)
+    # else
+    #   render 'parts/show'
+    # end
+
+
   end
 
   def destroy

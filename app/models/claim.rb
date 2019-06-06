@@ -2,7 +2,7 @@ class Claim < ApplicationRecord
   has_many :parts
   belongs_to :user
   has_many :notifications, dependent: :delete_all
-  validates :number, presence: true
+  validates :number, presence: true, uniqueness: true
   validates :at_date, presence: true
   validates :description, presence: true
   validates :garage_id, presence: true

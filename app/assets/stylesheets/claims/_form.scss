@@ -9,7 +9,11 @@
     font-weight: bold;
     text-align: center;
   }
-  .btn {
-    width: 100%;
-  }
+}
+
+.add-edit-claim-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
 }

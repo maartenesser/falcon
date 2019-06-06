@@ -30,12 +30,7 @@
                 </div>
 
               <div class="add-edit-claim-btns">
-
-                <% if @claim.user_id.present? %>
-                    <%= link_to "Back", claim_path(@claim), class: "btn btn-primary", style: "border-radius:25px; width:25%; padding:10px 0;" %>
-                  <% else %>
-                    <%= link_to "Cancel", claims_path, class: "btn btn-primary", style: "border-radius:25px; width:25%; padding:10px 0;"  %>
-                <% end %>
+                    <%= link_to "Back", claims_path, class: "btn btn-primary", style: "border-radius:25px; width:25%; padding:10px 0;"  %>
                 <%= f.button :submit, class: "btn btn-success", style: "border-radius:25px; width:25%; padding:10px 0;" %>
 
                 <% end %>

@@ -36,22 +36,19 @@
     </div>
     <div class="card-body">
         <div>
+          Insurance: <%= @insurance %>
+        </div>
+         <div>
+          Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
+        </div>
+        <div>
           Claim status: <%= @claim.status %>
         </div>
-
         <div>
           Claim description:  <%= @claim.description %>
         </div>
-
         <div>
-          Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
-        </div>
-
-        <div>
-          Insurance: <%= @insurance %>
-        </div>
-        <div>
-          Garage: <%= @garage %>
+          <br>
         </div>
 
         <% unless @car.nil? && @part.nil? %>

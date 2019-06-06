@@ -20,6 +20,8 @@ class CarsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
     if @car.update(form_params)
       redirect_to car_path(@car)
@@ -27,8 +29,6 @@ class CarsController < ApplicationController
       render :edit
     end
   end
-
-  def edit; end
 
   private
 

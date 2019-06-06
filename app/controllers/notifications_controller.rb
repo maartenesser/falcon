@@ -3,6 +3,8 @@ class NotificationsController < ApplicationController
     @notifications = policy_scope(Notification).order(created_at: :desc)
   end
 
+  def show; end
+
   def create
     @notification = Notification.new(notification_params)
     authorize @notification
@@ -11,11 +13,7 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def update
-  end
-
-  def show
-  end
+  def update; end
 
   private
 

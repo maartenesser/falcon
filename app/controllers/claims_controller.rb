@@ -2,6 +2,50 @@ class ClaimsController < ApplicationController
   after_action :send_notification, only: [:create]
   before_action :set_claim, only: %i[show edit update]
 
+  def index
+    @claims = policy_scope(Claim).order(at_date: :desc)
+    @claims_garage = Claim.where(garage_id: current_user.id)
+    if params[:query].present?
+      @claims = @claims.global_search(params[:query]).order(at_date: :desc)
+      @claims_garage = @claims_garage.global_search(params[:query]).order(at_date: :desc)
+    end
+
+    if params[:status].present?
+      @claims = @claims.where(status: params[:status])
+      @claims_garage = @claims_garage.where(status: params[:status])
+    end
+  end
+
+  def show
+    insurance_id = Claim.find(@claim.id).user_id
+    garage_id = Claim.find(@claim.id).garage_id
+    @garage = User.find(garage_id).company_name
+    @insurance = User.find(insurance_id).company_name
+
+    claim_id = @claim.id
+    read_status = params[:garage_read]
+    notification_id = params[:notification_id]
+
+    # Status noptification for the insurance logic needed for garage_show
+    if !read_status.nil?
+      @notification = Notification.find(notification_id)
+      @notification.garage_read = read_status
+      @notification.save
+    end
+    # End
+
+    # Show info for both sides (insurance and garage)
+    if !Part.where(claim_id: claim_id).first.nil?
+      @part = Part.where(claim_id: claim_id).first
+      car_id = @part.car_id
+      @car = Car.find(car_id)
+    end
+    # end
+
+    # Show parts that are linked to the claim number. logic for garage and insurance show
+      @all_parts_for_this_claim = Part.where(claim_id: claim_id)
+  end
+
   def new
     @claim = Claim.new
     @user = current_user.id
@@ -27,50 +71,7 @@ class ClaimsController < ApplicationController
     end
   end
 
-  def show
-    insurance_id = Claim.find(@claim.id).user_id
-    garage_id = Claim.find(@claim.id).garage_id
-    @garage = User.find(garage_id).company_name
-    @insurance = User.find(insurance_id).company_name
-
-    claim_id = @claim.id
-    read_status = params[:garage_read]
-    notification_id = params[:notification_id]
-
-    # Status noptification for the insurance logic needed for garage_show
-    if !read_status.nil?
-      @notification = Notification.find(notification_id)
-      @notification.garage_read = read_status
-      @notification.save
-    end
-    # End
-
-    # Show info for both sides (isurance and garage)
-    if !Part.where(claim_id: claim_id).first.nil?
-      @part = Part.where(claim_id: claim_id).first
-      car_id = @part.car_id
-      @car = Car.find(car_id)
-    end
-    # end
-
-    # Show parts that are linked to the claim number. logic for garage and insurance show
-      @all_parts_for_this_claim = Part.where(claim_id: claim_id)
-
-  end
-
-  def index
-    @claims = policy_scope(Claim).order(at_date: :desc)
-    @claims_garage = Claim.where(garage_id: current_user.id)
-    if params[:query].present?
-      @claims = @claims.global_search(params[:query]).order(at_date: :desc)
-      @claims_garage = @claims_garage.global_search(params[:query]).order(at_date: :desc)
-    end
-
-    if params[:status].present?
-      @claims = @claims.where(status: params[:status])
-      @claims_garage = @claims_garage.where(status: params[:status])
-    end
-  end
+  def edit; end
 
   def update
     if @claim.update(claim_params)
@@ -88,7 +89,11 @@ class ClaimsController < ApplicationController
     end
   end
 
-  def edit
+  def destroy
+    @claim = Claim.find(params[:id])
+    authorize @claim
+    @claim.destroy
+    redirect_to claims_path
   end
 
   def table
@@ -107,13 +112,6 @@ class ClaimsController < ApplicationController
       end
     end.flatten
     skip_authorization
-  end
-
-  def destroy
-    @claim = Claim.find(params[:id])
-    authorize @claim
-    @claim.destroy
-    redirect_to claims_path
   end
 
   private

@@ -16,7 +16,7 @@
                 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
                 <%= f.input :status, collection: [ "new", "in progress", "finished" ], label: false, include_blank: false, as: :hidden %>
                 <div class="form-group">
-                  <%= f.input :number, autofocus: true, label: "Claim number", input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number" } %>
+                  <%= f.input :number, autofocus: true, label: "Claim number", input_html: { autocomplete: "number", class: "form-control form-control-user text-center", placeholder: "Claim Number", value: "09882323498" } %>
                 </div>
                 <div class="form-group">
                    <%= f.association :user, label: "Garage", collection: User.where(insurance: false), label_method: ->(user) { "#{user.company_name}"},  value_method: :id, placeholder: "select your garage" %>
@@ -25,7 +25,7 @@
                   <%= f.input :at_date, order: [:day, :month, :year], label: "Date of accident" ,start_year: Date.today.year - 40, end_year: Date.today.year, discard_hour: true, input_html: { autocomplete: "at_date", class: "form-control", placeholder: "Date of the claim" } %>
                   </div>
                   <div class="form-group">
-                    <%= f.input :description, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description" }%>
+                    <%= f.input :description, input_html: { autocomplete: "description", class: "form-control", placeholder: "Write a description", value: "Mini Clubman Cooper S All4 frontal collision with lantern. Impact was at approximately 25km/h - (bumper, radiator, front sensors damaged). No visible frame damage." }%>
                   </div>
                 </div>
 

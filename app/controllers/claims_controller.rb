@@ -53,10 +53,9 @@ class ClaimsController < ApplicationController
     end
     # end
 
-    # Show parts that are linked to the claim number. logic for insurecnce show
-    if current_user.insurance?
+    # Show parts that are linked to the claim number. logic for garage and insurance show
       @all_parts_for_this_claim = Part.where(claim_id: claim_id)
-    end
+
   end
 
   def index

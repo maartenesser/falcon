@@ -36,22 +36,19 @@
     </div>
     <div class="card-body">
         <div>
+          Insurance: <%= @insurance %>
+        </div>
+         <div>
+          Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
+        </div>
+        <div>
           Claim status: <%= @claim.status %>
         </div>
-
         <div>
           Claim description:  <%= @claim.description %>
         </div>
-
         <div>
-          Date of claim:  <%= @claim.at_date.strftime("%d-%m-%Y") %>
-        </div>
-
-        <div>
-          Insurance: <%= @insurance %>
-        </div>
-        <div>
-          Garage: <%= @garage %>
+          <br>
         </div>
 
         <% unless @car.nil? && @part.nil? %>
@@ -71,7 +68,51 @@
       </div>
     </div>
   </div>
+  <div class="title-num-of-part">
+    <% if @all_parts_for_this_claim.present? %>
+      <h6 style=" margin: 51px 0; color: #b1b1b1; font-size: 24px; text-align: -webkit-center; ">
+       <strong><%= pluralize @all_parts_for_this_claim.count, "part" %> </strong> associated to this claim :</h6>
+    <% else %>
+      <h6 style=" margin: 51px 0; color: #b1b1b1; font-size: 24px; text-align: -webkit-center; font-weight: bold;">
+      There is no associated parts to this claim.</h6>
+    <% end %>
+  </div>
+  <div class="container-index-parts">
+    <div class="row justify-content-md-center">
+      <% @all_parts_for_this_claim.each do |part| %>
+          <div class="col-xl-3 col-lg-6 mb-4">
+            <div class="card shadow border" style="width: 100%">
+              <%= cl_image_tag part.photo, crop: :fill, height: 180, class: "card-img-top img-fluid w-100", style: "height: 180px; object-fit: cover;" %>
+              <div class="card-body">
+                <h5 class="card-title" style="height: 25px"><strong><%= part.title%></strong></h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Category: <%= part.category %></li>
+                <li class="list-group-item">Make: <%= part.car.make %></li>
+                <li class="list-group-item">Model: <%= part.car.model %></li>
 
+                <% if Part.find(part.id).order.present? %>
+                  <% @status = Part.find(part.id).order.status %>
+                  <%  if @status == "paid" %>
+                    <li class="list-group-item">Status: Sold</li>
+                  <% else %>
+                    <%  if @status == "pending" %>
+                        <li class="list-group-item">Status: in transaction </li>
+                    <% else %>
+                          <li class="list-group-item">Status: Online </li>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <li class="list-group-item">Price: <%= Money.new(part.price_cents, "EUR").format %></li>
+              </ul>
+               <div class="card-body text-center">
+                <%= link_to (raw('<span class="icon text-white-50"><i class="fas fa-info-circle"></i></span><span class="text">More Info</span>')), part_path(part), class: "btn btn-info btn-icon-split" %>
+               </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

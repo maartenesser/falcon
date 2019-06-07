@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     end
 
     if @unsuccesfull_orders.length == 0
-      redirect_to parts_path, notice: "You succesfully bought all your parts"
+      redirect_to purchasedparts_path, notice: "You succesfully bought all your parts"
     else
       redirect_to orders_path, notice: "not all the parts have been bought"
     end

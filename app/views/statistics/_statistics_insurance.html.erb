@@ -39,7 +39,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Claim in progress</div>
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Target </div>
             <div class="row no-gutters align-items-center">
               <div class="col-auto">
                 <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= @actual_in_percent.round(2) %> % </div>
@@ -65,8 +65,8 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pendings </div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @all_parts_pending %></div>
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Claims finished: </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @all_claims_finish %></div>
           </div>
           <div class="col-auto">
             <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -88,7 +88,7 @@
       <div class="card-body">
           <canvas id="myAreaChart" height="400" width="650" data-count-all='<%= @count_all.to_json %>'></canvas>
         <hr>
-        <p>Evolution of the sell since January.</p>
+        <p>Evolution of parts sell since january.</p>
       </div>
     </div>
   </div>

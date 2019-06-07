@@ -12,11 +12,11 @@
               <%= f.error_notification %>
               <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
                 <div>
-                  <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id %>
+                  <%= f.association :claim, label_method: ->(item) { "#{item.number}"}, value_method: :id, collection: Claim.all.order('created_at DESC')%>
 
                   <div class="row d-flex justify-content-center align-items-center mb-2">
                     <div class="col-md-12 col-lg-9">
-                      <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id, input_html: {value: "mini"}%>
+                      <%= f.association :car, label_method: ->(item) { "#{item.make} - #{item.model}"}, value_method: :id, input_html: {value: "mini"}, collection: Car.all.order('created_at DESC')%>
                     </div>
                     <div class="text-right col-md-12 col-lg-3">
                     <%= link_to "Add new car", new_car_path, class: "btn btn-outline-secondary w-100 text-center mt-3" %>
@@ -29,7 +29,7 @@
                   <%= f.input :photo, input_html: {autocomplete: "photo"} %>
                   <%= f.input :photo_cache, as: :hidden %>
                   <%= f.input :part_model_code, input_html: { autocomplete: "part_model_code", value: "1294MINICOSALL43995"} %>
-                  <%= f.input :price, as: :integer, input_html: {value: '89'} %>
+                  <%= f.input :price, as: :integer, input_html: {value: '89'}, label: "Price in €" %>
                   <%= f.button :submit, class: "btn btn-success btn-icon-split p-2", value: "Upload part"  %>
                   <%= link_to "Cancel", parts_path, class: "btn btn-outline-secondary btn-icon-split p-2" %>
                 </div>

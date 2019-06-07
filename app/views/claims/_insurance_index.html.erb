@@ -17,7 +17,7 @@
     <div id="claims-index">
       <div class="card border-left-<%= status_class(claim) %> shadow">
         <div class="card-header py-3" id="index-claim-card-header">
-          <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= link_to claim.number, claim_path(claim) %></h6>
+          <h6 class="m-0 font-weight-bold text-primary">Claim number: <%= link_to claim.number, claim_path(claim) %></h6>
           <%= link_to "info", claim_path(claim), class: "btn btn-info", id: "index-claim-card-btn" %>
         </div>
         <div class="card-body">

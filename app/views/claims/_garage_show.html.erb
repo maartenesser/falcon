@@ -2,7 +2,7 @@
   <div class="card border-left-<%= status_class(@claim) %> shadow mb-4">
     <div class="card-header py-3" id="claim-show-card-header">
 
-      <h6 class="m-0 font-weight-bold text-primary">Claim Number: <%= @claim.number %></h6>
+      <h6 class="m-0 font-weight-bold text-primary">Claim number: <%= @claim.number %></h6>
         <%= simple_form_for @claim, html: { class: "d-flex justify-content-center align-items-center"} do |f|-%>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -91,15 +91,15 @@
                 <li class="list-group-item">Make: <%= part.car.make %></li>
                 <li class="list-group-item">Model: <%= part.car.model %></li>
 
-                <% if Part.find(part.id).order.present? %>
+                <% if !Part.find(part.id).order.present? %>
+                  <li class="list-group-item">Status: Online </li>
+                <% else %>
                   <% @status = Part.find(part.id).order.status %>
                   <%  if @status == "paid" %>
                     <li class="list-group-item">Status: Sold</li>
                   <% else %>
                     <%  if @status == "pending" %>
-                        <li class="list-group-item">Status: in transaction </li>
-                    <% else %>
-                          <li class="list-group-item">Status: Online </li>
+                        <li class="list-group-item">Status: pending </li>
                     <% end %>
                   <% end %>
                 <% end %>

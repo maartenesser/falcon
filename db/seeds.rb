@@ -64,10 +64,10 @@ audi = Car.create!(vin: "WAUFFAFL4FA068866", make: "Audi", model: "A4 2.0T")
 renault = Car.create!(vin: "VF1BMK40638226064", make: "Renault", model: "Megane 1.8")
 seat = Car.create!(vin: "VSSZZZ6JZAR035500", make: "Seat", model: "Ibiza")
 peugeot2 = Car.create!(vin: "VF3CC9HP0DT076568", make: "Peugeot", model: "208")
-mini = Car.create!(vin: "WMWLN5C5XK2E34890", make: "Mini", model: "Clubman Cooper S All4")
 tesla = Car.create!(vin: "5YJ3E1EA9JF002824", make: "Tesla", model: "Model S P85D")
 volkswagen2 = Car.create!(vin: "WVWZZZ6NZTY112309", make: "Volkswagen", model: "Up 1.0")
 ford = Car.create!(vin: "1FAHP3F26CL228943", make: "Ford", model: "Focus 2.0tdci")
+mini = Car.create!(vin: "WMWLN5C5XK2E34890", make: "Mini", model: "Clubman Cooper S All4")
 
 
 puts "Generating new parts....."

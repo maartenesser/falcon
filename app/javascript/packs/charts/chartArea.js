@@ -11,7 +11,7 @@ function number_format(data) {
       data: {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [{
-          label: 'Sold Parts',
+          label: 'Number of Parts',
            data: JSON.parse(ctx_bar.dataset.countAll),
           // data: [1, 23, 4, 5, 2, 3, 5, 2, 4, 20, 1, 0],
           backgroundColor: [

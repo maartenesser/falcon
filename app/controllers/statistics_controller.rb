@@ -16,7 +16,7 @@ class StatisticsController < ApplicationController
         @pending_orders = current_user.orders.where(status: "pending").count
         set_objectif_garage
         donut_category
-        evolution_sell_garage
+        evolution_buy_garage
 
       end
     end
@@ -34,14 +34,14 @@ class StatisticsController < ApplicationController
   end
 
   def set_objectif_insurance
-    objective = 10000.0 #in EUR
+    objective = 15000.0 #in EUR
     my_parts_in_cents = current_user.parts_as_insurance.sum(:price_cents)
     @part_earning_total_insurance = Money.new(my_parts_in_cents, 'EUR')
     @actual_in_percent = my_parts_in_cents / objective
   end
 
   def set_objectif_garage
-    objective_garage = 1000.0
+    objective_garage = 2500.0
     parts_bought = 0
     orders = current_user.orders
     orders.each do |order|
@@ -61,6 +61,8 @@ class StatisticsController < ApplicationController
                              .where('orders.status' => 'pending')
                              .where(claim_id: @my_parts)
                              .count
+    @all_claims_finish = current_user.claims.where(status: "finished").count
+
   end
 
   def donut_category
@@ -88,7 +90,7 @@ class StatisticsController < ApplicationController
     @count_all
   end
 
-  def evolution_sell_garage
+  def evolution_buy_garage
     # @count_sum = current_user.parts.joins(:order).where('orders.status' => 'paid').count
     # @count_sum = current_user.orders.where(status: 'paid').count
 
